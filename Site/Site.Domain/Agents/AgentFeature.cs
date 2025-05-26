@@ -3,26 +3,28 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Site.Domain._shared;
 using Site.Domain.Agents.ValueObjects;
 
 namespace Site.Domain.Agents
 {
-    public class AgentFeature
+    public class AgentFeature : ValueObject
     {
-        public AgentFeatureKey Key { get; private set; }
-        public Guid AgentId { get; private set; }
+        public string Key { get; private set; }
 
-        // 🔻 Navigation Property
-        public Agent Agent { get; private set; }
+        private AgentFeature() { }
 
-        // Constructor for initialization
-        public AgentFeature(AgentFeatureKey key, Guid agentId)
+        public AgentFeature(string key)
         {
-            Key = key ?? throw new ArgumentNullException(nameof(key));
-            AgentId = agentId;
+            if (string.IsNullOrWhiteSpace(key))
+                throw new ArgumentNullException(nameof(key));
+
+            Key = key;
         }
 
-        // EF Core parameterless constructor
-        private AgentFeature() { }
+        protected override IEnumerable<object> GetEqualityComponents()
+        {
+            yield return Key;
+        }
     }
 }

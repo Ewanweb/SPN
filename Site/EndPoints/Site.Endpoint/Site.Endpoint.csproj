@@ -20,4 +20,8 @@
     <ProjectReference Include="..\..\Site.Infrastructure\Site.Infrastructure.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Areas\" />
+  </ItemGroup>
+
 </Project>

@@ -11,6 +11,7 @@ namespace Site.Domain.Projects
     {
         public string ImageName { get; private set; }
         public Guid ProjectId { get; private set; }
+        public Project Project { get; private set; }
 
         private ProjectImage() { }
 

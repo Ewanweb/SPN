@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity;
 using Site.Domain._shared;
 using Site.Domain.Agents.Enums;
 using Site.Domain.Agents.ValueObjects;
@@ -11,7 +13,7 @@ using static System.Net.Mime.MediaTypeNames;
 
 namespace Site.Domain.Agents
 {
-    public class Agent : BaseEntity
+    public class Agent :  IdentityUser
     {
         public string FullName { get; private set; }
         public string Slug { get; private set; }
@@ -22,7 +24,7 @@ namespace Site.Domain.Agents
         public AgentPhoneNumber PhoneNumber { get; private set; }
         public string? ResumeFileName { get; private set; }
         public AgentStatus Status { get; private set; }
-        public List<AgentFeature> AgentFeatures { get; private set; }
+        public List<AgentFeature> AgentFeatures { get; private set; } = new();
 
         private Agent()
         {
@@ -55,10 +57,23 @@ namespace Site.Domain.Agents
             agent.Email = email;
             agent.PhoneNumber = phoneNumber;
             agent.Status = AgentStatus.Active;
-            agent.Slug = fullName.ToLower().Trim();
+            agent.Slug = GenerateSlug(fullName);
             agent.ResumeFileName = resumeFileName;
 
             return agent;
+        }
+
+        public static Agent Register(string fullName, string email, AgentPhoneNumber phone)
+        {
+            const string defaultGithub = "https://github.com/";
+            const string defaultImage = "default.png";
+            const string defaultDescription = "کاربر جدید";
+
+            var slug = GenerateSlug(fullName);
+
+            return new Agent(
+                fullName, defaultGithub, defaultImage, defaultDescription, slug,
+                email, phone, AgentStatus.Active, null);
         }
 
         public void Edit(string fullName, string githubLink, string imageName, string description,
@@ -84,7 +99,7 @@ namespace Site.Domain.Agents
                 throw new ArgumentException("هیچ تصویری ارسال نشده است", nameof(features));
 
             var agentFeature = features
-                .Select(feature => new AgentFeature(feature.Key, Id))
+                .Select(feature => new AgentFeature(feature.Key))
                 .ToList();
 
             AgentFeatures.AddRange(agentFeature);
@@ -116,7 +131,11 @@ namespace Site.Domain.Agents
 
                 if (phoneNumber == null)
                     throw new ArgumentNullException(nameof(phoneNumber), "شماره موبایل الزامی است");
-
             }
+
+        private static string GenerateSlug(string text)
+        {
+            return text.Trim().ToLower().Replace(" ", "-");
+        }
     }
 }

@@ -7,7 +7,9 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Site.Domain.Repositories;
 using Site.Infrastructure;
+using Site.Infrastructure.Repositories;
 
 namespace Site.Config
 {
@@ -43,6 +45,10 @@ namespace Site.Config
                     options.Lockout.AllowedForNewUsers = true;
                 }).AddEntityFrameworkStores<ApplicationDbContext>()
             .AddDefaultTokenProviders();
+
+            //Register Repositories
+            service.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+
 
             return service;
         }

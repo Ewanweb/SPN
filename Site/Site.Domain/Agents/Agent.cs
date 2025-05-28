@@ -4,6 +4,7 @@ using System.Linq;
 using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
+using MediatR;
 using Microsoft.AspNetCore.Identity;
 using Site.Domain._shared;
 using Site.Domain.Agents.Enums;
@@ -45,10 +46,13 @@ namespace Site.Domain.Agents
         }
 
         public static Agent Create(string fullName, string githubLink, string imageName, string description,
-            string email, AgentPhoneNumber phoneNumber, string? resumeFileName)
+            string email, AgentPhoneNumber phoneNumber, string? resumeFileName, string password)
         {
             var agent = new Agent();
             agent.Guard(fullName, githubLink, imageName, description, email, phoneNumber);
+
+            var passwordHasher = new PasswordHasher<Agent>();
+
 
             agent.FullName = fullName;
             agent.GithubLink = githubLink;
@@ -59,6 +63,8 @@ namespace Site.Domain.Agents
             agent.Status = AgentStatus.Active;
             agent.Slug = GenerateSlug(fullName);
             agent.ResumeFileName = resumeFileName;
+            agent.PasswordHash = passwordHasher.HashPassword(agent, password);
+
 
             return agent;
         }
@@ -77,7 +83,7 @@ namespace Site.Domain.Agents
         }
 
         public void Edit(string fullName, string githubLink, string imageName, string description,
-            string email, AgentPhoneNumber phoneNumber, List<AgentFeature> agentFeatures, AgentStatus status)
+            string email, AgentPhoneNumber phoneNumber)
         {
             Guard(fullName, githubLink, imageName, description, email, phoneNumber);
 

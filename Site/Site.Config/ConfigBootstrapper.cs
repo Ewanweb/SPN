@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Site.Application._shared.FileUtil.Interfaces;
+using Site.Application._shared.FileUtil.Services;
 using Site.Domain.Repositories;
 using Site.Infrastructure;
 using Site.Infrastructure.Repositories;
@@ -48,6 +50,8 @@ namespace Site.Config
 
             //Register Repositories
             service.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+            service.AddScoped<IFileService, FileService>();
+            service.AddScoped<IAgentRepository, AgentRepository>();
 
 
             return service;

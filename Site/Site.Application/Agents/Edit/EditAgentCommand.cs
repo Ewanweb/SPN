@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MediatR;
+using Microsoft.AspNetCore.Http;
 using Site.Application._shared;
 using Site.Domain.Agents;
 using Site.Domain.Agents.Enums;
@@ -15,7 +16,7 @@ namespace Site.Application.Agents.Edit
         string Slug,
         string FullName,
         string GithubLink,
-        string ImageName,
+        IFormFile? Image,
         string Description,
         string Email,
         string Password,

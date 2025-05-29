@@ -61,7 +61,7 @@ namespace Site.Domain.Agents
             agent.Email = email;
             agent.PhoneNumber = phoneNumber;
             agent.Status = AgentStatus.Active;
-            agent.Slug = GenerateSlug(fullName);
+            agent.Slug = SlugHelper.GenerateSlug(fullName);
             agent.ResumeFileName = resumeFileName;
             agent.PasswordHash = passwordHasher.HashPassword(agent, password);
 
@@ -69,13 +69,12 @@ namespace Site.Domain.Agents
             return agent;
         }
 
-        public static Agent Register(string fullName, string email, AgentPhoneNumber phone)
+        public static Agent Register(string fullName, string email, AgentPhoneNumber phone, string slug)
         {
             const string defaultGithub = "https://github.com/";
             const string defaultImage = "default.png";
             const string defaultDescription = "کاربر جدید";
 
-            var slug = GenerateSlug(fullName);
 
             return new Agent(
                 fullName, defaultGithub, defaultImage, defaultDescription, slug,
@@ -97,16 +96,20 @@ namespace Site.Domain.Agents
 
         public void ChangeStatus(AgentStatus status) => Status = status;
 
-        public void AddFeature(List<AgentFeature>? features)
+        public void AddFeature(List<string>? featureKeys)
         {
-            if (features is null || !features.Any())
-                throw new ArgumentException("هیچ تصویری ارسال نشده است", nameof(features));
+            if (featureKeys is null || !featureKeys.Any())
+                throw new ArgumentException("هیچ ویژگی ارسال نشده است", nameof(featureKeys));
 
-            var agentFeature = features
-                .Select(feature => new AgentFeature(feature.Key))
+            // جلوگیری از تکرار ویژگی
+            var existingKeys = AgentFeatures.Select(f => f.Key).ToHashSet(StringComparer.OrdinalIgnoreCase);
+
+            var newFeatures = featureKeys
+                .Where(key => !existingKeys.Contains(key))
+                .Select(key => new AgentFeature(key))
                 .ToList();
 
-            AgentFeatures.AddRange(agentFeature);
+            AgentFeatures.AddRange(newFeatures);
         }
 
         public void Guard(string fullName, string githubLink, string imageName, string description,
@@ -137,9 +140,5 @@ namespace Site.Domain.Agents
                     throw new ArgumentNullException(nameof(phoneNumber), "شماره موبایل الزامی است");
             }
 
-        private static string GenerateSlug(string text)
-        {
-            return text.Trim().ToLower().Replace(" ", "-");
-        }
     }
 }

@@ -93,8 +93,6 @@ namespace Site.Domain.Agents
             Description = description;
             Email = email;
             PhoneNumber = phoneNumber;
-            AgentFeatures = agentFeatures;
-            Status = status;
         }
 
         public void ChangeStatus(AgentStatus status) => Status = status;

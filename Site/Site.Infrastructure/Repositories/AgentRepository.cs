@@ -22,5 +22,8 @@ namespace Site.Infrastructure.Repositories
         {
            return await _context.Agents.FirstOrDefaultAsync(s => s.Slug == slug);
         }
+
+        public async Task<Agent?> GetAgentById(string id)
+            => await _context.Agents.FirstOrDefaultAsync(s => s.Id == id);
     }
 }

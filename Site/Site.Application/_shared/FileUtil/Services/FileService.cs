@@ -1,5 +1,4 @@
-﻿using Common.Application.Validation;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Http;
 using Site.Application._shared.FileUtil.Interfaces;
 using System;
 using System.Collections.Generic;

@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Site.Domain._shared;
 using Site.Domain.Agents;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace Site.Domain.Projects
 {
@@ -47,7 +48,20 @@ namespace Site.Domain.Projects
                 .Select(image => new ProjectImage(image.ImageName, Id))
                 .ToList();
 
-            projectImages.AddRange(projectImages);
+            Images.AddRange(projectImages);
+        }
+
+        public void RemoveImage(List<ProjectImage>? images)
+        {
+            if (images is null || !images.Any())
+                throw new ArgumentException("هیچ تصویری برای حذف ارسال نشده است", nameof(images));
+
+            foreach (var image in images)
+            {
+                var existingImage = Images.FirstOrDefault(x => x.ImageName == image.ImageName);
+                if (existingImage is not null)
+                    Images.Remove(existingImage);
+            }
         }
 
 

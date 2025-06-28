@@ -52,6 +52,7 @@ namespace Site.Config
             service.AddScoped(typeof(IRepository<>), typeof(Repository<>));
             service.AddScoped<IFileService, FileService>();
             service.AddScoped<IAgentRepository, AgentRepository>();
+            service.AddScoped<IProjectRepository, ProjectRepository>();
 
 
             return service;

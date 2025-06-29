@@ -1,5 +1,4 @@
-﻿using CodeYad_Blog.DataLayer.Entities;
-using Site.Endpoint.Areas.Blog.Core.DTOs.Users;
+﻿using Site.Endpoint.Areas.Blog.Core.DTOs.Users;
 using Site.Endpoint.Areas.Blog.Core.Utilities;
 
 namespace Site.Endpoint.Areas.Blog.Core.Services.Users

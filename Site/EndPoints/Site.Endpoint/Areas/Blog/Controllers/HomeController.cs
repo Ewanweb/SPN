@@ -1,10 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Site.Endpoint.Areas.Admin;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace CodeYad_Blog.Web.Areas.Admin.Controllers
+namespace Site.Endpoint.Areas.Blog.Controllers
 {
     public class HomeController : AdminControllerBase
     {

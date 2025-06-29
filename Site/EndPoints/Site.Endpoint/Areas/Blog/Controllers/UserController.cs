@@ -3,11 +3,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using CodeYad_Blog.CoreLayer.DTOs.Users;
-using CodeYad_Blog.CoreLayer.Services.Users;
-using CodeYad_Blog.CoreLayer.Utilities;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using Site.Endpoint.Areas.Blog.Core.DTOs.Users;
+using Site.Endpoint.Areas.Blog.Core.Services.Users;
+using Site.Endpoint.Areas.Blog.Core.Utilities;
+using Site.Endpoint.Areas.Admin;
 
-namespace CodeYad_Blog.Web.Areas.Admin.Controllers
+namespace Site.Endpoint.Areas.Blog.Controllers
 {
     public class UserController : AdminControllerBase
     {

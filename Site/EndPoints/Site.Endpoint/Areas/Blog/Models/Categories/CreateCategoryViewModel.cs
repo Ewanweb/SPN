@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using CodeYad_Blog.CoreLayer.DTOs.Categories;
+using Site.Endpoint.Areas.Blog.Core.DTOs.Categories;
 
-namespace CodeYad_Blog.Web.Areas.Admin.Models.Categories
+namespace Site.Endpoint.Areas.Blog.Models.Categories
 {
     public class CreateCategoryViewModel
     {

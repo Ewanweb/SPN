@@ -19,7 +19,7 @@ namespace Site.Endpoint.Areas.Blog.Core.Utilities
         {
             try
             {
-                using var image = System.Drawing.Image.FromStream(file.OpenReadStream());
+                //using var image = System.Drawing.Image.FromStream(file.OpenReadStream());
                 return true;
             }
             catch

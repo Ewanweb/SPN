@@ -3,11 +3,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using CodeYad_Blog.CoreLayer.Services.FileManager;
-using CodeYad_Blog.CoreLayer.Utilities;
 using Microsoft.AspNetCore.Http;
+using Site.Endpoint.Areas.Blog.Core.Services.FileManager;
+using Site.Endpoint.Areas.Blog.Core.Utilities;
 
-namespace CodeYad_Blog.Web.Areas.Admin.Controllers
+namespace Site.Endpoint.Areas.Blog.Controllers
 {
     public class UploadController : Controller
     {

@@ -1,50 +1,349 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="zxx" dir="rtl">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - Site.Endpoint</title>
-    <script type="importmap"></script>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/Site.Endpoint.styles.css" asp-append-version="true" />
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="author" content="">
+    <!-- Page Title -->
+    <title>@ViewData["Title"] - گروه برنامه نویسی SPN</title>
+    <!-- Favicon Icon -->
+    <link rel="shortcut icon" type="image/x-icon" href="@Url.Content("~/Assets/images/favicon.png")">
+
+    <!-- Bootstrap Css -->
+    <link href="@Url.Content("~/Assets/css-js/css/bootstrap.min.css")" rel="stylesheet" media="screen">
+    <!-- SlickNav Css -->
+    <link href="@Url.Content("~/Assets/css-js/css/slicknav.min.css")" rel="stylesheet">
+    <!-- Swiper Css -->
+    <link rel="stylesheet" href="@Url.Content("~/Assets/css-js/css/swiper-bundle.min.css")">
+    <!-- Font Awesome Icon Css-->
+    <link href="@Url.Content("~/Assets/css-js/css/all.min.css")" rel="stylesheet" media="screen">
+    <!-- Animated Css -->
+    <link href="@Url.Content("~/Assets/css-js/css/animate.css")" rel="stylesheet">
+    <!-- Magnific Popup Core Css File -->
+    <link rel="stylesheet" href="@Url.Content("~/Assets/css-js/css/magnific-popup.css")">
+    <!-- Mouse Cursor Css File -->
+    <link rel="stylesheet" href="@Url.Content("~/Assets/css-js/css/mousecursor.css")">
+    <!-- Main Custom Css -->
+    <link href="@Url.Content("~/Assets/css-js/css/custom.css")" rel="stylesheet" media="screen">
+
+    <!-- Main Custom Css Scroll % -->
+    <link href="@Url.Content("~/Assets/css-js/scrollcssjs/css/main.css")" rel="stylesheet" media="screen">
+
 </head>
+
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Site.Endpoint</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
+
+    <!-- Preloader Start -->
+    <div class="preloader">
+        <div class="loading-container">
+            <div class="loading"></div>
+            <div id="loading-icon"><img src="@Url.Content("~/Assets/images/loader.svg")" alt=""></div>
+        </div>
+    </div>
+    <!-- Preloader End -->
+
+    <!-- Header Start -->
+    <header class="main-header">
+        <div class="header-sticky">
+            <nav class="navbar navbar-expand-lg">
+                <div class="container">
+                    <!-- Navbar Toggler -->
+                    <div class="navbar-toggle"></div>
+                    <!-- Navbar Toggler -->
+                    <!-- Logo Start -->
+                    <a class="navbar-brand" href="./">
+                        <img src="@Url.Content("~/Assets/images/logo.svg")" alt="Logo">
+                    </a>
+                    <!-- Logo End -->
+
+                    <!-- Main Menu Start -->
+                    <div class="collapse navbar-collapse main-menu">
+                        <div class="nav-menu-wrapper">
+                            <ul class="navbar-nav mr-auto spn-header-color" id="menu">
+                                <li class="nav-item"><a class="nav-link" asp-controller="Home" asp-action="Index">صفحه اصلی</a></li>
+                                <li class="nav-item"><a class="nav-link" asp-controller="Home" asp-action="AboutUs">درباره ما</a>
+                                <li class="nav-item"><a class="nav-link" href="services.html">خدمات</a></li>
+                                <li class="nav-item"><a class="nav-link" href="blog.html">وبلاگ</a></li>
+                                <li class="nav-item submenu"><a class="nav-link" href="#">صفحات</a>
+                                    <ul>
+                                        <li class="nav-item"><a class="nav-link" href="service-single.html">جزئیات
+                                                خدمات</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="blog-single.html">جزئیات
+                                                وبلاگ</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="team.html">تیم ما</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="team-single.html">جزئیات تیم</a>
+                                        </li>
+                                        <li class="nav-item"><a class="nav-link" href="pricing.html">طرح قیمت گذاری</a>
+                                        </li>
+                                        <li class="nav-item"><a class="nav-link" href="clients.html">مشتریان</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="testimonial.html">گواهینامه
+                                                ها</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="image-gallery.html">گالری
+                                                تصاویر</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="video-gallery.html">گالری
+                                                ویدئو</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="faqs.html">سوالات</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="404.html">صفحه404</a></li>
+                                    </ul>
+                                </li>
+                                <li class="nav-item highlighted-menu"><a class="nav-link" href="contact.html">تماس با
+                                        ما</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Main Menu End -->
+
+                    <!-- Header Btn Start -->
+                    <div class="header-btn d-inline-flex">
+                        <!-- <a href="Profile/register.html" class="btn-default btn-highlighted">
+                            <span class="fa fa-user d-flex d-lg-none"></span>
+                            <span class="d-none d-lg-flex">ثبت نام</span>
+                             </a> -->
+
+                        <!-- if not registered -->
+
+                        <div class="btn-group">
+                            <div class="dropdown">
+                                <a href="Profile/register.html" type="button"
+                                    class="btn-default btn-highlighted dropdown-toggle" data-bs-toggle="dropdown"
+                                    aria-expanded="false" data-bs-auto-close="outside">
+                                    <span class="fa fa-user d-flex d-lg-none"></span>
+                                    <span class="d-none d-lg-flex">ثبت نام</span>
+                                </a>
+                                <div class="dropdown-menu spn-login">
+                                    <form class="p-2">
+                                        <div class="mb-1">
+                                            <label for="exampleDropdownFormEmail2" class="form-label">آدرس ایمیل</label>
+                                            <input type="email" class="form-control" id="exampleDropdownFormEmail2"
+                                                placeholder="email@example.com">
+                                        </div>
+                                        <div class="mb-1">
+                                            <label for="exampleDropdownFormPassword2" class="form-label">رمز</label>
+                                            <input type="password" class="form-control"
+                                                id="exampleDropdownFormPassword2" placeholder="Password">
+                                        </div>
+                                        <div class="mb-1">
+                                            <div class="form-check">
+                                                <input type="checkbox" class="form-check-input" id="dropdownCheck2">
+                                                <label class="form-check-label" for="dropdownCheck2">
+                                                    مرا به یاد داشته باش
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <button type="submit" class="btn spn-loginbtn">ورود</button>
+                                        <a href="Profile/register.html" class="btn spn-registerbtn">ثبت نام</a>
+                                    </form>
+
+
+                                </div>
+
+                            </div>
+                        </div>
+                        <!-- if registered -->
+
+                        <!-- <div class="btn-group ">
+                            <a href="Profile/register.html" type="button"
+                                class="btn-default btn-highlighted dropdown-toggle" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                <span class="fa fa-user d-flex d-lg-none"></span>
+                                <span class="d-none d-lg-flex">پروفایل</span>
+                            </a>
+                            <ul class="dropdown-menu spn-logined">
+                                <li><a class="dropdown-item spn-logined" href="Profile/register.html">پروفایل کاربری</a>
+                                </li>
+                                <li><a class="dropdown-item spn-logined" href="#">پشتیبانی</a></li>
+                                <li><a class="dropdown-item spn-logined" href="#">تیکت ها</a></li>
+                                <li><a class="dropdown-item spn-logined" href="#">سفارشات تکمیل شده</a></li>
+                                <hr />
+                                <li><a class="dropdown-item spn-logined" href="#">خروج</a></li>
+                            </ul>
+                        </div> -->
+                    </div>
+                    <!-- Header Btn End -->
+                </div>
+            </nav>
+            <div class="responsive-menu"></div>
+        </div>
+    </header>
+    <!-- Header End -->
+
+    @RenderBody()
+
+    <div id="scroll-percentage"><span id="scroll-percentage-value"></span></div>
+
+    <!-- Footer Section Start -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <!-- Footer Newsletter Box Start -->
+                    <div class="footer-newsletter-box">
+                        <!-- Footer Newsletter Title Start -->
+                        <div class="footer-newsletter-title">
+                            <h3> اشتراک را از دست ندهید!</h3>
+                        </div>
+                        <!-- Footer Newsletter Title End -->
+
+                        <!-- Newsletter Form start -->
+                        <div class="newsletter-form">
+                            <form id="newsletterForm" action="#" method="POST">
+                                <div class="form-group">
+                                    <input type="email" name="email" class="form-control" id="mail"
+                                        placeholder="ایمیل خود را وارد کنید" required="">
+                                    <button type="submit" class="newsletter-btn"><img src="@Url.Content("~/Assets/images/arrow-white.svg")"
+                                            alt=""></button>
+                                </div>
+                            </form>
+                        </div>
+                        <!-- Newsletter Form end -->
+                    </div>
+                    <!-- Footer Newsletter Box End -->
+                </div>
+
+                <div class="col-lg-2 col-md-4 col-6">
+                    <!-- Footer Links Start -->
+                    <div class="footer-links">
+                        <h3>شرکت</h3>
+                        <ul>
+                            <li><a href="index.html">صفحه اصلی</a></li>
+                            <li><a href="about.html">درباره ما</a></li>
+                            <li><a href="services.html">خدمات</a></li>
+                            <li><a href="blog.html">وبلاگ</a></li>
+                        </ul>
+                    </div>
+                    <!-- Footer Links End -->
+                </div>
+
+                <div class="col-lg-2 col-md-4 col-6">
+                    <!-- Footer Links Start -->
+                    <div class="footer-links">
+                        <h3>پشتیبانی</h3>
+                        <ul>
+                            <li><a href="#">کمک</a></li>
+                            <li><a href="#">سیاست حفظ حریم خصوصی</a></li>
+                            <li><a href="#">ترم و وضعیت</a></li>
+                            <li><a href="contact.html">تماس با ما</a></li>
+                        </ul>
+                    </div>
+                    <!-- Footer Links End -->
+                </div>
+
+                <div class="col-lg-2  col-md-4">
+                    <!-- Footer Links Start -->
+                    <div class="footer-links">
+                        <h3>خدمات</h3>
+                        <ul>
+                            <li><a href="service-single.html">برنامه ریزی مالی</a></li>
+                            <li><a href="service-single.html">مدیریت سرمایه گذاری</a></li>
+                            <li><a href="service-single.html">برنامه ریزی بازنشستگی</a></li>
+                            <li><a href="service-single.html">بودجه بندی و پیش بینی</a></li>
+                        </ul>
+                    </div>
+                    <!-- Footer Links End -->
+                </div>
+
+                <div class="col-lg-12">
+                    <!-- About Footer Start -->
+                    <div class="footer-cta-box">
+                        <!-- Footer Logo Start -->
+                        <div class="footer-logo">
+                            <img src="@Url.Content("~/Assets/images/footer-logo.svg")" alt="">
+                        </div>
+                        <!-- Footer Logo End -->
+
+                        <!-- Footer Contact Box Start -->
+                        <div class="footer-contact-box">
+                            <!-- Footer Contact Item Start -->
+                            <div class="footer-contact-item">
+                                <p>نیاز به کمک!</p>
+                                <h3 dir="ltr">+98910-1234567</h3>
+                            </div>
+                            <!-- Footer Contact Item End -->
+
+                            <!-- Footer Contact Item Start -->
+                            <div class="footer-contact-item">
+                                <p>ایمیل فعال</p>
+                                <h3>info@gmail.com</h3>
+                            </div>
+                            <!-- Footer Contact Item End -->
+                        </div>
+                        <!-- Footer Contact Box End -->
+                    </div>
+                    <!-- About Footer End -->
                 </div>
             </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2025 - Site.Endpoint - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            <!-- Footer Copyright Section Start -->
+            <div class="footer-copyright">
+                <div class="row align-items-center">
+                    <div class="col-md-5">
+                        <!-- Footer Copyright Start -->
+                        <div class="footer-copyright-text">
+                            <a href="http://t.me/Software_SPN">
+                                <p>Software_SPN</p>
+                            </a>
+                        </div>
+                        <!-- Footer Copyright End -->
+                    </div>
+
+                    <div class="col-md-7">
+                        <!-- Footer Menu Start -->
+                        <div class="footer-menu">
+                            <ul>
+                                <li><a href="#">لینکدین</a></li>
+                                <li><a href="#">فیسبوک</a></li>
+                                <li><a href="#">اینستاگرام</a></li>
+                                <li><a href="#">توییتر</a></li>
+                            </ul>
+                        </div>
+                        <!-- Footer Menu End -->
+                    </div>
+                </div>
+            </div>
+            <!-- Footer Copyright Section End -->
         </div>
     </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    @await RenderSectionAsync("Scripts", required: false)
+    <!-- Footer Section End -->
+
+    <!-- Jquery Library File -->
+    <script src="@Url.Content("~/Assets/css-js/js/jquery-3.7.1.min.js")"></script>
+    <!-- Bootstrap js file -->
+    <script src="@Url.Content("~/Assets/css-js/js/bootstrap.min.js")"></script>
+    <!-- for dropdawn on profile -->
+    <script src="@Url.Content("~/Assets/css-js/js/bootstrap.bundle.min.js")"></script>
+    <!-- Validator js file -->
+    <script src="@Url.Content("~/Assets/css-js/js/validator.min.js")"></script>
+    <!-- SlickNav js file -->
+    <script src="@Url.Content("~/Assets/css-js/js/jquery.slicknav.js")"></script>
+    <!-- Swiper js file -->
+    <script src="@Url.Content("~/Assets/css-js/js/swiper-bundle.min.js")"></script>
+    <!-- Counter js file -->
+    <script src="@Url.Content("~/Assets/css-js/js/jquery.waypoints.min.js")"></script>
+    <script src="@Url.Content("~/Assets/css-js/js/jquery.counterup.min.js")"></script>
+    <!-- Magnific js file -->
+    <script src="@Url.Content("~/Assets/css-js/js/jquery.magnific-popup.min.js")"></script>
+    <!-- SmoothScroll -->
+    <script src="@Url.Content("~/Assets/css-js/js/SmoothScroll.js")"></script>
+    <!-- Parallax js -->
+    <script src="@Url.Content("~/Assets/css-js/js/parallaxie.js")"></script>
+    <!-- MagicCursor js file -->
+    <script src="@Url.Content("~/Assets/css-js/js/gsap.min.js")"></script>
+    <script src="@Url.Content("~/Assets/css-js/js/magiccursor.js")"></script>
+    <!-- Text Effect js file -->
+    <script src="@Url.Content("~/Assets/css-js/js/ScrollTrigger.min.js")"></script>
+    <!-- YTPlayer js File -->
+    <script src="@Url.Content("~/Assets/css-js/js/jquery.mb.YTPlayer.min.js")"></script>
+    <!-- Wow js file -->
+    <script src="@Url.Content("~/Assets/css-js/js/wow.min.js")"></script>
+    <!-- Main Custom js file -->
+    <script src="@Url.Content("~/Assets/css-js/js/function.js")"></script>
+    <!-- Main Custom js Scroll % -->
+    <script src="@Url.Content("~/Assets/css-js/scrollcssjs/js/main.js")"></script>
+
 </body>
+
 </html>

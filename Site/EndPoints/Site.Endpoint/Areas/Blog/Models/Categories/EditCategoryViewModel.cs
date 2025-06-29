@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace CodeYad_Blog.Web.Areas.Admin.Models.Categories
+namespace Site.Endpoint.Areas.Blog.Models.Categories
 {
     public class EditCategoryViewModel
     {

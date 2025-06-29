@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using CodeYad_Blog.DataLayer.Entities;
 using Microsoft.EntityFrameworkCore;
 using Site.Endpoint.Areas.Blog.Core.DTOs.Comments;
 using Site.Endpoint.Areas.Blog.Core.Utilities;
 using Site.Endpoint.Areas.Blog.Data.Context;
+using Site.Endpoint.Areas.Blog.Data.Entities;
 
 namespace Site.Endpoint.Areas.Blog.Core.Services.Comments
 {

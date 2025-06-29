@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Http;
 
-namespace CodeYad_Blog.Web.Areas.Admin.Models.Posts
+namespace Site.Endpoint.Areas.Blog.Models.Posts
 {
     public class CreatePostViewModel
     {

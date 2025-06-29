@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using CodeYad_Blog.CoreLayer.DTOs.Categories;
 using Site.Endpoint.Areas.Blog.Core.DTOs.Posts;
 
 namespace Site.Endpoint.Areas.Blog.Core.DTOs

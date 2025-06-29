@@ -3,12 +3,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using CodeYad_Blog.CoreLayer.DTOs.Categories;
-using CodeYad_Blog.CoreLayer.Services.Categories;
-using CodeYad_Blog.CoreLayer.Utilities;
-using CodeYad_Blog.Web.Areas.Admin.Models.Categories;
+using Site.Endpoint.Areas.Admin;
+using Site.Endpoint.Areas.Blog.Core.DTOs.Categories;
+using Site.Endpoint.Areas.Blog.Core.Services.Categories;
+using Site.Endpoint.Areas.Blog.Models.Categories;
+using Site.Endpoint.Areas.Blog.Core.Utilities;
 
-namespace CodeYad_Blog.Web.Areas.Admin.Controllers
+namespace Site.Endpoint.Areas.Blog.Controllers
 {
     public class CategoryController : AdminControllerBase
     {

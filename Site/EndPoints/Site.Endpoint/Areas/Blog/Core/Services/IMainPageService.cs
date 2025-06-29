@@ -1,6 +1,4 @@
 ﻿using System.Linq;
-using CodeYad_Blog.CoreLayer.DTOs.Posts;
-using CodeYad_Blog.CoreLayer.Services.Posts;
 using Microsoft.EntityFrameworkCore;
 using Site.Endpoint.Areas.Blog.Core.DTOs;
 using Site.Endpoint.Areas.Blog.Core.Mappers;

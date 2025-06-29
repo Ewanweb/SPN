@@ -1,11 +1,12 @@
-﻿using CodeYad_Blog.CoreLayer.DTOs.Posts;
-using CodeYad_Blog.CoreLayer.Services.Posts;
-using CodeYad_Blog.CoreLayer.Utilities;
-using CodeYad_Blog.Web.Areas.Admin.Models.Posts;
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Site.Endpoint.Areas.Admin;
+using Site.Endpoint.Areas.Blog.Core.DTOs.Posts;
+using Site.Endpoint.Areas.Blog.Core.Services.Posts;
+using Site.Endpoint.Areas.Blog.Core.Utilities;
+using Site.Endpoint.Areas.Blog.Models.Posts;
 
-namespace CodeYad_Blog.Web.Areas.Admin.Controllers
+namespace Site.Endpoint.Areas.Blog.Controllers
 {
     public class PostController : AdminControllerBase
     {

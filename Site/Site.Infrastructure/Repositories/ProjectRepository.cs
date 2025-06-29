@@ -20,9 +20,12 @@ namespace Site.Infrastructure.Repositories
         public async Task<Project?> GetProjectBySlug(string slug) =>
             await _context.Projects.FirstOrDefaultAsync(p => p.Slug == slug);
 
-        public async Task<Project?> GetProjectWithImages(Guid projectId) =>
+        public async Task<Project?> GetProjectByIdWithImages(Guid projectId) =>
             await _context.Projects.Include(p => p.Images)
                 .FirstOrDefaultAsync(p => p.Id == projectId);
 
+        public async Task<List<Project>?> GetProjectsWithImages() =>
+            await _context.Projects.Include(p => p.Images)
+                .ToListAsync();
     }
 }

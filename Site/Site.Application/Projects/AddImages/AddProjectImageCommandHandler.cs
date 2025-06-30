@@ -19,7 +19,7 @@ public class AddProjectImageCommandHandler : IRequestHandler<AddProjectImageComm
 
     public async Task<OperationResult> Handle(AddProjectImageCommand request, CancellationToken cancellationToken)
     {
-        var project = await _repository.GetProjectWithImages(request.ProjectId);
+        var project = await _repository.GetProjectByIdWithImages(request.ProjectId);
 
         if (project == null)
             return OperationResult.Error("پروژه یافت نشد");

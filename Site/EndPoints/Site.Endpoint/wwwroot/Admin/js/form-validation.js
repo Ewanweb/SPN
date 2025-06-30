@@ -1,299 +1,97 @@
-'use strict';
-
-(function () {
-  // Init custom option check
-  window.Helpers.initCustomOptionCheck();
-
-  // Bootstrap validation example
-  //------------------------------------------------------------------------------------------
-  // const flatPickrEL = $('.flatpickr-validation');
-  const flatPickrList = [].slice.call(document.querySelectorAll('.flatpickr-validation')),
-    selectPicker = $('.selectpicker');
-
-  // Bootstrap Select
-  // --------------------------------------------------------------------
-  if (selectPicker.length) {
-    selectPicker.selectpicker();
-    handleBootstrapSelectEvents();
-  }
-
-  // Flat pickr
-  if (flatPickrList) {
-    flatPickrList.forEach(flatPickr => {
-      flatPickr.flatpickr({
-        allowInput: true,
-        monthSelectorType: 'static'
-      });
-    });
-  }
-
-  // Fetch all the forms we want to apply custom Bootstrap validation styles to
-  const bsValidationForms = document.querySelectorAll('.needs-validation');
-
-  // Loop over them and prevent submission
-  Array.prototype.slice.call(bsValidationForms).forEach(function (form) {
-    form.addEventListener(
-      'submit',
-      function (event) {
-        if (!form.checkValidity()) {
-          event.preventDefault();
-          event.stopPropagation();
-        } else {
-          // Submit your form
-          alert('Submitted!!!');
-        }
-
-        form.classList.add('was-validated');
-      },
-      false
-    );
+(function($) {
+  'use strict';
+  $.validator.setDefaults({
+    submitHandler: function() {
+      alert("submitted!");
+    }
   });
-})();
-/**
- * Form Validation (https://formvalidation.io/guide/examples)
- * ? Primary form validation plugin for this template
- * ? In this example we've try to covered as many form inputs as we can.
- * ? Though If we've miss any 3rd party libraries, then refer: https://formvalidation.io/guide/examples/integrating-with-3rd-party-libraries
- */
-//------------------------------------------------------------------------------------------
-document.addEventListener('DOMContentLoaded', function (e) {
-  (function () {
-    const formValidationExamples = document.getElementById('formValidationExamples'),
-      formValidationSelect2Ele = jQuery(formValidationExamples.querySelector('[name="formValidationSelect2"]')),
-      formValidationTechEle = jQuery(formValidationExamples.querySelector('[name="formValidationTech"]')),
-      formValidationLangEle = formValidationExamples.querySelector('[name="formValidationLang"]'),
-      formValidationHobbiesEle = jQuery(formValidationExamples.querySelector('[name="formValidationHobbies"]'));
-
-    const fv = FormValidation.formValidation(formValidationExamples, {
-      fields: {
-        formValidationName: {
-          validators: {
-            notEmpty: {
-              message: 'Please enter your name'
-            },
-            stringLength: {
-              min: 6,
-              max: 30,
-              message: 'The name must be more than 6 and less than 30 characters long'
-            },
-            regexp: {
-              regexp: /^[a-zA-Z0-9 ]+$/,
-              message: 'The name can only consist of alphabetical, number and space'
-            }
-          }
-        },
-        formValidationEmail: {
-          validators: {
-            notEmpty: {
-              message: 'Please enter your email'
-            },
-            emailAddress: {
-              message: 'The value is not a valid email address'
-            }
-          }
-        },
-        formValidationPass: {
-          validators: {
-            notEmpty: {
-              message: 'Please enter your password'
-            }
-          }
-        },
-        formValidationConfirmPass: {
-          validators: {
-            notEmpty: {
-              message: 'Please confirm password'
-            },
-            identical: {
-              compare: function () {
-                return formValidationExamples.querySelector('[name="formValidationPass"]').value;
-              },
-              message: 'The password and its confirm are not the same'
-            }
-          }
-        },
-        formValidationFile: {
-          validators: {
-            notEmpty: {
-              message: 'Please select the file'
-            }
-          }
-        },
-        formValidationDob: {
-          validators: {
-            notEmpty: {
-              message: 'Please select your DOB'
-            },
-            date: {
-              format: 'YYYY/MM/DD',
-              message: 'The value is not a valid date'
-            }
-          }
-        },
-        formValidationSelect2: {
-          validators: {
-            notEmpty: {
-              message: 'Please select your country'
-            }
-          }
-        },
-        formValidationLang: {
-          validators: {
-            notEmpty: {
-              message: 'Please add your language'
-            }
-          }
-        },
-        formValidationTech: {
-          validators: {
-            notEmpty: {
-              message: 'Please select technology'
-            }
-          }
-        },
-        formValidationHobbies: {
-          validators: {
-            notEmpty: {
-              message: 'Please select your hobbies'
-            }
-          }
-        },
-        formValidationBio: {
-          validators: {
-            notEmpty: {
-              message: 'Please enter your bio'
-            },
-            stringLength: {
-              min: 100,
-              max: 500,
-              message: 'The bio must be more than 100 and less than 500 characters long'
-            }
-          }
-        },
-        formValidationGender: {
-          validators: {
-            notEmpty: {
-              message: 'Please select your gender'
-            }
-          }
-        },
-        formValidationPlan: {
-          validators: {
-            notEmpty: {
-              message: 'Please select your preferred plan'
-            }
-          }
-        },
-        formValidationSwitch: {
-          validators: {
-            notEmpty: {
-              message: 'Please select your preference'
-            }
-          }
-        },
-        formValidationCheckbox: {
-          validators: {
-            notEmpty: {
-              message: 'Please confirm our T&C'
-            }
-          }
-        }
+  $(function() {
+    // validate the comment form when it is submitted
+    $("#commentForm").validate({
+      errorPlacement: function(label, element) {
+        label.addClass('mt-2 text-danger');
+        label.insertAfter(element);
       },
-      plugins: {
-        trigger: new FormValidation.plugins.Trigger(),
-        bootstrap5: new FormValidation.plugins.Bootstrap5({
-          // Use this for enabling/changing valid/invalid class
-          // eleInvalidClass: '',
-          eleValidClass: '',
-          rowSelector: function (field, ele) {
-            // field is the field name & ele is the field element
-            switch (field) {
-              case 'formValidationName':
-              case 'formValidationEmail':
-              case 'formValidationPass':
-              case 'formValidationConfirmPass':
-              case 'formValidationFile':
-              case 'formValidationDob':
-              case 'formValidationSelect2':
-              case 'formValidationLang':
-              case 'formValidationTech':
-              case 'formValidationHobbies':
-              case 'formValidationBio':
-              case 'formValidationGender':
-                return '.col-md-6';
-              case 'formValidationPlan':
-                return '.col-xl-3';
-              case 'formValidationSwitch':
-              case 'formValidationCheckbox':
-                return '.col-12';
-              default:
-                return '.row';
-            }
-          }
-        }),
-        submitButton: new FormValidation.plugins.SubmitButton(),
-        // Submit the form when all fields are valid
-        defaultSubmit: new FormValidation.plugins.DefaultSubmit(),
-        autoFocus: new FormValidation.plugins.AutoFocus()
-      },
-      init: instance => {
-        instance.on('plugins.message.placed', function (e) {
-          //* Move the error message out of the `input-group` element
-          if (e.element.parentElement.classList.contains('input-group')) {
-            // `e.field`: The field name
-            // `e.messageElement`: The message element
-            // `e.element`: The field element
-            e.element.parentElement.insertAdjacentElement('afterend', e.messageElement);
-          }
-          //* Move the error message out of the `row` element for custom-options
-          if (e.element.parentElement.parentElement.classList.contains('custom-option')) {
-            e.element.closest('.row').insertAdjacentElement('afterend', e.messageElement);
-          }
-        });
+      highlight: function(element, errorClass) {
+        $(element).parent().addClass('has-danger')
+        $(element).addClass('form-control-danger')
       }
     });
-
-    //? Revalidation third-party libs inputs on change trigger
-
-    // Flatpickr
-    flatpickr(formValidationExamples.querySelector('[name="formValidationDob"]'), {
-      enableTime: false,
-      // See https://flatpickr.js.org/formatting/
-      dateFormat: 'Y/m/d',
-      // After selecting a date, we need to revalidate the field
-      onChange: function () {
-        fv.revalidateField('formValidationDob');
+    // validate signup form on keyup and submit
+    $("#signupForm").validate({
+      rules: {
+        firstname: "required",
+        lastname: "required",
+        username: {
+          required: true,
+          minlength: 2
+        },
+        password: {
+          required: true,
+          minlength: 5
+        },
+        confirm_password: {
+          required: true,
+          minlength: 5,
+          equalTo: "#password"
+        },
+        email: {
+          required: true,
+          email: true
+        },
+        topic: {
+          required: "#newsletter:checked",
+          minlength: 2
+        },
+        agree: "required"
+      },
+      messages: {
+        firstname: "Please enter your firstname",
+        lastname: "Please enter your lastname",
+        username: {
+          required: "Please enter a username",
+          minlength: "Your username must consist of at least 2 characters"
+        },
+        password: {
+          required: "Please provide a password",
+          minlength: "Your password must be at least 5 characters long"
+        },
+        confirm_password: {
+          required: "Please provide a password",
+          minlength: "Your password must be at least 5 characters long",
+          equalTo: "Please enter the same password as above"
+        },
+        email: "Please enter a valid email address",
+        agree: "Please accept our policy",
+        topic: "Please select at least 2 topics"
+      },
+      errorPlacement: function(label, element) {
+        label.addClass('mt-2 text-danger');
+        label.insertAfter(element);
+      },
+      highlight: function(element, errorClass) {
+        $(element).parent().addClass('has-danger')
+        $(element).addClass('form-control-danger')
       }
     });
-
-    // Select2 (Country)
-    if (formValidationSelect2Ele.length) {
-      select2Focus(formValidationSelect2Ele);
-      formValidationSelect2Ele.wrap('<div class="position-relative"></div>');
-      formValidationSelect2Ele
-        .select2({
-          placeholder: 'Select country',
-          dropdownParent: formValidationSelect2Ele.parent()
-        })
-        .on('change.select2', function () {
-          // Revalidate the color field when an option is chosen
-          fv.revalidateField('formValidationSelect2');
-        });
-    }
-
-    // Tagify
-    let formValidationLangTagify = new Tagify(formValidationLangEle);
-    formValidationLangEle.addEventListener('change', onChange);
-    function onChange() {
-      fv.revalidateField('formValidationLang');
-    }
-
-    //Bootstrap select
-    formValidationTechEle.on('changed.bs.select', function (e, clickedIndex, isSelected, previousValue) {
-      fv.revalidateField('formValidationTech');
+    // propose username by combining first- and lastname
+    $("#username").focus(function() {
+      var firstname = $("#firstname").val();
+      var lastname = $("#lastname").val();
+      if (firstname && lastname && !this.value) {
+        this.value = firstname + "." + lastname;
+      }
     });
-    formValidationHobbiesEle.on('changed.bs.select', function (e, clickedIndex, isSelected, previousValue) {
-      fv.revalidateField('formValidationHobbies');
+    //code to hide topic selection, disable for demo
+    var newsletter = $("#newsletter");
+    // newsletter topics are optional, hide at first
+    var inital = newsletter.is(":checked");
+    var topics = $("#newsletter_topics")[inital ? "removeClass" : "addClass"]("gray");
+    var topicInputs = topics.find("input").attr("disabled", !inital);
+    // show when newsletter is checked
+    newsletter.on("click", function() {
+      topics[this.checked ? "removeClass" : "addClass"]("gray");
+      topicInputs.attr("disabled", !this.checked);
     });
-  })();
-});
+  });
+})(jQuery);

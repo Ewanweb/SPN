@@ -9,11 +9,15 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Site.Application._shared.FileUtil.Interfaces;
 using Site.Application._shared.FileUtil.Services;
+using Site.Application.Agents.AddFeatures;
+using Site.Domain.Agents;
 using Site.Domain.Repositories;
 using Site.Facade.Agents;
 using Site.Facade.Projects;
 using Site.Infrastructure;
 using Site.Infrastructure.Repositories;
+using Site.Query;
+using Site.Query.Agents.GetById;
 
 namespace Site.Config
 {
@@ -26,7 +30,7 @@ namespace Site.Config
 
 
 
-            service.AddIdentity<IdentityUser, IdentityRole>(options =>
+            service.AddIdentity<Agent, IdentityRole>(options =>
                 {
                     // تنظیمات مربوط به کاربران
                     options.User.RequireUniqueEmail = true;
@@ -49,6 +53,17 @@ namespace Site.Config
                     options.Lockout.AllowedForNewUsers = true;
                 }).AddEntityFrameworkStores<ApplicationDbContext>()
             .AddDefaultTokenProviders();
+
+            // Register Mediator
+            service.AddMediatR(cfg =>
+            {
+                cfg.RegisterServicesFromAssembly(typeof(AddAgentFeatureCommand).Assembly);
+                cfg.RegisterServicesFromAssembly(typeof(GetAgentByIdQuery).Assembly);
+                cfg.RegisterServicesFromAssembly(typeof(AgentFacade).Assembly);
+            });
+
+            // Register AutoMapper
+            service.AddAutoMapper(typeof(MappingProfile).Assembly);
 
             // Register Repositories
             service.AddScoped(typeof(IRepository<>), typeof(Repository<>));

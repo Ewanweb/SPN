@@ -1,0 +1,38 @@
+﻿@model List<Site.Query.Agents.Dtos.AgentDto>
+@{
+    Layout = "_Layout";
+}
+<div class="container-fluid p-0 m-0">
+    <div class="row no-gutters mt-5">
+        <div class="col-12">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h4 class="card-title">@ViewData["Admin-Title"]</h4>
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-striped w-100">
+                            <thead>
+                                <tr>
+                                    <th>Profile</th>
+                                    <th>VatNo.</th>
+                                    <th>Created</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+								@foreach (var item in Model)
+								{
+									<tr>
+										<td>@item.FullName</td>
+										<td>@item.PhoneNumber</td>
+										<td>@item.Email</td>
+										<td><label class="badge badge-danger">Pending</label></td>
+									</tr>
+
+								}
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,617 @@
+﻿@using System.Security.Claims
+
+<!DOCTYPE html>
+<html lang="fa-Ir" dir="rtl">
+
+<head>
+    <!--=====================================
+                    META TAG PART START
+        =======================================-->
+    <!-- REQUIRE META -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- AUTHOR META -->
+    <meta name="author" content="mironcoder">
+    <meta name="email" content="salehjamei.khiyavi@gmail.com">
+    <meta name="profile" content="https://themeforest.net/user/mironcoder">
+
+    <!-- TEMPLATE META -->
+    <meta name="name" content="software-SPN">
+    <meta name="title" content="SPN - eCommerce HTML Template">
+    <meta name="keywords"
+          content="programing team, software, website, applications, shop, store, html, bootstrap, template, webshop, online store">
+    <!--=====================================
+                    META-TAG PART END
+        =======================================-->
+    <!-- WEBPAGE TITLE -->
+    <title>SPN - Profile</title>
+
+    <!--=====================================
+                    CSS LINK PART START
+        =======================================-->
+    <!-- FAVICON -->
+    <link rel="icon" href="@Url.Content("~/Profile/images/favicon.svg")">
+
+    <!-- FONTS -->
+    <link rel="stylesheet" href="@Url.Content("~/Profile/fonts/flaticon/flaticon.css")">
+    <link rel="stylesheet" href="@Url.Content("~/Profile/fonts/icofont/icofont.min.css")">
+    <link rel="stylesheet" href="@Url.Content("~/Profile/fonts/fontawesome/fontawesome.min.css")">
+
+    <!-- VENDOR -->
+    <link rel="stylesheet" href="@Url.Content("~/Profile/vendor/bootstrap/bootstrap.min.css")">
+
+    <!-- CUSTOM -->
+    <link rel="stylesheet" href="@Url.Content("~/Profile/css/main.css")">
+    <link rel="stylesheet" href="@Url.Content("~/Profile/css/profile.css")">
+    <!--=====================================
+    CSS LINK PART END
+    =======================================-->
+    @RenderSection("Styles", required: false)
+
+</head>
+
+<body>
+    <div class="backdrop"></div>
+    <a class="backtop fas fa-arrow-up" href="#"></a>
+
+    <!--=====================================
+                    HEADER TOP PART START  منو هدر اعلان
+        =======================================-->
+    <div class="header-top">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-lg-5">
+                    <div class="header-top-welcome">
+                        <p>تیم برنامه نویسی SPN</p>
+                    </div>
+                </div>
+                <div class="col-md-5 col-lg-3">
+                    <div class="header-top-select">
+                        <!-- <div class="header-select">
+                            <i class="icofont-world"></i>
+                            <select class="select">
+                                <option value="persian" selected>فارسی</option>
+                                <option value="english">انگلیسی</option>
+                                <option value="arabic">عربی</option>
+                            </select>
+                        </div> -->
+                        <!-- <div class="header-select">
+                            <i class="icofont-money"></i>
+                            <select class="select">
+                                <option value="persian" selected>ریال</option>
+                                <option value="english">دلار</option>
+                                <option value="arabic">درهم</option>
+                            </select>
+                        </div> -->
+                    </div>
+                </div>
+                <div class="col-md-7 col-lg-4">
+                    <ul class="header-top-list">
+                        <!-- <li><a href="offer.html">تخفیفات</a></li> -->
+                        <li><a href="../faqs.html">راهنما</a></li>
+                        <li><a href="../contact.html">ارتباط با ما</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--=====================================
+                    HEADER TOP PART END
+        =======================================-->
+    <!--=====================================
+                    HEADER PART START منو هدر بالا
+        =======================================-->
+    <header class="header-part">
+        <div class="container">
+            <div class="header-content">
+                <div class="header-media-group">
+                    <button class="header-user"><img src="@Url.Content("~/Profile/images/user.png")" alt="user"></button>
+                    <a href="index.html"><img src="@Url.Content("~/Profile/images/logo.svg")" alt="logo"></a>
+                    <button class="header-src"><i class="fas fa-search"></i></button>
+                </div>
+
+                <a href="index.html" class="header-logo">
+                    <img src="@Url.Content("~/Profile/images/logo.svg")" alt="logo">
+                </a>
+                <a href="login.html" class="header-widget" title="My Account">
+                    <img src="@Url.Content("~/Profile/images/user.png")" alt="user">
+                    <span>ورود</span>
+                </a>
+
+                <form class="header-form">
+                    <input type="text" placeholder="جست و جو کن ...">
+                    <button><i class="fas fa-search"></i></button>
+                </form>
+
+                <div class="header-widget-group">
+                    <!-- <a href="compare.html" class="header-widget" title="Compare List">
+                        <i class="fas fa-random"></i>
+                        <sup>0</sup>
+                    </a> -->
+                    <a href="wishlist.html" class="header-widget" title="Wishlist">
+                        <i class="fas fa-heart"></i>
+                        <sup>0</sup>
+                    </a>
+                    <button class="header-widget header-cart" title="Cartlist">
+                        <i class="fas fa-shopping-basket"></i>
+                        <sup>9+</sup>
+                        <span>قیمت کل<small>345000 ريال</small></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!--=====================================
+                    HEADER PART END
+        =======================================-->
+    <!--=====================================
+                    NAVBAR PART START  منو هدر لیست
+        =======================================-->
+    <nav class="navbar-part">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="navbar-content">
+                        <ul class="navbar-list">
+                            <li class="navbar-item dropdown">
+                                <a class="navbar-link" asp-area="" asp-controller="Home" asp-action="Index">خانه</a>
+                                <!-- <ul class="dropdown-position-list">
+                                    <li><a href="home-grid.html">صفحه اصلی گرید</a></li>
+                                </ul> -->
+                            </li>
+                            <li class="navbar-item dropdown-megamenu">
+                                <a class="navbar-link" href="#">فروشگاه</a>
+                            </li>
+                            <li class="navbar-item dropdown-megamenu">
+	                            <a class="navbar-link dropdown-arrow" href="#">دسته بندی</a>
+	                            <div class="megamenu">
+		                            <div class="container megamenu-scroll">
+			                            <div class="row row-cols-5">
+				                            <div class="col">
+					                            <div class="megamenu-wrap">
+						                            <h5 class="megamenu-title">وب سایت</h5>
+						                            <ul class="megamenu-list">
+							                            <li><a href="#">هویج</a></li>
+						                            </ul>
+					                            </div>
+				                            </div>
+				                            <div class="col">
+					                            <div class="megamenu-wrap">
+						                            <h5 class="megamenu-title">ویندوزی</h5>
+						                            <ul class="megamenu-list">
+							                            <li><a href="#">مدیریت مطب</a></li>
+						                            </ul>
+					                            </div>
+				                            </div>
+				                            <div class="col">
+					                            <div class="megamenu-wrap">
+						                            <h5 class="megamenu-title">اندروئید</h5>
+						                            <ul class="megamenu-list">
+							                            <li><a href="#">کره</a></li>
+						                            </ul>
+					                            </div>
+				                            </div>
+				                            <div class="col">
+					                            <div class="megamenu-wrap">
+						                            <h5 class="megamenu-title">IOS</h5>
+						                            <ul class="megamenu-list">
+							                            <li><a href="#">خرچنگ</a></li>
+						                            </ul>
+					                            </div>
+				                            </div>
+				                            <div class="col">
+					                            <div class="megamenu-wrap">
+						                            <h5 class="megamenu-title">نمونه فرانت‌اند</h5>
+						                            <ul class="megamenu-list">
+							                            <li><a href="#">موس</a></li>
+							                            <li><a href="#">صفحه ثبت نام</a></li>
+							                            <li><a href="#">پولیمورفیسم</a></li>
+						                            </ul>
+					                            </div>
+				                            </div>
+				                            <div class="col">
+					                            <div class="megamenu-wrap">
+						                            <h5 class="megamenu-title">جاوااسکریپت</h5>
+						                            <ul class="megamenu-list">
+							                            <li><a href="#">toDo</a></li>
+						                            </ul>
+					                            </div>
+				                            </div>
+				                            <div class="col">
+					                            <div class="megamenu-wrap">
+						                            <h5 class="megamenu-title">html</h5>
+						                            <ul class="megamenu-list">
+							                            <li><a href="#">کوکتل</a></li>
+						                            </ul>
+					                            </div>
+				                            </div>
+				                            <div class="col">
+					                            <div class="megamenu-wrap">
+						                            <h5 class="megamenu-title">C#</h5>
+						                            <ul class="megamenu-list">
+							                            <li><a href="#">Registers</a></li>
+						                            </ul>
+					                            </div>
+				                            </div>
+				                            <div class="col">
+					                            <div class="megamenu-wrap">
+						                            <h5 class="megamenu-title">سئو</h5>
+						                            <ul class="megamenu-list">
+							                            <li><a href="#">متا تگ‌ ها</a></li>
+						                            </ul>
+					                            </div>
+				                            </div>
+				                            <div class="col">
+					                            <div class="megamenu-wrap">
+						                            <h5 class="megamenu-title">php</h5>
+						                            <ul class="megamenu-list">
+							                            <li><a href="#">فرم ها</a></li>
+						                            </ul>
+					                            </div>
+				                            </div>
+			                            </div>
+		                            </div>
+	                            </div>
+                            </li>
+                            @if (User.Identity!.IsAuthenticated)
+                            {
+	                            <li class="navbar-item dropdown">
+		                            <a class="navbar-link dropdown-arrow" href="#">@User.FindFirst(ClaimTypes.Name)?.Value</a>
+		                            <ul class="dropdown-position-list">
+			                            <!-- show if login -->
+			                            <li><a asp-area="Profile" >پروفایل</a></li>
+			                            <li>
+				                            <form asp-area="Profile" asp-controller="Auth" asp-action="Logout" method="post">
+												<button type="submit" value="خروج از حساب"></button>
+				                            </form>
+										</li>
+			                            <li><a href="change-password.html">تغییر پسوورد</a></li>
+		                            </ul>
+	                            </li>
+                            }
+                            else
+                            {
+	                            <li class="navbar-item dropdown">
+		                            <a class="navbar-link dropdown-arrow" href="#">احراز هویت</a>
+		                            <ul class="dropdown-position-list">
+			                            <!-- show if not login -->
+                                        <li><a asp-area="Profile" asp-controller="Auth" asp-action="Login">لاگین</a></li>
+                                        <li><a asp-area="Profile" asp-controller="Auth" asp-action="Register">ثبت نام</a></li>
+			                            <!-- if login -->
+
+		                            </ul>
+	                            </li>
+                            }
+        
+                            <li class="navbar-item dropdown">
+                                <a class="navbar-link" href="#">وبلاگ</a>
+                            </li>
+                        </ul>
+                        <div class="navbar-info-group">
+                            <div class="navbar-info">
+                                <i class="icofont-ui-touch-phone"></i>
+                                <p>
+                                    <small>شماره تماس</small>
+                                    <span>09147148214</span>
+                                </p>
+                            </div>
+                            <div class="navbar-info">
+                                <i class="icofont-ui-email"></i>
+                                <p>
+                                    <small>ایمیل ما</small>
+                                    <span>SalehJamei.khiyavi@gmail.com</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!--=====================================
+                    NAVBAR PART END
+        =======================================-->
+    <!--=====================================
+                CATEGORY SIDEBAR PART START دسته بندی
+        =======================================-->
+    <aside class="category-sidebar">
+        <div class="category-header">
+            <h4 class="category-title">
+                <i class="fas fa-align-left"></i>
+                <span>دسته بندی</span>
+            </h4>
+            <button class="category-close"><i class="icofont-close"></i></button>
+        </div>
+        <ul class="category-list">
+            <li class="category-item">
+                <a class="category-link dropdown-link" href="#">
+                    <i class="flaticon-vegetable"></i>
+                    <span>صفحات HTML</span>
+                </a>
+                <ul class="dropdown-list">
+                    <li><a href="#">پولیمورفیسم</a></li>
+                </ul>
+            </li>
+            <li class="category-item">
+                <a class="category-link dropdown-link" href="#">
+                    <i class="flaticon-groceries"></i>
+                    <span>برنامه ویندوزی</span>
+                </a>
+                <ul class="dropdown-list">
+                    <li><a href="#">مدیریت مطب</a></li>
+                </ul>
+            </li>
+            <li class="category-item">
+                <a class="category-link dropdown-link" href="#">
+                    <i class="flaticon-fruit"></i>
+                    <span>نمونه نشانگر موس</span>
+                </a>
+                <ul class="dropdown-list">
+                    <li><a href="#">پخش شکلک</a></li>
+                </ul>
+            </li>
+            <li class="category-item">
+                <a class="category-link dropdown-link" href="#">
+                    <i class="flaticon-dairy-products"></i>
+                    <span>برنامه APK</span>
+                </a>
+                <ul class="dropdown-list">
+                    <li><a href="#">وضعیت آب و هوا</a></li>
+                </ul>
+            </li>
+            <li class="category-item">
+                <a class="category-link dropdown-link" href="#">
+                    <i class="flaticon-crab"></i>
+                    <span>بازی</span>
+                </a>
+                <ul class="dropdown-list">
+                    <li><a href="#">خرچنگ</a></li>
+                </ul>
+            </li>
+            <li class="category-item">
+                <a class="category-link dropdown-link" href="#">
+                    <i class="flaticon-salad"></i>
+                    <span>برنامه IOS</span>
+                </a>
+                <ul class="dropdown-list">
+                    <li><a href="#">ماشین حساب پیشرفته</a></li>
+                </ul>
+            </li>
+            <li class="category-item">
+                <a class="category-link dropdown-link" href="#">
+                    <i class="flaticon-dried-fruit"></i>
+                    <span>C#</span>
+                </a>
+                <ul class="dropdown-list">
+                    <li><a href="#">HTML</a></li>
+                </ul>
+            </li>
+            <li class="category-item">
+                <a class="category-link dropdown-link" href="#">
+                    <i class="flaticon-fast-food"></i>
+                    <span>جاوااسکریپت</span>
+                </a>
+                <ul class="dropdown-list">
+                    <li><a href="#">Js</a></li>
+                </ul>
+            </li>
+            <li class="category-item">
+                <a class="category-link dropdown-link" href="#">
+                    <i class="flaticon-cheers"></i>
+                    <span>سئو</span>
+                </a>
+                <ul class="dropdown-list">
+                    <li><a href="#">شراب</a></li>
+                </ul>
+            </li>
+        </ul>
+        <div class="category-footer">
+            <p><a href="#">software-SPN</a></p>
+        </div>
+    </aside>
+    <!--=====================================
+                CATEGORY SIDEBAR PART END
+        =======================================-->
+    <!--=====================================
+                  CART SIDEBAR PART START سبدخرید
+        =======================================-->
+    <aside class="cart-sidebar">
+        <div class="cart-header">
+            <div class="cart-total">
+                <i class="fas fa-shopping-basket"></i>
+                <span>کل مورد (5)</span>
+            </div>
+            <button class="cart-close"><i class="icofont-close"></i></button>
+        </div>
+        <ul class="cart-list">
+            <li class="cart-item">
+                <div class="cart-media">
+                    <a href="#"><img src="@Url.Content("~/Profile/images/product/01.jpg")" alt="product"></a>
+                    <button class="cart-delete"><i class="far fa-trash-alt"></i></button>
+                </div>
+                <div class="cart-info-group">
+                    <div class="cart-info">
+                        <h6><a href="product-single.html">برنامه ویندوزی مدیریت مطبCRM</a></h6>
+                        <p>قیمت واحد - 5 ریال</p>
+                    </div>
+                    <div class="cart-action-group">
+                        <div class="product-action">
+                            <!-- دکمه و اینپوت غیر فعال با خصوصیت disabled -->
+                            <button class="action-minus" disabled title="کم کردن"><i class="icofont-minus"></i></button>
+                            <input class="action-input" disabled title="تعداد مورد نیاز" type="text" name="quantity" value="1">
+                            <button class="action-plus" disabled title="زیاد کردن"><i class="icofont-plus"></i></button>
+                        </div>
+                        <h6>56 ريال</h6>
+                    </div>
+                </div>
+            </li>
+        </ul>
+        <div class="cart-footer">
+            <button class="coupon-btn">آیا کد تخفیف دارید؟</button>
+            <form class="coupon-form">
+                <input type="text" placeholder="کد تخفیف خود را وارد کنید">
+                <button type="submit"><span>ثبت</span></button>
+            </form>
+            <a class="cart-checkout-btn" href="checkout.html">
+                <span class="checkout-label">برو به تسویه حساب</span>
+                <span class="checkout-price">56 ريال</span>
+            </a>
+        </div>
+    </aside>
+    <!--=====================================
+                    CART SIDEBAR PART END
+        =======================================-->
+    <!--=====================================
+                  NAV SIDEBAR PART START منو موبایل لیست چپ
+        =======================================-->
+    <aside class="nav-sidebar">
+        <div class="nav-header">
+            <a href="#"><img src="@Url.Content("~/Profile/images/logo.svg")" alt="logo"></a>
+            <button class="nav-close"><i class="icofont-close"></i></button>
+        </div>
+        <div class="nav-content">
+            <!-- <div class="nav-btn">
+                <a href="login.html" class="btn btn-inline">
+                    <i class="fa fa-unlock-alt"></i>
+                    <span>به اینجا بپیوندید</span>
+                </a>
+            </div> -->
+            <!-- This commentable code show when user login or register -->
+            <div class="nav-profile">
+                <a class="nav-user" href="#"><img src="@Url.Content("~/Profile/images/user.png")" alt="user"></a>
+                <h4 class="nav-name"><a href="profile.html">Miron Mahmud</a></h4>
+            </div>
+            <div class="nav-select-group">
+                <div class="nav-select">
+                    <!-- <i class="icofont-world"></i>
+                    <select class="select">
+                        <option value="persian" selected>فارسی</option>
+                        <option value="english">انگلیسی</option>
+                        <option value="arabic">عربی</option>
+                    </select> -->
+                </div>
+                <div class="nav-select">
+                    <!-- <i class="icofont-money"></i>
+                    <select class="select">
+                        <option value="persin" selected>ریال</option>
+                        <option value="english">دلار</option>
+                        <option value="arabic">درهم</option>
+                    </select> -->
+                </div>
+            </div>
+            <ul class="nav-list">
+                <li>
+                    <a class="nav-link" href="../index.html"><i class="icofont-home"></i>خانه</a>
+                </li>
+                <li>
+                    <a class="nav-link" href="#"><i class="icofont-page"></i>فروشگاه</a>
+                </li>
+                <li>
+                    <a class="nav-link dropdown-link" href="#"><i class="icofont-lock"></i>اهراز هویت</a>
+                    <ul class="dropdown-list">
+                        <!-- show If not registered -->
+                        <li><a href="login.html">لاگین</a></li>
+                        <li><a href="register.html">ثبت نام</a></li>
+                        <!-- show If registered -->
+                        <li><a href="reset-password.html">فعالسازی دوباره پسوورد</a></li>
+                        <li><a href="change-password.html">تغییر پسوورد</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a class="nav-link" href="#"><i class="icofont-book-alt"></i>بلاگ</a>
+                </li>
+                <li><a class="nav-link" href="about.html"><i class="icofont-info-circle"></i>درباره ما</a></li>
+                <li><a class="nav-link" href="faq.html"><i class="icofont-support-faq"></i>سوالات متداول</a></li>
+                <li><a class="nav-link" href="contact.html"><i class="icofont-contacts"></i>ارتباط با ما</a></li>
+                <li><a class="nav-link" href="privacy.html"><i class="icofont-warning"></i>سیاست حفظ حریم خصوصی</a></li>
+                <li><a class="nav-link" href="login.html"><i class="icofont-logout"></i>خروج</a></li>
+            </ul>
+            <div class="nav-info-group">
+                <div class="nav-info">
+                    <i class="icofont-ui-touch-phone"></i>
+                    <p>
+                        <small>شماره تماس</small>
+                        <span>09147148214</span>
+                    </p>
+                </div>
+                <div class="nav-info">
+                    <i class="icofont-ui-email"></i>
+                    <p>
+                        <small>ایمیل ما</small>
+                        <span>SalehJamei.khiyavi@gmail.com</span>
+                    </p>
+                </div>
+            </div>
+            <div class="nav-footer">
+                <p><a href="#">software-SPN</a></p>
+            </div>
+        </div>
+    </aside>
+    <!--=====================================
+                  NAV SIDEBAR PART END
+        =======================================-->
+    <!--=====================================
+                    MOBILE-MENU PART START منو موبایل آیکون پایین
+        =======================================-->
+    <div class="mobile-menu">
+        <a href="index.html" title="Home Page">
+            <i class="fas fa-home"></i>
+            <span>خانه</span>
+        </a>
+        <button class="cate-btn" title="Category List">
+            <i class="fas fa-list"></i>
+            <span>دسته بندی</span>
+        </button>
+        <button class="cart-btn" title="Cartlist">
+            <i class="fas fa-shopping-basket"></i>
+            <span>سبد خرید</span>
+            <sup>9+</sup>
+        </button>
+        <a href="wishlist.html" title="Wishlist">
+            <i class="fas fa-heart"></i>
+            <span>لیست علاقه مندی</span>
+            <sup>0</sup>
+        </a>
+        <!-- <a href="compare.html" title="Compare List">
+            <i class="fas fa-random"></i>
+            <span>مقایسه</span>
+            <sup>0</sup>
+        </a> -->
+    </div>
+    <!--=====================================
+                    MOBILE-MENU PART END
+        =======================================-->
+    <!--=====================================
+                    BANNER PART START بنر
+        =======================================-->
+    <section class="inner-section single-banner" style="background: url(@Url.Content("~/Profile/images/headers/5.jpg")) no-repeat center;">
+        <div class="container">
+            <h2>پروفایل من</h2>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="index.html">خانه</a></li>
+                <li class="breadcrumb-item active" aria-current="page">پروفایل</li>
+            </ol>
+        </div>
+    </section>
+    <!--=====================================
+                    BANNER PART END
+        =======================================-->
+	@RenderBody()
+    <!--=====================================
+                    JS LINK PART START
+        =======================================-->
+    <!-- VENDOR -->
+    <script src="@Url.Content("~/Profile/vendor/bootstrap/jquery-1.12.4.min.js")"></script>
+    <script src="@Url.Content("~/Profile/vendor/bootstrap/popper.min.js")"></script>
+    <script src="@Url.Content("~/Profile/vendor/bootstrap/bootstrap.min.js")"></script>
+
+    <!-- CUSTOM -->
+    @RenderSection("Scripts", required: false)
+    <script src="@Url.Content("~/Profile/js/main.js")"></script>
+    <!--=====================================
+                    JS LINK PART END
+        =======================================-->
+</body>
+
+</html>

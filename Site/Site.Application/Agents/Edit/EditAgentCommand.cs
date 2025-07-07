@@ -19,6 +19,5 @@ namespace Site.Application.Agents.Edit
         IFormFile? Image,
         string Description,
         string Email,
-        string Password,
         AgentPhoneNumber PhoneNumber) : IRequest<OperationResult>;
 }

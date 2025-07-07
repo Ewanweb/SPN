@@ -4,18 +4,17 @@ using Site.Application._shared;
 using Site.Domain._shared;
 using Site.Domain.Agents;
 using Site.Domain.Agents.ValueObjects;
+using Site.Domain.Repositories;
 
 namespace Site.Application.Agents.Register;
 
 public class RegisterAgentCommandHandler : IRequestHandler<RegisterAgentCommand, OperationResult>
 {
-    private readonly UserManager<Agent> _userManager;
-    private readonly SignInManager<Agent> _signInManager;
+    private readonly IAgentRepository _repository;
 
-    public RegisterAgentCommandHandler(UserManager<Agent> userManager, SignInManager<Agent> signInManager)
+    public RegisterAgentCommandHandler(IAgentRepository repository)
     {
-        _userManager = userManager;
-        _signInManager = signInManager;
+        _repository = repository;
     }
     public async Task<OperationResult> Handle(RegisterAgentCommand request, CancellationToken cancellationToken)
     {
@@ -28,10 +27,10 @@ public class RegisterAgentCommandHandler : IRequestHandler<RegisterAgentCommand,
         }
 
         // بررسی موجود بودن ایمیل
-        var existingEmail = await _userManager.FindByEmailAsync(request.Email);
+        var existingEmail = await _repository.GetAgentByEmail(request.Email);
 
         if (existingEmail is not null)
-            return OperationResult.Error("این ایمیل قبلاً ثبت‌نام شده است.");
+            return OperationResult.Error("این ایمیل قبلاً ثبت ‌نام شده است.");
 
         // تبدیل شماره به ValueObject
         AgentPhoneNumber phoneNumber;
@@ -45,27 +44,31 @@ public class RegisterAgentCommandHandler : IRequestHandler<RegisterAgentCommand,
         }
 
         // بررسی موجود بودن شماره تماس (بر اساس مقدار واقعی)
-        var phoneExists = _userManager.Users.Any(u => u.PhoneNumber.Value == phoneNumber.Value);
+        var phoneExists = _repository.PhoneNumberExist(phoneNumber);
 
         if (phoneExists)
             return OperationResult.Error("شماره تماس قبلاً استفاده شده است.");
 
-        string slug = SlugHelper.GenerateSlug(request.FullName);
-
-        // ساخت Agent
-        var agent = Agent.Register(request.FullName, request.Email, phoneNumber, slug);
-
-        // ساخت یوزر با Identity
-        var result = await _userManager.CreateAsync(agent, request.Password);
-
-        if (!result.Succeeded)
+        try
         {
-            var errors = string.Join(" | ", result.Errors.Select(e => e.Description));
+            // ساخت Agent
+            var agent = Agent.Create(
+                fullName: request.FullName,
+                email: request.Email,
+                password: request.Password,
+                phoneNumber: phoneNumber
+            );
 
-            return OperationResult.Error(errors);
+            await _repository.AddAsync(agent);
+            await _repository.SaveChangesAsync();
+
+            return OperationResult.Success("ثبت ‌نام با موفقیت انجام شد.");
         }
-        await _signInManager.SignInAsync(agent, isPersistent: true);
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            return OperationResult.Error($"{e}");
+        }
 
-        return OperationResult.Success("ثبت ‌نام با موفقیت انجام شد.");
     }
 }

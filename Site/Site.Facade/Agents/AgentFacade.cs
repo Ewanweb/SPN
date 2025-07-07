@@ -11,10 +11,12 @@ using Site.Application.Agents.Create;
 using Site.Application.Agents.Edit;
 using Site.Application.Agents.Login;
 using Site.Application.Agents.Register;
+using Site.Domain.Agents.Enums;
 using Site.Query.Agents.Dtos;
 using Site.Query.Agents.GetById;
 using Site.Query.Agents.GetByList;
 using Site.Query.Agents.GetBySlug;
+using Site.Query.Agents.GetByStatus;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace Site.Facade.Agents
@@ -57,7 +59,7 @@ namespace Site.Facade.Agents
             return await _mediator.Send(command);
         }
 
-        public async Task<AgentDto> GetAgentById(string id)
+        public async Task<AgentDto> GetAgentById(Guid id)
         {
             return await _mediator.Send(new GetAgentByIdQuery(id));
         }
@@ -70,6 +72,11 @@ namespace Site.Facade.Agents
         public async Task<List<AgentDto>> GetAgentsByList()
         {
             return await _mediator.Send(new GetAgentsByListQuery());
+        }
+
+        public async Task<List<AgentDto>> GetAgentsByStatus(AgentStatus status)
+        {
+            return await _mediator.Send(new GetAgentByStatusQuery(status));
         }
     }
 }

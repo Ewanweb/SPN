@@ -10,6 +10,7 @@ using Site.Application.Agents.Create;
 using Site.Application.Agents.Edit;
 using Site.Application.Agents.Login;
 using Site.Application.Agents.Register;
+using Site.Domain.Agents.Enums;
 using Site.Query.Agents.Dtos;
 
 namespace Site.Facade.Agents
@@ -25,8 +26,9 @@ namespace Site.Facade.Agents
 
 
 
-        Task<AgentDto> GetAgentById(string id);
+        Task<AgentDto> GetAgentById(Guid id);
         Task<AgentDto> GetAgentBySlug(string slug);
         Task<List<AgentDto>> GetAgentsByList();
+        Task<List<AgentDto>> GetAgentsByStatus(AgentStatus status);
     }
 }

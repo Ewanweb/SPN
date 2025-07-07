@@ -40,5 +40,4 @@
 
     scrollTopPercentage();
 
-
 })(jQuery);

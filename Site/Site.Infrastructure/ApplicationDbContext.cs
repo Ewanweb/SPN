@@ -13,7 +13,7 @@ using Site.Domain.Projects;
 
 namespace Site.Infrastructure
 {
-    public class ApplicationDbContext : IdentityDbContext<Agent>
+    public class ApplicationDbContext : DbContext
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options) { }

@@ -1,0 +1,41 @@
+﻿@using System.ComponentModel.DataAnnotations
+@using System.Reflection
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@using Site.Domain.Agents.Enums
+@model Site.Endpoint.Areas.Admin.ViewModels.ChangeAgentStatusViewModel
+@{
+	var enumValues = Enum.GetValues(typeof(AgentStatus)).Cast<AgentStatus>();
+	Layout = "_Layout";
+
+	string GetDisplayName(Enum enumValue)
+	{
+		return enumValue.GetType()
+			.GetMember(enumValue.ToString())
+			.First()
+			.GetCustomAttribute<DisplayAttribute>()?
+			.Name ?? enumValue.ToString();
+	}
+}
+
+<form asp-area="Admin" asp-action="ChangeStatus" asp-controller="AdminAgent" method="post">
+	<input type="hidden" name="agentId" value="@Model.AgentId" />
+
+	<div class="col-md-6 grid-margin stretch-card mt-5" dir="rtl">
+		<div class="card bg-dark text-white">
+			<div class="card-body">
+				<h4 class="card-title">تغییر وضعیت نماینده</h4>
+				<div class="form-group">
+					<label>وضعیت نماینده:</label>
+					<select name="status" class="js-example-basic-single select2-dark" style="width: 100%">
+						@foreach (var item in enumValues)
+						{
+							<option value="@((int)item)">@GetDisplayName(item)</option>
+						}
+					</select>
+				</div>
+
+				<button type="submit" class="btn btn-primary mt-2">تغییر وضعیت</button>
+			</div>
+		</div>
+	</div>
+</form>

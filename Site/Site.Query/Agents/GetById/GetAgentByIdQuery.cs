@@ -8,5 +8,5 @@ using Site.Query.Agents.Dtos;
 
 namespace Site.Query.Agents.GetById
 {
-    public record GetAgentByIdQuery(string UserId) : IRequest<AgentDto>;
+    public record GetAgentByIdQuery(Guid UserId) : IRequest<AgentDto>;
 }

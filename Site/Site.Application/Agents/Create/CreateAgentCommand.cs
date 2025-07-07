@@ -13,11 +13,8 @@ namespace Site.Application.Agents.Create
 {
     public record CreateAgentCommand(
         string FullName,
-        string GithubLink,
-        IFormFile? Image,
-        string Description,
         string Email,
         string Password,
-        AgentPhoneNumber PhoneNumber,
-        string? ResumeFileName) : IRequest<OperationResult>;
+        string PhoneNumber
+        ) : IRequest<OperationResult>;
 }

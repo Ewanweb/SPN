@@ -1,0 +1,367 @@
+﻿@using Microsoft.AspNetCore.Mvc.TagHelpers
+@using Site.Endpoint.Areas.Profile.ViewModels
+@model ProfileViewModel
+@using Site.Domain.Agents
+@using Site.Domain.Agents.Enums
+
+@{
+	var statusString = User.FindFirst("Status")?.Value;
+	AgentStatus status = AgentStatus.InActive;
+
+	if (!string.IsNullOrEmpty(statusString))
+	{
+		Enum.TryParse(statusString, out status);
+	}
+}
+@{
+    Layout = "~/Areas/Profile/Views/Shared/_Layout.cshtml";
+}
+
+<!--=====================================
+                PROFILE PART START
+    =======================================-->
+<section class="inner-section profile-part">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="account-card">
+                    <div class="account-title">
+                        <h4>پروفایل شما</h4>
+                        <button data-bs-toggle="modal" data-bs-target="#profile-edit">ویرایش پروفایل</button>
+                    </div>
+                    <div class="account-content">
+                        <div class="row">
+                            <div class="col-lg-2">
+                                <div class="profile-image">
+                                    <a href="#"><img src="@Url.Content("~/Profile/images/user.png")" alt="user"></a>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-4">
+                                <div class="form-group">
+                                    <label class="form-label">نام</label>
+                                    <input class="form-control" type="text" value="@Model.FullName">
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-4">
+                                <div class="form-group">
+                                    <label class="form-label">ایمیل</label>
+                                    <input class="form-control" type="email" value="@Model.Email">
+                                </div>
+                            </div>
+                            <div class="col-lg-2">
+                                <div class="profile-btn">
+                                    <a href="change-password.html">تغییر پسوورد</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12">
+                <div class="account-card">
+                    <div class="account-title">
+                        <h4>آدرس سیستم</h4>
+                        <button data-bs-toggle="modal" data-bs-target="#address-add">افزودن آدرس سیستم</button>
+                    </div>
+                    <div class="account-content">
+                        <div class="row">
+                            <div class="col-md-6 col-lg-4 alert fade show">
+                                <div class="profile-card address active">
+                                    <h6>انبارداری</h6>
+                                    <p>3444-2344-1223-1237</p>
+                                    <ul class="user-action">
+                                        <li>
+                                            <button class="edit icofont-edit" title="ویرایش" data-bs-toggle="modal"
+                                                    data-bs-target="#address-edit"></button>
+                                        </li>
+                                        <li>
+                                            <button class="trash icofont-ui-delete" title="حذف"
+                                                    data-bs-dismiss="alert"></button>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-4 alert fade show">
+                                <div class="profile-card address">
+                                    <h6>مدیریت مطب</h6>
+                                    <p>3444-2344-1223-1237</p>
+                                    <ul class="user-action">
+                                        <li>
+                                            <button class="edit icofont-edit" title="ویرایش" data-bs-toggle="modal"
+                                                    data-bs-target="#address-edit"></button>
+                                        </li>
+                                        <li>
+                                            <button class="trash icofont-ui-delete" title="حذف"
+                                                    data-bs-dismiss="alert"></button>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-4 alert fade show">
+                                <div class="profile-card address">
+                                    <h6>آموزشگاه</h6>
+                                    <p>3444-2344-1223-1237</p>
+                                    <ul class="user-action">
+                                        <li>
+                                            <button class="edit icofont-edit" title="ویرایش" data-bs-toggle="modal"
+                                                    data-bs-target="#address-edit"></button>
+                                        </li>
+                                        <li>
+                                            <button class="trash icofont-ui-delete" title="حذف"
+                                                    data-bs-dismiss="alert"></button>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="bottom-paginate">
+                                        <p class="page-info">نمایش 3 از 60 نتیجه</p>
+                                        <ul class="pagination">
+                                            <li class="page-item">
+                                                <a class="page-link" href="#">
+                                                    <i class="fas fa-long-arrow-alt-right"></i>
+                                                </a>
+                                            </li>
+                                            <li class="page-item"><a class="page-link active" href="#">1</a></li>
+                                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                            <li class="page-item">...</li>
+                                            <li class="page-item"><a class="page-link" href="#">60</a></li>
+                                            <li class="page-item">
+                                                <a class="page-link" href="#">
+                                                    <i class="fas fa-long-arrow-alt-left"></i>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12">
+                <div class="account-card">
+                    <div class="account-title">
+                        <h4>شماره تماس</h4>
+                        <button id="testdisabled" data-bs-toggle="modal" data-bs-target="#contact-add">افزودن شماره تماس</button>
+                    </div>
+                    <div class="account-content">
+                        <div class="row">
+                            <div class="col-md-6 col-lg-4 alert fade show">
+                                <div class="profile-card contact active">
+                                    <h6>اصلی</h6>
+                                    <p>@Model.PhoneNumber</p>
+                                    <ul>
+                                        <li>
+                                            <button class="edit icofont-edit" title="ویرایش" data-bs-toggle="modal"
+                                                    data-bs-target="#contact-edit"></button>
+                                        </li>
+                                        <li>
+                                            <button class="trash icofont-ui-delete" title="حذف"
+                                                    data-bs-dismiss="alert"></button>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-4 alert fade show">
+                                <div class="profile-card contact">
+                                    <h6>فرعی</h6>
+                                    <p>0218888889</p>
+                                    <ul>
+                                        <li>
+                                            <button class="edit icofont-edit" title="ویرایش" data-bs-toggle="modal"
+                                                    data-bs-target="#contact-edit"></button>
+                                        </li>
+                                        <li>
+                                            <button class="trash icofont-ui-delete" title="حذف"
+                                                    data-bs-dismiss="alert"></button>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-4 alert fade show">
+                                <div class="profile-card contact">
+                                    <h6>فرعی</h6>
+                                    <p>0218888889</p>
+                                    <ul>
+                                        <li>
+                                            <button class="edit icofont-edit" title="ویرایش" data-bs-toggle="modal"
+                                                    data-bs-target="#contact-edit"></button>
+                                        </li>
+                                        <li>
+                                            <button class="trash icofont-ui-delete" title="حذف"
+                                                    data-bs-dismiss="alert"></button>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--=====================================
+                PROFILE PART END
+    =======================================-->
+<!--=====================================
+                MODAL ADD FORM START
+    =======================================-->
+<!-- contact add form -->
+<div class="modal fade" id="contact-add">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <button class="modal-close" data-bs-dismiss="modal"><i class="icofont-close"></i></button>
+            <form class="modal-form">
+                <div class="form-title">
+                    <h3>افزودن شماره تماس جدید</h3>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">موضوع</label>
+                    <select class="form-select">
+                        <option selected>یک موضوع انتخاب کنید</option>
+                        <option value="primary">اصلی</option>
+                        <option value="secondary">فرعی</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">شماره</label>
+                    <input class="form-control" type="text" placeholder="لطفا شماره تلفن وارد کنید">
+                </div>
+                <button class="form-btn" type="submit">ذخیره شماره تلفن</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- address add form -->
+<div class="modal fade" id="address-add">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <button class="modal-close" data-bs-dismiss="modal"><i class="icofont-close"></i></button>
+            <form class="modal-form">
+                <div class="form-title">
+                    <h3>افزودن آدرس لایسنس</h3>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">نام برنامه خریداری شده</label>
+                    <select class="form-select">
+                        <option selected>یک برنامه انتخاب کنید</option>
+                        <option value="home">مدیریت مطب</option>
+                        <option value="office">انبارداری</option>
+                        <option value="Bussiness">شرکت</option>
+                        <option value="academy">آمورشگاه</option>
+                        <option value="others">مدیریت آشپزخانه</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">آدرس سیستم</label>
+                    <textarea class="form-control" placeholder="آدرس خود را وارد کنید"></textarea>
+                </div>
+                <button class="form-btn" type="submit">ذخیره کد</button>
+            </form>
+        </div>
+    </div>
+</div>
+<!--=====================================
+                MODAL ADD FORM END
+    =======================================-->
+<!--=====================================
+                MODAL EDIT FORM START
+    =======================================-->
+<!-- profile edit form -->
+<div class="modal fade" id="profile-edit">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <button class="modal-close" data-bs-dismiss="modal"><i class="icofont-close"></i></button>
+            <form class="modal-form">
+                <div class="form-title">
+                    <h3>ویرایش اطلاعات پروفایل</h3>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">عکس پروفایل</label>
+                    <input class="form-control" type="file">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">نام</label>
+                    <input class="form-control" type="text" value="@Model.FullName">
+                </div>
+                <div class="form-group">
+	                <label class="form-label">ایمیل</label>
+	                <input class="form-control" type="text" value="@Model.Email">
+                </div>
+				@status
+				@if (status == AgentStatus.Active)
+				{
+					<div class="form-group">
+						<label class="form-label">ایمیل</label>
+						<input class="form-control" type="text" value="@Model.Email">
+					</div>
+				}
+
+                <button class="form-btn" type="submit">ذخیره اطلاعات پروفایل</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- contact edit form -->
+<div class="modal fade" id="contact-edit">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <button class="modal-close" data-bs-dismiss="modal"><i class="icofont-close"></i></button>
+            <form class="modal-form">
+                <div class="form-title">
+                    <h3>ویرایش شماره تماس</h3>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">موضوع</label>
+                    <select class="form-select">
+                        <option value="primary" selected>اصلی</option>
+                        <option value="secondary">فرعی</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">شماره</label>
+                    <input class="form-control" type="text" value="@Model.PhoneNumber">
+                </div>
+                <button class="form-btn" type="submit">ذخیره شماره تماس</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- address edit form -->
+<div class="modal fade" id="address-edit">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <button class="modal-close" data-bs-dismiss="modal"><i class="icofont-close"></i></button>
+            <form class="modal-form">
+                <div class="form-title">
+                    <h3>ویرایش آدرس</h3>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">موضوع</label>
+                    <select class="form-select">
+                        <option value="home" selected>خانه</option>
+                        <option value="office">دفتر</option>
+                        <option value="Bussiness">شرکت</option>
+                        <option value="academy">آموزشگاه</option>
+                        <option value="others">غیره</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">address</label>
+                    <textarea class="form-control" placeholder="ایران - تهران - خیابان ظفر"></textarea>
+                </div>
+                <button class="form-btn" type="submit">ذخیره آدرس</button>
+            </form>
+        </div>
+    </div>
+</div>
+<!--=====================================
+                MODAL EDIT FORM END
+    =======================================-->

@@ -14,9 +14,10 @@ using static System.Net.Mime.MediaTypeNames;
 
 namespace Site.Domain.Agents
 {
-    public class Agent :  IdentityUser
+    public class Agent : BaseEntity
     {
         public string FullName { get; private set; }
+        public string Password { get; private set; }
         public string Slug { get; private set; }
         public string GithubLink { get; private set; }
         public string ImageName { get; private set; }
@@ -45,40 +46,25 @@ namespace Site.Domain.Agents
             ResumeFileName = resumeFileName;
         }
 
-        public static Agent Create(string fullName, string githubLink, string imageName, string description,
-            string email, AgentPhoneNumber phoneNumber, string? resumeFileName, string password)
+        public static Agent Create(string fullName, string email, string password, AgentPhoneNumber phoneNumber)
         {
             var agent = new Agent();
-            agent.Guard(fullName, githubLink, imageName, description, email, phoneNumber);
 
-            var passwordHasher = new PasswordHasher<Agent>();
+            var passwordHasher = PasswordHasher.Hash(password);
 
 
             agent.FullName = fullName;
-            agent.GithubLink = githubLink;
-            agent.ImageName = imageName;
-            agent.Description = description;
+            agent.Description = "توضیحاتی نوشته نشده است";
+            agent.GithubLink = "لینک گیتهابی نوشته نشده است";
+            agent.ImageName = "noImage.png";
             agent.Email = email;
             agent.PhoneNumber = phoneNumber;
             agent.Status = AgentStatus.Active;
             agent.Slug = SlugHelper.GenerateSlug(fullName);
-            agent.ResumeFileName = resumeFileName;
-            agent.PasswordHash = passwordHasher.HashPassword(agent, password);
+            agent.Password = passwordHasher;
 
 
             return agent;
-        }
-
-        public static Agent Register(string fullName, string email, AgentPhoneNumber phone, string slug)
-        {
-            const string defaultGithub = "https://github.com/";
-            const string defaultImage = "default.png";
-            const string defaultDescription = "کاربر جدید";
-
-
-            return new Agent(
-                fullName, defaultGithub, defaultImage, defaultDescription, slug,
-                email, phone, AgentStatus.Active, null);
         }
 
         public void Edit(string fullName, string githubLink, string imageName, string description,

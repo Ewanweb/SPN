@@ -1,15 +1,18 @@
-﻿<!DOCTYPE html>
-<html lang="zxx" dir="rtl">
+﻿@using System.Security.Claims
+
+<!DOCTYPE html>
+<html lang="fa-IR" dir="rtl">
+
 <head>
     <!-- Meta -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
     <meta name="description" content="">
-    <meta name="keywords" content="">
+    <meta name="keywords" content="mahan mahmoudi, saleh jamei, programing team, Software_SPN, website, applications, C#, SQL Server, html, css, javaScript, frontEnd, backEnd, ">
     <meta name="author" content="">
     <!-- Page Title -->
-    <title>@ViewData["Title"] - گروه برنامه نویسی SPN</title>
+    <title>گروه برنامه نویسی SPN -حامی کسب و کار دیجیتالی شما</title>
     <!-- Favicon Icon -->
     <link rel="shortcut icon" type="image/x-icon" href="@Url.Content("~/Assets/images/favicon.png")">
 
@@ -45,7 +48,6 @@
         </div>
     </div>
     <!-- Preloader End -->
-
     <!-- Header Start -->
     <header class="main-header">
         <div class="header-sticky">
@@ -59,92 +61,77 @@
                         <img src="@Url.Content("~/Assets/images/logo.svg")" alt="Logo">
                     </a>
                     <!-- Logo End -->
-
                     <!-- Main Menu Start -->
                     <div class="collapse navbar-collapse main-menu">
                         <div class="nav-menu-wrapper">
                             <ul class="navbar-nav mr-auto spn-header-color" id="menu">
-                                <li class="nav-item"><a class="nav-link" asp-controller="Home" asp-action="Index">صفحه اصلی</a></li>
-                                <li class="nav-item"><a class="nav-link" asp-controller="Home" asp-action="AboutUs">درباره ما</a>
+                                <li class="nav-item"><a class="nav-link" href="index.html">صفحه اصلی</a></li>
+                                <li class="nav-item"><a class="nav-link" href="about.html">درباره ما</a>
                                 <li class="nav-item"><a class="nav-link" href="services.html">خدمات</a></li>
                                 <li class="nav-item"><a class="nav-link" href="blog.html">وبلاگ</a></li>
-                                <li class="nav-item submenu"><a class="nav-link" href="#">صفحات</a>
+                                <!--class="highlighted-menu" for hid in big menu and show just mobile menu-->
+                                <li class="nav-item">
+                                    <a class="nav-link" href="contact.html">
+                                        تماس با
+                                        ما
+                                    </a>
+                                </li>
+                                <li class="nav-item submenu">
+                                    <a class="nav-link" href="#">تیم ما</a>
                                     <ul>
-                                        <li class="nav-item"><a class="nav-link" href="service-single.html">جزئیات
-                                                خدمات</a></li>
-                                        <li class="nav-item"><a class="nav-link" href="blog-single.html">جزئیات
-                                                وبلاگ</a></li>
                                         <li class="nav-item"><a class="nav-link" href="team.html">تیم ما</a></li>
-                                        <li class="nav-item"><a class="nav-link" href="team-single.html">جزئیات تیم</a>
+                                        <!-- <li class="nav-item"><a class="nav-link" href="testimonial.html">گواهینامه
+                                                ها</a></li> -->
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="image-gallery.html">
+                                                گالری
+                                                تصاویر
+                                            </a>
                                         </li>
-                                        <li class="nav-item"><a class="nav-link" href="pricing.html">طرح قیمت گذاری</a>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="video-gallery.html">
+                                                گالری
+                                                ویدئو
+                                            </a>
                                         </li>
-                                        <li class="nav-item"><a class="nav-link" href="clients.html">مشتریان</a></li>
-                                        <li class="nav-item"><a class="nav-link" href="testimonial.html">گواهینامه
-                                                ها</a></li>
-                                        <li class="nav-item"><a class="nav-link" href="image-gallery.html">گالری
-                                                تصاویر</a></li>
-                                        <li class="nav-item"><a class="nav-link" href="video-gallery.html">گالری
-                                                ویدئو</a></li>
                                         <li class="nav-item"><a class="nav-link" href="faqs.html">سوالات</a></li>
-                                        <li class="nav-item"><a class="nav-link" href="404.html">صفحه404</a></li>
                                     </ul>
                                 </li>
-                                <li class="nav-item highlighted-menu"><a class="nav-link" href="contact.html">تماس با
-                                        ما</a></li>
                             </ul>
                         </div>
                     </div>
                     <!-- Main Menu End -->
-
                     <!-- Header Btn Start -->
                     <div class="header-btn d-inline-flex">
                         <!-- <a href="Profile/register.html" class="btn-default btn-highlighted">
                             <span class="fa fa-user d-flex d-lg-none"></span>
                             <span class="d-none d-lg-flex">ثبت نام</span>
                              </a> -->
-
                         <!-- if not registered -->
 
                         <div class="btn-group">
                             <div class="dropdown">
-                                <a href="Profile/register.html" type="button"
-                                    class="btn-default btn-highlighted dropdown-toggle" data-bs-toggle="dropdown"
-                                    aria-expanded="false" data-bs-auto-close="outside">
+                            @if(User.Identity!.IsAuthenticated){
+                                <a asp-area="Profile" asp-controller="Home" asp-action="Index"
+                                   class="btn-default btn-highlighted "
+                                   aria-expanded="false" data-bs-auto-close="outside">
                                     <span class="fa fa-user d-flex d-lg-none"></span>
-                                    <span class="d-none d-lg-flex">ثبت نام</span>
+
+                                    <span class="d-none d-lg-flex">پروفایل</span>
                                 </a>
-                                <div class="dropdown-menu spn-login">
-                                    <form class="p-2">
-                                        <div class="mb-1">
-                                            <label for="exampleDropdownFormEmail2" class="form-label">آدرس ایمیل</label>
-                                            <input type="email" class="form-control" id="exampleDropdownFormEmail2"
-                                                placeholder="email@example.com">
-                                        </div>
-                                        <div class="mb-1">
-                                            <label for="exampleDropdownFormPassword2" class="form-label">رمز</label>
-                                            <input type="password" class="form-control"
-                                                id="exampleDropdownFormPassword2" placeholder="Password">
-                                        </div>
-                                        <div class="mb-1">
-                                            <div class="form-check">
-                                                <input type="checkbox" class="form-check-input" id="dropdownCheck2">
-                                                <label class="form-check-label" for="dropdownCheck2">
-                                                    مرا به یاد داشته باش
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <button type="submit" class="btn spn-loginbtn">ورود</button>
-                                        <a href="Profile/register.html" class="btn spn-registerbtn">ثبت نام</a>
-                                    </form>
+                                }else{
+                                    <a asp-area="Profile" asp-controller="Auth" asp-action="Register"
+                                   class="btn-default btn-highlighted "
+                                   aria-expanded="false" data-bs-auto-close="outside">
+                                    <span class="fa fa-user d-flex d-lg-none"></span>
 
-
-                                </div>
+                                    <span class="d-none d-lg-flex">ورود یا ثبت نام</span>
+                                </a>
+                                }
 
                             </div>
                         </div>
                         <!-- if registered -->
-
                         <!-- <div class="btn-group ">
                             <a href="Profile/register.html" type="button"
                                 class="btn-default btn-highlighted dropdown-toggle" data-bs-toggle="dropdown"
@@ -170,8 +157,7 @@
         </div>
     </header>
     <!-- Header End -->
-
-    @RenderBody()
+		@RenderBody()
 
     <div id="scroll-percentage"><span id="scroll-percentage-value"></span></div>
 
@@ -187,15 +173,16 @@
                             <h3> اشتراک را از دست ندهید!</h3>
                         </div>
                         <!-- Footer Newsletter Title End -->
-
                         <!-- Newsletter Form start -->
                         <div class="newsletter-form">
                             <form id="newsletterForm" action="#" method="POST">
                                 <div class="form-group">
                                     <input type="email" name="email" class="form-control" id="mail"
-                                        placeholder="ایمیل خود را وارد کنید" required="">
-                                    <button type="submit" class="newsletter-btn"><img src="@Url.Content("~/Assets/images/arrow-white.svg")"
-                                            alt=""></button>
+                                           placeholder="ایمیل خود را وارد کنید" required="">
+                                    <button type="submit" class="newsletter-btn">
+                                        <img src="@Url.Content("~/Assets/images/arrow-white.svg")"
+                                             alt="">
+                                    </button>
                                 </div>
                             </form>
                         </div>
@@ -223,10 +210,8 @@
                     <div class="footer-links">
                         <h3>پشتیبانی</h3>
                         <ul>
-                            <li><a href="#">کمک</a></li>
-                            <li><a href="#">سیاست حفظ حریم خصوصی</a></li>
-                            <li><a href="#">ترم و وضعیت</a></li>
                             <li><a href="contact.html">تماس با ما</a></li>
+                            <li><a href="#">سیاست حفظ حریم خصوصی</a></li>
                         </ul>
                     </div>
                     <!-- Footer Links End -->
@@ -237,10 +222,10 @@
                     <div class="footer-links">
                         <h3>خدمات</h3>
                         <ul>
-                            <li><a href="service-single.html">برنامه ریزی مالی</a></li>
-                            <li><a href="service-single.html">مدیریت سرمایه گذاری</a></li>
-                            <li><a href="service-single.html">برنامه ریزی بازنشستگی</a></li>
-                            <li><a href="service-single.html">بودجه بندی و پیش بینی</a></li>
+                            <li><a href="service-single.html">سایت های فروشگاهی</a></li>
+                            <li><a href="service-single.html">سایت های شخصی</a></li>
+                            <li><a href="service-single.html">برنامه های ویندوزی</a></li>
+                            <li><a href="service-single.html">پشتیبانی سایت</a></li>
                         </ul>
                     </div>
                     <!-- Footer Links End -->
@@ -254,20 +239,18 @@
                             <img src="@Url.Content("~/Assets/images/footer-logo.svg")" alt="">
                         </div>
                         <!-- Footer Logo End -->
-
                         <!-- Footer Contact Box Start -->
                         <div class="footer-contact-box">
                             <!-- Footer Contact Item Start -->
                             <div class="footer-contact-item">
                                 <p>نیاز به کمک!</p>
-                                <h3 dir="ltr">+98910-1234567</h3>
+                                <a href="tel:+989147148214"><h3 dir="ltr">09147148214</h3></a>
                             </div>
                             <!-- Footer Contact Item End -->
-
                             <!-- Footer Contact Item Start -->
                             <div class="footer-contact-item">
                                 <p>ایمیل فعال</p>
-                                <h3>info@gmail.com</h3>
+                                <a href="mailto:SalehJamei.khiyavi@gmail.com"><h3>SalehJamei.khiyavi@gmail.com</h3></a>
                             </div>
                             <!-- Footer Contact Item End -->
                         </div>
@@ -283,7 +266,7 @@
                     <div class="col-md-5">
                         <!-- Footer Copyright Start -->
                         <div class="footer-copyright-text">
-                            <a href="http://t.me/Software_SPN">
+                            <a href="https://t.me/Software_SPN">
                                 <p>Software_SPN</p>
                             </a>
                         </div>
@@ -294,10 +277,10 @@
                         <!-- Footer Menu Start -->
                         <div class="footer-menu">
                             <ul>
-                                <li><a href="#">لینکدین</a></li>
-                                <li><a href="#">فیسبوک</a></li>
+                                <li><a href="#">روبیکا</a></li>
+                                <li><a href="#">تلگرام</a></li>
+                                <li><a href="#">واتساپ</a></li>
                                 <li><a href="#">اینستاگرام</a></li>
-                                <li><a href="#">توییتر</a></li>
                             </ul>
                         </div>
                         <!-- Footer Menu End -->
@@ -308,7 +291,6 @@
         </div>
     </footer>
     <!-- Footer Section End -->
-
     <!-- Jquery Library File -->
     <script src="@Url.Content("~/Assets/css-js/js/jquery-3.7.1.min.js")"></script>
     <!-- Bootstrap js file -->

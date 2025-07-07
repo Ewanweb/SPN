@@ -7,12 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Remove="Areas\Admin\Views\page-2.cshtml" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.3.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.5">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="9.0.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
@@ -28,10 +28,9 @@
   <ItemGroup>
     <Folder Include="Areas\Admin\Data\" />
     <Folder Include="Areas\Admin\Models\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="Areas\Admin\Views\page-2.cshtml" />
+    <Folder Include="Areas\Profile\Data\" />
+    <Folder Include="Areas\Profile\Models\" />
+    <Folder Include="Pages\" />
   </ItemGroup>
 
 </Project>

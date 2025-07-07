@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Site.Application._shared;
 using Site.Application._shared.FileUtil.Interfaces;
 using Site.Application._shared.FileUtil.Services;
 using Site.Application.Agents.AddFeatures;
@@ -29,31 +31,6 @@ namespace Site.Config
                 options.UseSqlServer(config.GetConnectionString("Default")));
 
 
-
-            service.AddIdentity<Agent, IdentityRole>(options =>
-                {
-                    // تنظیمات مربوط به کاربران
-                    options.User.RequireUniqueEmail = true;
-                    options.User.AllowedUserNameCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._@+";
-
-                    // تنظیمات مربوط به رمز عبور
-                    options.Password.RequireDigit = true;
-                    options.Password.RequireLowercase = true;
-                    options.Password.RequireUppercase = true;
-                    options.Password.RequiredLength = 6;
-                    options.Password.RequireNonAlphanumeric = false;
-
-                    // تنظیمات مربوط به ورود
-                    options.SignIn.RequireConfirmedEmail = true;
-                    options.SignIn.RequireConfirmedPhoneNumber = false;
-
-                    // تنظیمات مربوط به قفل شدن کاربر (Lockout)
-                    options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5); // مدت زمان قفل شدن
-                    options.Lockout.MaxFailedAccessAttempts = 5; // تعداد دفعات تلاش ناموفق مجاز
-                    options.Lockout.AllowedForNewUsers = true;
-                }).AddEntityFrameworkStores<ApplicationDbContext>()
-            .AddDefaultTokenProviders();
-
             // Register Mediator
             service.AddMediatR(cfg =>
             {
@@ -62,8 +39,22 @@ namespace Site.Config
                 cfg.RegisterServicesFromAssembly(typeof(AgentFacade).Assembly);
             });
 
+            service.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                .AddCookie(options =>
+                {
+                    options.LoginPath = "/profile/auth/login"; // مسیر لاگین که شما گفتی
+                    options.AccessDeniedPath = "/access-denied";
+                    options.ExpireTimeSpan = TimeSpan.FromDays(30); // مثلا ۳۰ روز
+                    options.Cookie.Name = "Spn.Auth";
+                    options.SlidingExpiration = true;
+                });
+
             // Register AutoMapper
             service.AddAutoMapper(typeof(MappingProfile).Assembly);
+
+
+            // Register HttpContextAccessor
+            service.AddHttpContextAccessor();
 
             // Register Repositories
             service.AddScoped(typeof(IRepository<>), typeof(Repository<>));

@@ -1,38 +1,78 @@
-﻿@model List<Site.Query.Agents.Dtos.AgentDto>
+﻿@using Site.Domain.Agents.Enums
+@model List<Site.Query.Agents.Dtos.AgentDto>
 @{
-    Layout = "_Layout";
+	Layout = "_Layout";
+	var successMessage = TempData["Success"] as string;
+	var errorMessage = TempData["Error"] as string;
 }
-<div class="container-fluid p-0 m-0">
-    <div class="row no-gutters mt-5">
-        <div class="col-12">
-            <div class="card h-100">
-                <div class="card-body">
-                    <h4 class="card-title">@ViewData["Admin-Title"]</h4>
-                    <div class="table-responsive">
-                        <table class="table table-bordered table-striped w-100">
-                            <thead>
-                                <tr>
-                                    <th>Profile</th>
-                                    <th>VatNo.</th>
-                                    <th>Created</th>
-                                    <th>Status</th>
-                                </tr>
-                            </thead>
-                            <tbody>
+
+@if (successMessage != null)
+{
+	<div class="alert alert-success" role="alert">
+		@successMessage
+	</div>
+}
+@if (errorMessage != null)
+{
+	<div class="alert alert-danger" role="alert">
+		@errorMessage
+	</div>
+}
+
+<div class="container-fluid p-0 m-0" dir="rtl">
+	<div class="row no-gutters mt-5">
+		<div class="col-12">
+			<div class="card h-100">
+				<div class="card-body">
+					<h4 class="card-title" dir="rtl">@ViewData["Admin-Title"]</h4>
+					<div class="table-responsive">
+						<table class="table table-bordered table-striped w-100">
+							<thead>
+							<tr>
+								<th class="text-center font-weight-bold">نام و نام خانوادگی</th>
+								<th class="text-center font-weight-bold">شماره تلفن</th>
+								<th class="text-center font-weight-bold">ایمیل</th>
+								<th class="text-center font-weight-bold">وضعیت</th>
+								<th class="text-center font-weight-bold">عملیات</th>
+							</tr>
+							</thead>
+							<tbody>
 								@foreach (var item in Model)
 								{
 									<tr>
-										<td>@item.FullName</td>
-										<td>@item.PhoneNumber</td>
-										<td>@item.Email</td>
-										<td><label class="badge badge-danger">Pending</label></td>
-									</tr>
+										<td class="text-center" >@item.FullName</td>
+										<td class="text-center" >@item.PhoneNumber</td>
+										<td class="text-center" >@item.Email</td>
+										<td class="text-center" >
+											@if (item.Status == AgentStatus.InActive)
+											{
+												<label class="badge badge-danger">غیرفعال</label>
+											}
+											@if (item.Status == AgentStatus.Active)
+											{
+												<label class="badge badge-success">فعال</label>
+											}
+											@if (item.Status == AgentStatus.Admin)
+											{
+												<label class="badge badge-primary">ادمین</label>
+											}
+											@if (item.Status == AgentStatus.Owner)
+											{
+												<label class="badge badge-warning">میدیریت</label>
+											}
+										</td>
+										<td>
+											<a asp-area="Admin" asp-controller="AdminAgent" asp-action="ChangeStatus" asp-route-slug="@item.Slug"><p class="badge badge-primary">تغییر وضعیت</p></a>
+											<a asp-area="Admin" asp-controller="AdminAgent" asp-action="Edit" asp-route-slug="@item.Slug"><p class="badge badge-success">ویرایش</p></a>
 
+										</td>
+									</tr>
 								}
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>

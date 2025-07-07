@@ -1,787 +1,796 @@
 ﻿@{
     ViewData["Title"] = "صفحه اصلی";
 }
+<!-- Hero Section Start -->
+<div class="hero hero-bg-image hero-video">
+    <!-- Video Start -->
+    <div class="hero-bg-video">
+        <!-- Selfhosted Video Start -->
+        <!-- <video autoplay muted loop id="myVideo"><source src="" type="video/mp4"></video> -->
+        <video autoplay muted loop id="myVideo">
+            <source src="@Url.Content("~/Assets/video/fintech-video.mp4")" type="video/mp4">
+        </video>
 
- <!-- Hero Section Start -->
-    <div class="hero hero-bg-image hero-video">
-        <!-- Video Start -->
-        <div class="hero-bg-video">
-            <!-- Selfhosted Video Start -->
-            <!-- <video autoplay muted loop id="myVideo"><source src="images/hero-bg-video.mp4" type="video/mp4"></video> -->
-            <video autoplay muted loop id="myVideo">
-                <source src="video/fintech-video.mp4" type="video/mp4">
-            </video>
-
-            <!-- Selfhosted Video End -->
-
-            <!-- Youtube Video Start -->
-            <!-- <div id="herovideo" class="player" data-property="{videoURL:"74DWwSxsVSs",containment:".hero-video", showControls:false, autoPlay:true, loop:true, vol:0, mute:false, startAt:0,  stopAt:296, opacity:1, addRaster:true, quality:"large", optimizeDisplay:true}"></div> -->
-            <!-- Youtube Video End -->
-        </div>
-        <!-- Video End -->
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-12">
-                    <!-- Hero Content Start -->
-                    <div class="hero-content">
-                        <!-- Section Title Start -->
-                        <div class="section-title dark-section">
-                            <h3 class="wow fadeInUp">به دنیای دیجیتال خوش آمدید</h3>
-                            <h1 class="text-anime-style-2" data-cursor="-opaque"><span>توانمندسازی</span> شما در دنیای
-                                کد</h1>
-                            <p class="wow fadeInUp" data-wow-delay="0.2s"> شما را با بینش های متخصص و راه حل های
-                                استراتژیک برای دستیابی به رشد مالی، ثبات و موفقیت بلندمدت راهنمایی می کند.</p>
-                        </div>
-                        <!-- Section Title End -->
-
-                        <!-- Hero Content Body Start -->
-                        <div class="hero-content-body wow fadeInUp" data-wow-delay="0.4s">
-                            <!-- Hero Button Start -->
-                            <div class="hero-btn">
-                                <a href="contact.html" class="btn-default">شروع کن</a>
-                            </div>
-                            <!-- Hero Button End -->
-
-                            <!-- Hero Introduction Video Start -->
-                            <div class="hero-introduction-video">
-                                <!-- Video Play Button Start -->
-                                <div class="video-play-button">
-                                    <a href="video/fintech-video.mp4" class="popup-video" data-cursor-text="پخش">
-                                        <img src="@Url.Content("~/Assets/images/icon-play.svg")" alt="">
-                                    </a>
-                                    <p>مقدمه</p>
-                                </div>
-                                <!-- Video Play Button End -->
-                            </div>
-                            <!-- Hero Introduction Video End -->
-                        </div>
-                        <!-- Hero Content Body End -->
-                    </div>
-                    <!-- Hero Content End -->
-                </div>
-            </div>
-        </div>
+        <!-- Selfhosted Video End -->
+        <!-- Youtube Video Start -->
+        <!-- <div id="herovideo" class="player" data-property="{videoURL:'74DWwSxsVSs',containment:'.hero-video', showControls:false, autoPlay:true, loop:true, vol:0, mute:false, startAt:0,  stopAt:296, opacity:1, addRaster:true, quality:'large', optimizeDisplay:true}"></div> -->
+        <!-- Youtube Video End -->
     </div>
-    <!-- Hero Section End -->
-
-    <!-- About Us Section Start -->
-    <div class="about-us">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6">
-                    <!-- About Us Images Start -->
-                    <div class="about-us-images">
-                        <!-- About Image 1 Start -->
-                        <div class="about-img-1">
-                            <figure class="image-anime reveal">
-                                <img src="@Url.Content("~/Assets/images/about-img-1.jpg")" alt="">
-                            </figure>
-                        </div>
-                        <!-- About Image 1 End -->
-
-                        <!-- About Image 2 Start -->
-                        <div class="about-img-2">
-                            <figure class="image-anime reveal">
-                                <img src="@Url.Content("~/Assets/images/about-img-2.jpg")" alt="">
-                            </figure>
-                        </div>
-                        <!-- About Image 2 End -->
-
-                        <!-- Contact Circle Start -->
-                        <div class="contact-circle">
-                            <img src="@Url.Content("~/Assets/images/contact-us-img.svg")" alt="">
-                        </div>
-                        <!-- Contact Circle End -->
-                    </div>
-                    <!-- About Us Images End -->
-                </div>
-
-                <div class="col-lg-6">
-                    <!-- About Us Content Start -->
-                    <div class="about-us-content">
-                        <!-- Section Title Start -->
-                        <div class="section-title">
-                            <h3 class="wow fadeInUp">درباره ما</h3>
-                            <h2 class="text-anime-style-2" data-cursor="-opaque">راهنمای قابل اعتماد برای <span>رشد
-                                    کسب و کار</span></h2>
-                            <p class="wow fadeInUp" data-wow-delay="0.2s">با سالها تخصص در امور برنامه نویسی و
-                                مشاوره، ما استراتژی های مناسبی را برای کمک به شما برای دستیابی به رشد پایدار ارائه می
-                                دهیم. ما
-                                تعهد این است که شما را با صداقت، بینش و رویکرد شخصی راهنمایی کند.</p>
-                        </div>
-                        <!-- Section Title End -->
-
-                        <!-- About Content body Start -->
-                        <div class="about-content-body">
-                            <div class="row align-items-center">
-                                <div class="col-md-6">
-                                    <!-- About Content Info Start -->
-                                    <div class="about-content-info">
-                                        <!-- About Goal Box Start -->
-                                        <div class="about-goal-box wow fadeInUp" data-wow-delay="0.4s">
-                                            <div class="icon-box">
-                                                <img src="@Url.Content("~/Assets/images/icon-financial-strategies.svg")" alt="">
-                                            </div>
-
-                                            <div class="about-goal-box-content">
-                                                <h3>راهبردهای مالی</h3>
-                                                <p>برنامه های متناسب با نیازها و اهداف مالی منحصر به فرد شما.</p>
-                                            </div>
-                                        </div>
-                                        <!-- About Goal Box End -->
-
-                                        <!-- About Contact Box Start -->
-                                        <div class="about-contact-box wow fadeInUp" data-wow-delay="0.6s">
-                                            <div class="icon-box">
-                                                <img src="@Url.Content("~/Assets/images/icon-phone.svg")" alt="">
-                                            </div>
-
-                                            <div class="about-contact-content">
-                                                <p><a href="tel:+989147148214">0914-7148214</a></p>
-                                            </div>
-                                        </div>
-                                        <!-- About Contact Box End -->
-                                    </div>
-                                    <!-- About Content Info End -->
-                                </div>
-
-                                <div class="col-md-6">
-                                    <!-- About Author Box Start -->
-                                    <div class="about-author-box wow fadeInUp" data-wow-delay="0.4s">
-                                        <!-- About Info Box Start -->
-                                        <div class="about-info-box">
-                                            <figure class="image-anime reveal">
-                                                <img src="@Url.Content("~/Assets/images/avatar/01.jpg")" alt="">
-                                            </figure>
-
-                                            <div class="about-author-content">
-                                                <h3>صالح جامعی</h3>
-                                                <p>برنامه نویس فرانت</p>
-                                            </div>
-                                        </div>
-                                        <div class="about-info-box">
-                                            <figure class="image-anime reveal">
-                                                <img src="@Url.Content("~/Assets/images/author-4.jpg")" alt="">
-                                            </figure>
-
-                                            <div class="about-author-content">
-                                                <h3>ماهان محمودی</h3>
-                                                <p>برنامه نویس بک</p>
-                                            </div>
-                                        </div>
-                                        <!-- About Info Box End -->
-
-                                        <!-- About Info List Start -->
-                                        <div class="about-info-list">
-                                            <ul>
-                                                <li>مشاوره</li>
-                                                <li>مدیریت</li>
-                                                <li>پشتیبانی 24 ساعته</li>
-                                            </ul>
-                                        </div>
-                                        <!-- About Info List End -->
-                                    </div>
-                                    <!-- About Author Box End -->
-                                </div>
-                            </div>
-                        </div>
-                        <!-- About Content body End -->
-                    </div>
-                    <!-- About Us Content End -->
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- About Us Section End -->
-
-    <!-- Our Services Section Start -->
-    <div class="our-services">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-4">
-                    <!-- Service Content Start -->
-                    <div class="our-service-content">
-                        <!-- Section Title Start -->
-                        <div class="section-title">
-                            <h3 class="wow fadeInUp">خدمات</h3>
-                            <h2 class="text-anime-style-2" data-cursor="-opaque">کارشناس امور وب سایت و خدمات مشاوره
-                                <span>برای موفقیت</span>
-                            </h2>
-                        </div>
-                        <!-- Section Title End -->
-
-                        <!-- Section content Button Start -->
-                        <div class="service-content-btn wow fadeInUp" data-wow-delay="0.25s">
-                            <a href="services.html" class="btn-default">دیگر خدمات</a>
-                        </div>
-                        <!-- Section content Button End -->
-                    </div>
-                    <!-- Service Content End -->
-                </div>
-
-                <div class="col-lg-8">
-                    <!-- Our Service List Start -->
-                    <div class="our-service-list">
-                        <!-- Service Item Start -->
-                        <div class="service-item">
-                            <div class="service-no">
-                                <h2>01</h2>
-                            </div>
-                            <div class="service-content-box">
-                                <div class="icon-box">
-                                    <img src="@Url.Content("~/Assets/images/icon-service-1.svg")" alt="">
-                                </div>
-
-                                <div class="service-item-content">
-                                    <h3>برنامه ریزی مالی</h3>
-                                    <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان
-                                        گرافیک است چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است.
-                                    </p>
-                                    <a href="service-single.html" class="service-btn"><img src="@Url.Content("~/Assets/images/arrow-white.svg")"
-                                            alt=""></a>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Service Item End -->
-
-                        <!-- Service Item Start -->
-                        <div class="service-item">
-                            <div class="service-no">
-                                <h2>02</h2>
-                            </div>
-                            <div class="service-content-box">
-                                <div class="icon-box">
-                                    <img src="@Url.Content("~/Assets/images/icon-service-2.svg")" alt="">
-                                </div>
-
-                                <div class="service-item-content">
-                                    <h3> مدیریت سرمایه گذاری</h3>
-                                    <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان
-                                        گرافیک است چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است.
-                                    </p>
-                                    <a href="service-single.html" class="service-btn"><img src="@Url.Content("~/Assets/images/arrow-white.svg")"
-                                            alt=""></a>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Service Item End -->
-
-                        <!-- Service Item Start -->
-                        <div class="service-item">
-                            <div class="service-no">
-                                <h2>03</h2>
-                            </div>
-                            <div class="service-content-box">
-                                <div class="icon-box">
-                                    <img src="@Url.Content("~/Assets/images/icon-service-3.svg")" alt="">
-                                </div>
-
-                                <div class="service-item-content">
-                                    <h3>برنامه ریزی بازنشستگی</h3>
-                                    <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان
-                                        گرافیک است چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است.
-                                    </p>
-                                    <a href="service-single.html" class="service-btn"><img src="@Url.Content("~/Assets/images/arrow-white.svg")"
-                                            alt=""></a>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Service Item End -->
-
-                        <!-- Service Item Start -->
-                        <div class="service-item">
-                            <div class="service-no">
-                                <h2>04</h2>
-                            </div>
-                            <div class="service-content-box">
-                                <div class="icon-box">
-                                    <img src="@Url.Content("~/Assets/images/icon-service-4.svg")" alt="">
-                                </div>
-
-                                <div class="service-item-content">
-                                    <h3>بهینه سازی مالیات</h3>
-                                    <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان
-                                        گرافیک است چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است.
-                                    </p>
-                                    <a href="service-single.html" class="service-btn"><img src="@Url.Content("~/Assets/images/arrow-white.svg")"
-                                            alt=""></a>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Service Item End -->
-
-                        <!-- Service Item Start -->
-                        <div class="service-item">
-                            <div class="service-no">
-                                <h2>05</h2>
-                            </div>
-                            <div class="service-content-box">
-                                <div class="icon-box">
-                                    <img src="@Url.Content("~/Assets/images/icon-service-5.svg")" alt="">
-                                </div>
-
-                                <div class="service-item-content">
-                                    <h3>ارزیابی ریسک</h3>
-                                    <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان
-                                        گرافیک است چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است.
-                                    </p>
-                                    <a href="service-single.html" class="service-btn"><img src="@Url.Content("~/Assets/images/arrow-white.svg")"
-                                            alt=""></a>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Service Item End -->
-
-                        <!-- Service Item Start -->
-                        <div class="service-item">
-                            <div class="service-no">
-                                <h2>06</h2>
-                            </div>
-                            <div class="service-content-box">
-                                <div class="icon-box">
-                                    <img src="@Url.Content("~/Assets/images/icon-service-6.svg")" alt="">
-                                </div>
-
-                                <div class="service-item-content">
-                                    <h3>پیش بینی بودجه </h3>
-                                    <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان
-                                        گرافیک است چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است.
-                                    </p>
-                                    <a href="service-single.html" class="service-btn"><img src="@Url.Content("~/Assets/images/arrow-white.svg")"
-                                            alt=""></a>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Service Item End -->
-                    </div>
-                    <!-- Our Service List End -->
-
-                    <!-- Service Footer Start -->
-                    <div class="service-footer wow fadeInUp" data-wow-delay="0.8s">
-                        <p>بیایید با هم کاری عالی بسازیم. <a href="contact.html">رایگان دریافت کنید.</a></p>
-                    </div>
-                    <!-- Service Footer End -->
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Our Services Section End -->
-
-    <!-- Why Choose Us Section Start -->
-    <div class="why-choose-us">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-6">
-                    <!-- Why Choose Content Start -->
-                    <div class="why-choose-content">
-                        <!-- Section Title Start -->
-                        <div class="section-title">
-                            <h3 class="wow fadeInUp">چرا ما را انتخاب کنید</h3>
-                            <h2 class="text-anime-style-2" data-cursor="-opaque">دلیل اعتماد به <span>گروه برنامه نویسی
-                                    ما</span> چیست؟</h2>
-                        </div>
-                        <!-- Section Title End -->
-
-                        <!-- Why Choose Box List Start -->
-                        <div class="why-choose-box-list">
-                            <!-- Why Choose Box Start -->
-                            <div class="why-choose-box wow fadeInUp" data-wow-delay="0.2s">
-                                <div class="icon-box">
-                                    <img src="@Url.Content("~/Assets/images/icon-why-choose-1.svg")" alt="">
-                                </div>
-
-                                <div class="why-choose-box-content">
-                                    <h3>زیبایی در طراحی</h3>
-                                    <p>برنامه های متناسب با نیازها و اهداف منحصر به فرد شما.</p>
-                                </div>
-                            </div>
-                            <!-- Why Choose Box End -->
-
-                            <!-- Why Choose Box Start -->
-                            <div class="why-choose-box wow fadeInUp" data-wow-delay="0.2s">
-                                <div class="icon-box">
-                                    <img src="@Url.Content("~/Assets/images/icon-why-choose-2.svg")" alt="">
-                                </div>
-
-                                <div class="why-choose-box-content">
-                                    <h3>تمیز بودن کدها</h3>
-                                    <p>خوانایی کدها برای گروه های شخصی یا شرکتی.</p>
-                                </div>
-                            </div>
-                            <!-- Why Choose Box End -->
-                        </div>
-                        <!-- Why Choose Box List End -->
-
-                        <!-- Why Choose List Start -->
-                        <div class="why-choose-list wow fadeInUp" data-wow-delay="0.4s">
-                            <ul>
-                                <li>برنامه ریزی استراتژیک مالی</li>
-                                <li>مشاوره تخصصی اولیه</li>
-                            </ul>
-                        </div>
-                        <!-- Why Choose List End -->
-                    </div>
-                    <!-- Why Choose Content End -->
-                </div>
-
-                <div class="col-lg-6">
-                    <!-- Why Choose Image Start -->
-                    <div class="why-choose-image">
-                        <!-- Why Choose Image 1 Start -->
-                        <div class="why-choose-img-1">
-                            <figure class="image-anime reveal">
-                                <img src="@Url.Content("~/Assets/images/why-choose-img-1.jpg")" alt="">
-                            </figure>
-                        </div>
-                        <!-- Why Choose Image 1 End -->
-
-                        <!-- Why Choose Image 2 Start -->
-                        <div class="why-choose-img-2">
-                            <figure class="image-anime reveal">
-                                <img src="@Url.Content("~/Assets/images/why-choose-img-2.jpg")" alt="">
-                            </figure>
-                        </div>
-                        <!-- Why Choose Image 2 End -->
-
-                        <!-- Why Choose Contact Circle Start -->
-                        <div class="why-choose-contact-circle">
-                            <img src="@Url.Content("~/Assets/images/contact-us-img.svg")" alt="">
-                        </div>
-                        <!-- Why Choose Contact Circle Start -->
-                    </div>
-                    <!-- Why Choose Image End -->
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Why Choose Us Section End -->
-
-    <!-- Our Feature Section Stat -->
-    <div class="our-feature">
-        <div class="container">
-            <div class="row section-row align-items-center">
-                <div class="col-lg-6">
+    <!-- Video End -->
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-12">
+                <!-- Hero Content Start -->
+                <div class="hero-content">
                     <!-- Section Title Start -->
                     <div class="section-title dark-section">
-                        <h3 class="wow fadeInUp">ویژگی ما</h3>
-                        <h2 class="text-anime-style-2" data-cursor="-opaque"> ویژگی های کلیدی شرکت برنامه نویسی ما<span>
-                                مشاوره</span></h2>
+                        <h3 class="wow fadeInUp">به دنیای دیجیتال خوش آمدید</h3>
+                        <h1 class="text-anime-style-2" data-cursor="-opaque">
+                            <span>توانمندسازی</span> شما در دنیای
+                            کد
+                        </h1>
+                        <p class="wow fadeInUp" data-wow-delay="0.2s">
+                            شما را با بینش های متخصص و راه حل های
+                            استراتژیک برای دستیابی به رشد مالی، ثبات و موفقیت بلندمدت راهنمایی می کند.
+                        </p>
                     </div>
                     <!-- Section Title End -->
-                </div>
-
-                <div class="col-lg-6">
-                    <!-- Section Button Start -->
-                    <div class="section-btn wow fadeInUp" data-wow-delay="0.2s">
-                        <a href="contact.html" class="btn-default">هم اکنون تماس بگیرید.</a>
-                    </div>
-                    <!-- Section Button End -->
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-lg-12">
-                    <!-- Our Feature List Start -->
-                    <div class="our-feature-list">
-                        <!-- Feature Item Start -->
-                        <div class="our-feature-item wow fadeInUp">
-                            <div class="icon-box">
-                                <img src="@Url.Content("~/Assets/images/icon-our-feature-1.svg")" alt="">
-                            </div>
-                            <div class="feature-item-content">
-                                <h3>مشاوره کسب و کار استراتژیک</h3>
-                                <p> قبل از شروع به کسب و کار اینترنتی، ایده های ما مفید خواهند بود.</p>
-                            </div>
+                    <!-- Hero Content Body Start -->
+                    <div class="hero-content-body wow fadeInUp" data-wow-delay="0.4s">
+                        <!-- Hero Button Start -->
+                        <div class="hero-btn">
+                            <a href="contact.html" class="btn-default">شروع کن</a>
                         </div>
-                        <!-- Feature Item End -->
-
-                        <!-- Feature Item Start -->
-                        <div class="our-feature-item wow fadeInUp" data-wow-delay="0.2s">
-                            <div class="icon-box">
-                                <img src="@Url.Content("~/Assets/images/icon-our-feature-2.svg")" alt="">
+                        <!-- Hero Button End -->
+                        <!-- Hero Introduction Video Start -->
+                        <div class="hero-introduction-video">
+                            <!-- Video Play Button Start -->
+                            <div class="video-play-button">
+                                <a href="video/fintech-video.mp4" class="popup-video" data-cursor-text="پخش">
+                                    <img src="@Url.Content("~/Assets/images/icon-play.svg")" alt="">
+                                </a>
+                                <p>مقدمه</p>
                             </div>
-                            <div class="feature-item-content">
-                                <h3> مدیریت ثروت</h3>
-                                <p> راه‌حل‌های مالی ما استراتژی‌های متناسب با اهداف منحصر به فرد شما.</p>
-                            </div>
+                            <!-- Video Play Button End -->
                         </div>
-                        <!-- Feature Item End -->
-
-                        <!-- Feature Item Start -->
-                        <div class="our-feature-item wow fadeInUp" data-wow-delay="0.4s">
-                            <div class="icon-box">
-                                <img src="@Url.Content("~/Assets/images/icon-our-feature-3.svg")" alt="">
-                            </div>
-                            <div class="feature-item-content">
-                                <h3>تحلیل بازار</h3>
-                                <p>ارائه‌ی استراتژی برای کسب و کار شما.</p>
-                            </div>
-                        </div>
-                        <!-- Feature Item End -->
-
-                        <!-- Feature Item Start -->
-                        <!-- <div class="our-feature-item wow fadeInUp" data-wow-delay="0.6s">
-                            <div class="icon-box">
-                                <img src="@Url.Content("~/Assets/images/icon-our-feature-4.svg")" alt="">
-                            </div>
-                            <div class="feature-item-content">
-                                <h3> مدیریت ریسک</h3>
-                                <p> راه‌حل‌های مالی ما استراتژی‌های متناسب و متناسب با اهداف منحصر به فرد شما را ارائه
-                                    می‌دهند و مدیریت ریسک.</p>
-                            </div>
-                        </div> -->
-                        <!-- Feature Item End -->
-
-                        <!-- Feature Item Start -->
-                        <!-- <div class="our-feature-item wow fadeInUp" data-wow-delay="0.8s">
-                            <div class="icon-box">
-                                <img src="@Url.Content("~/Assets/images/icon-our-feature-5.svg")" alt="">
-                            </div>
-                            <div class="feature-item-content">
-                                <h3>راهبردهای کارایی مالیاتی</h3>
-                                <p> راه‌حل‌های مالی ما استراتژی‌های متناسب و متناسب با اهداف منحصر به فرد شما را ارائه
-                                    می‌دهند و مدیریت ریسک.</p>
-                            </div>
-                        </div> -->
-                        <!-- Feature Item End -->
-
-                        <!-- Feature Item Start -->
-                        <!-- <div class="our-feature-item wow fadeInUp" data-wow-delay="1s">
-                            <div class="icon-box">
-                                <img src="@Url.Content("~/Assets/images/icon-our-feature-6.svg")" alt="">
-                            </div>
-                            <div class="feature-item-content">
-                                <h3>مشاوره کسب و کار استراتژیک</h3>
-                                <p> راه‌حل‌های مالی ما استراتژی‌های متناسب و متناسب با اهداف منحصر به فرد شما را ارائه
-                                    می‌دهند و مدیریت ریسک.</p>
-                            </div>
-                        </div> -->
-                        <!-- Feature Item End -->
+                        <!-- Hero Introduction Video End -->
                     </div>
-                    <!-- Our Feature List End -->
+                    <!-- Hero Content Body End -->
                 </div>
-
-                <div class="col-lg-12">
-                    <!-- Our Featured Footer Start -->
-                    <div class="our-feature-footer wow fadeInUp" data-wow-delay="1.2s">
-                        <p><span>رایگان</span> بیایید با هم کاری عالی شروع کنیم. <a href="contact.html">رایگان
-                                دریافت کنید.</a></p>
-                    </div>
-                    <!-- Our Featured Footer End -->
-                </div>
+                <!-- Hero Content End -->
             </div>
         </div>
     </div>
-    <!-- Our Feature Section End -->
+</div>
+<!-- Hero Section End -->
+<!-- About Us Section Start -->
+<div class="about-us">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <!-- About Us Images Start -->
+                <div class="about-us-images">
+                    <!-- About Image 1 Start -->
+                    <div class="about-img-1">
+                        <figure class="image-anime reveal">
+                            <img src="@Url.Content("~/Assets/images/about-img-1.jpg")" alt="">
+                        </figure>
+                    </div>
+                    <!-- About Image 1 End -->
+                    <!-- About Image 2 Start -->
+                    <div class="about-img-2">
+                        <figure class="image-anime reveal">
+                            <img src="@Url.Content("~/Assets/images/about-img-2.jpg")" alt="">
+                        </figure>
+                    </div>
+                    <!-- About Image 2 End -->
+                    <!-- Contact Circle Start -->
+                    <div class="contact-circle">
+                        <img src="@Url.Content("~/Assets/images/contact-us-img.svg")" alt="">
+                    </div>
+                    <!-- Contact Circle End -->
+                </div>
+                <!-- About Us Images End -->
+            </div>
 
-    <!-- Some Fact Section Start -->
-    <!-- Some Fact Section End -->
-
-    <!-- What We Do Section Start -->
-    <!-- What We Do Section End -->
-
-    <!-- How It Work Section Start -->
-    <!-- How It Work Section End -->
-
-    <!-- Our Pricing Section Start -->
-    <!-- Our Pricing Section End -->
-
-    <!-- Our FAQs Section Start-->
-    <!-- Our FAQs Section End-->
-
-    <!-- Our Testimonial Section Start -->
-    <!-- Our Testimonial Section End -->
-
-    <!-- Our Blog Section Start -->
-    <div class="our-blog">
-        <div class="container">
-            <div class="row section-row">
-                <div class="col-lg-6">
+            <div class="col-lg-6">
+                <!-- About Us Content Start -->
+                <div class="about-us-content">
                     <!-- Section Title Start -->
                     <div class="section-title">
-                        <h3 class="wow fadeInUp">وبلاگ / پست</h3>
-                        <h2 class="text-anime-style-2" data-cursor="-opaque">بینش های دیجیتال <span>
-                                </br>
-                                برنامه نویسی</span></h2>
+                        <h3 class="wow fadeInUp">درباره ما</h3>
+                        <h2 class="text-anime-style-2" data-cursor="-opaque">
+                            راهنمای قابل اعتماد برای <span>
+                                رشد
+                                کسب و کار
+                            </span>
+                        </h2>
+                        <p class="wow fadeInUp" data-wow-delay="0.2s">
+                            با سالها تخصص در امور برنامه نویسی و
+                            مشاوره، ما استراتژی های مناسبی را برای کمک به شما برای دستیابی به رشد پایدار ارائه می
+                            دهیم. ما
+                            تعهد این است که شما را با صداقت، بینش و رویکرد شخصی راهنمایی کند.
+                        </p>
                     </div>
                     <!-- Section Title End -->
-                </div>
+                    <!-- About Content body Start -->
+                    <div class="about-content-body">
+                        <div class="row align-items-center">
+                            <div class="col-md-6">
+                                <!-- About Content Info Start -->
+                                <div class="about-content-info">
+                                    <!-- About Goal Box Start -->
+                                    <div class="about-goal-box wow fadeInUp" data-wow-delay="0.4s">
+                                        <div class="icon-box">
+                                            <img src="@Url.Content("~/Assets/images/icon-financial-strategies.svg")" alt="">
+                                        </div>
 
-                <div class="col-lg-6">
-                    <!-- Section Button Start -->
-                    <div class="section-btn wow fadeInUp" data-wow-delay="0.2s">
-                        <a href="blog.html" class="btn-default">مشاهده همه پست ها</a>
+                                        <div class="about-goal-box-content">
+                                            <h3>راهبردهای مالی</h3>
+                                            <p>برنامه های متناسب با نیازها و اهداف مالی منحصر به فرد شما.</p>
+                                        </div>
+                                    </div>
+                                    <!-- About Goal Box End -->
+                                    <!-- About Contact Box Start -->
+                                    <div class="about-contact-box wow fadeInUp" data-wow-delay="0.6s">
+                                        <div class="icon-box">
+                                            <img src="@Url.Content("~/Assets/images/icon-phone.svg")" alt="">
+                                        </div>
+
+                                        <div class="about-contact-content">
+                                            <p><a href="tel:+989147148214">0914-7148214</a></p>
+                                        </div>
+                                    </div>
+                                    <!-- About Contact Box End -->
+                                </div>
+                                <!-- About Content Info End -->
+                            </div>
+
+                            <div class="col-md-6">
+                                <!-- About Author Box Start -->
+                                <div class="about-author-box wow fadeInUp" data-wow-delay="0.4s">
+                                    <!-- About Info Box Start -->
+                                    <div class="about-info-box">
+                                        <figure class="image-anime reveal">
+                                            <img src="@Url.Content("~/Assets/images/avatar/01.jpg")" alt="">
+                                        </figure>
+
+                                        <div class="about-author-content">
+                                            <h3>صالح جامعی</h3>
+                                            <p>برنامه نویس فرانت</p>
+                                        </div>
+                                    </div>
+                                    <div class="about-info-box">
+                                        <figure class="image-anime reveal">
+                                            <img src="@Url.Content("~/Assets/images/author-4.jpg")" alt="">
+                                        </figure>
+
+                                        <div class="about-author-content">
+                                            <h3>ماهان محمودی</h3>
+                                            <p>برنامه نویس بک</p>
+                                        </div>
+                                    </div>
+                                    <!-- About Info Box End -->
+                                    <!-- About Info List Start -->
+                                    <div class="about-info-list">
+                                        <ul>
+                                            <li>مشاوره</li>
+                                            <li>مدیریت</li>
+                                            <li>پشتیبانی 24 ساعته</li>
+                                        </ul>
+                                    </div>
+                                    <!-- About Info List End -->
+                                </div>
+                                <!-- About Author Box End -->
+                            </div>
+                        </div>
                     </div>
-                    <!-- Section Button End -->
+                    <!-- About Content body End -->
                 </div>
-            </div>
-
-            <div class="row">
-                <div class="col-md-6">
-                    <!-- Post Item Start -->
-                    <div class="post-item wow fadeInUp">
-                        <!-- Post Featured Image Start-->
-                        <div class="post-featured-image">
-                            <a href="blog-single.html" data-cursor-text="نمایش">
-                                <figure class="image-anime">
-                                    <img src="@Url.Content("~/Assets/images/post-1.jpg")" alt="">
-                                </figure>
-                            </a>
-                        </div>
-                        <!-- Post Featured Image End -->
-
-                        <!-- Post Item Body Start -->
-                        <div class="post-item-body">
-                            <!-- Post Item Tag Start -->
-                            <div class="post-item-meta">
-                                <ul>
-                                    <li><i class="fa-solid fa-calendar-days"></i> 15 مهر, 1403</li>
-                                </ul>
-                            </div>
-                            <!-- Post Item Tag End -->
-
-                            <!-- Post Item Content Start -->
-                            <div class="post-item-content">
-                                <h2><a href="blog-single.html"> لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت
-                                        چاپ و با استفاده از ...</a></h2>
-                            </div>
-                            <!-- Post Item Content End -->
-
-                            <!-- Post Item Readmore Button Start-->
-                            <div class="post-item-btn">
-                                <a href="blog-single.html" class="readmore-btn">بیشتر بخوانید</a>
-                            </div>
-                            <!-- Post Item Readmore Button End-->
-                        </div>
-                        <!-- Post Item Body End -->
-                    </div>
-                    <!-- Post Item End -->
-                </div>
-
-                <div class="col-md-6">
-                    <!-- Post Item Start -->
-                    <div class="post-item wow fadeInUp" data-wow-delay="0.2s">
-                        <!-- Post Featured Image Start-->
-                        <div class="post-featured-image">
-                            <a href="blog-single.html" data-cursor-text="نمایش">
-                                <figure class="image-anime">
-                                    <img src="@Url.Content("~/Assets/images/post-2.jpg")" alt="">
-                                </figure>
-                            </a>
-                        </div>
-                        <!-- Post Featured Image End -->
-
-                        <!-- Post Item Body Start -->
-                        <div class="post-item-body">
-                            <!-- Post Item Tag Start -->
-                            <div class="post-item-meta">
-                                <ul>
-                                    <li><i class="fa-solid fa-calendar-days"></i> 15 مهر, 1403</li>
-                                </ul>
-                            </div>
-                            <!-- Post Item Tag End -->
-
-                            <!-- Post Item Content Start -->
-                            <div class="post-item-content">
-                                <h2><a href="blog-single.html"> لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت
-                                        چاپ و با استفاده از ...</a></h2>
-                            </div>
-                            <!-- Post Item Content End -->
-
-                            <!-- Post Item Readmore Button Start-->
-                            <div class="post-item-btn">
-                                <a href="blog-single.html" class="readmore-btn">بیشتر بخوانید</a>
-                            </div>
-                            <!-- Post Item Readmore Button End-->
-                        </div>
-                        <!-- Post Item Body End -->
-                    </div>
-                    <!-- Post Item End -->
-                </div>
-
-                <div class="col-md-6">
-                    <!-- Post Item Start -->
-                    <div class="post-item wow fadeInUp" data-wow-delay="0.4s">
-                        <!-- Post Featured Image Start-->
-                        <div class="post-featured-image">
-                            <a href="blog-single.html" data-cursor-text="نمایش">
-                                <figure class="image-anime">
-                                    <img src="@Url.Content("~/Assets/images/post-3.jpg")" alt="">
-                                </figure>
-                            </a>
-                        </div>
-                        <!-- Post Featured Image End -->
-
-                        <!-- Post Item Body Start -->
-                        <div class="post-item-body">
-                            <!-- Post Item Tag Start -->
-                            <div class="post-item-meta">
-                                <ul>
-                                    <li><i class="fa-solid fa-calendar-days"></i> 15 مهر, 1403</li>
-                                </ul>
-                            </div>
-                            <!-- Post Item Tag End -->
-
-                            <!-- Post Item Content Start -->
-                            <div class="post-item-content">
-                                <h2><a href="blog-single.html"> لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت
-                                        چاپ و با استفاده از ...</a></h2>
-                            </div>
-                            <!-- Post Item Content End -->
-
-                            <!-- Post Item Readmore Button Start-->
-                            <div class="post-item-btn">
-                                <a href="blog-single.html" class="readmore-btn">بیشتر بخوانید</a>
-                            </div>
-                            <!-- Post Item Readmore Button End-->
-                        </div>
-                        <!-- Post Item Body End -->
-                    </div>
-                    <!-- Post Item End -->
-                </div>
-
-                <div class="col-md-6">
-                    <!-- Post Item Start -->
-                    <div class="post-item wow fadeInUp" data-wow-delay="0.6s">
-                        <!-- Post Featured Image Start-->
-                        <div class="post-featured-image">
-                            <a href="blog-single.html" data-cursor-text="نمایش">
-                                <figure class="image-anime">
-                                    <img src="@Url.Content("~/Assets/images/post-4.jpg")" alt="">
-                                </figure>
-                            </a>
-                        </div>
-                        <!-- Post Featured Image End -->
-
-                        <!-- Post Item Body Start -->
-                        <div class="post-item-body">
-                            <!-- Post Item Tag Start -->
-                            <div class="post-item-meta">
-                                <ul>
-                                    <li><i class="fa-solid fa-calendar-days"></i> 15 مهر, 1403</li>
-                                </ul>
-                            </div>
-                            <!-- Post Item Tag End -->
-
-                            <!-- Post Item Content Start -->
-                            <div class="post-item-content">
-                                <h2><a href="blog-single.html"> لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت
-                                        چاپ و با استفاده از ...</a></h2>
-                            </div>
-                            <!-- Post Item Content End -->
-
-                            <!-- Post Item Readmore Button Start-->
-                            <div class="post-item-btn">
-                                <a href="blog-single.html" class="readmore-btn">بیشتر بخوانید</a>
-                            </div>
-                            <!-- Post Item Readmore Button End-->
-                        </div>
-                        <!-- Post Item Body End -->
-                    </div>
-                    <!-- Post Item End -->
-                </div>
+                <!-- About Us Content End -->
             </div>
         </div>
     </div>
-    <!-- Our Blog Section End  -->
+</div>
+<!-- About Us Section End -->
+<!-- Our Services Section Start -->
+<div class="our-services">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4">
+                <!-- Service Content Start -->
+                <div class="our-service-content">
+                    <!-- Section Title Start -->
+                    <div class="section-title">
+                        <h3 class="wow fadeInUp">خدمات</h3>
+                        <h2 class="text-anime-style-2" data-cursor="-opaque">
+                            کارشناس امور وب سایت و خدمات مشاوره
+                            <span>برای موفقیت</span>
+                        </h2>
+                    </div>
+                    <!-- Section Title End -->
+                    <!-- Section content Button Start -->
+                    <div class="service-content-btn wow fadeInUp" data-wow-delay="0.25s">
+                        <a href="services.html" class="btn-default">دیگر خدمات</a>
+                    </div>
+                    <!-- Section content Button End -->
+                </div>
+                <!-- Service Content End -->
+            </div>
 
+            <div class="col-lg-8">
+                <!-- Our Service List Start -->
+                <div class="our-service-list">
+                    <!-- Service Item Start -->
+                    <div class="service-item">
+                        <div class="service-no">
+                            <h2>01</h2>
+                        </div>
+                        <div class="service-content-box">
+                            <div class="icon-box">
+                                <img src="@Url.Content("~/Assets/images/icon-service-1.svg")" alt="">
+                            </div>
+
+                            <div class="service-item-content">
+                                <h3>برنامه ریزی مالی</h3>
+                                <p>
+                                    لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان
+                                    گرافیک است چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است.
+                                </p>
+                                <a href="service-single.html" class="service-btn">
+                                    <img src="@Url.Content("~/Assets/images/arrow-white.svg")"
+                                         alt="">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Service Item End -->
+                    <!-- Service Item Start -->
+                    <div class="service-item">
+                        <div class="service-no">
+                            <h2>02</h2>
+                        </div>
+                        <div class="service-content-box">
+                            <div class="icon-box">
+                                <img src="@Url.Content("~/Assets/images/icon-service-2.svg")" alt="">
+                            </div>
+
+                            <div class="service-item-content">
+                                <h3> مدیریت سرمایه گذاری</h3>
+                                <p>
+                                    لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان
+                                    گرافیک است چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است.
+                                </p>
+                                <a href="service-single.html" class="service-btn">
+                                    <img src="@Url.Content("~/Assets/images/arrow-white.svg")"
+                                         alt="">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Service Item End -->
+                    <!-- Service Item Start -->
+                    <div class="service-item">
+                        <div class="service-no">
+                            <h2>03</h2>
+                        </div>
+                        <div class="service-content-box">
+                            <div class="icon-box">
+                                <img src="@Url.Content("~/Assets/images/icon-service-3.svg")" alt="">
+                            </div>
+
+                            <div class="service-item-content">
+                                <h3>برنامه ریزی بازنشستگی</h3>
+                                <p>
+                                    لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان
+                                    گرافیک است چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است.
+                                </p>
+                                <a href="service-single.html" class="service-btn">
+                                    <img src="@Url.Content("~/Assets/images/arrow-white.svg")"
+                                         alt="">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Service Item End -->
+                    <!-- Service Item Start -->
+                    <div class="service-item">
+                        <div class="service-no">
+                            <h2>04</h2>
+                        </div>
+                        <div class="service-content-box">
+                            <div class="icon-box">
+                                <img src="@Url.Content("~/Assets/images/icon-service-4.svg")" alt="">
+                            </div>
+
+                            <div class="service-item-content">
+                                <h3>بهینه سازی مالیات</h3>
+                                <p>
+                                    لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان
+                                    گرافیک است چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است.
+                                </p>
+                                <a href="service-single.html" class="service-btn">
+                                    <img src="@Url.Content("~/Assets/images/arrow-white.svg")"
+                                         alt="">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Service Item End -->
+                    <!-- Service Item Start -->
+                    <div class="service-item">
+                        <div class="service-no">
+                            <h2>05</h2>
+                        </div>
+                        <div class="service-content-box">
+                            <div class="icon-box">
+                                <img src="@Url.Content("~/Assets/images/icon-service-5.svg")" alt="">
+                            </div>
+
+                            <div class="service-item-content">
+                                <h3>ارزیابی ریسک</h3>
+                                <p>
+                                    لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان
+                                    گرافیک است چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است.
+                                </p>
+                                <a href="service-single.html" class="service-btn">
+                                    <img src="@Url.Content("~/Assets/images/arrow-white.svg")"
+                                         alt="">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Service Item End -->
+                    <!-- Service Item Start -->
+                    <div class="service-item">
+                        <div class="service-no">
+                            <h2>06</h2>
+                        </div>
+                        <div class="service-content-box">
+                            <div class="icon-box">
+                                <img src="@Url.Content("~/Assets/images/icon-service-6.svg")" alt="">
+                            </div>
+
+                            <div class="service-item-content">
+                                <h3>پیش بینی بودجه </h3>
+                                <p>
+                                    لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان
+                                    گرافیک است چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است.
+                                </p>
+                                <a href="service-single.html" class="service-btn">
+                                    <img src="@Url.Content("~/Assets/images/arrow-white.svg")"
+                                         alt="">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Service Item End -->
+                </div>
+                <!-- Our Service List End -->
+                <!-- Service Footer Start -->
+                <div class="service-footer wow fadeInUp" data-wow-delay="0.8s">
+                    <p>بیایید با هم کاری عالی بسازیم. <a href="contact.html">رایگان دریافت کنید.</a></p>
+                </div>
+                <!-- Service Footer End -->
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Our Services Section End -->
+<!-- Why Choose Us Section Start -->
+<div class="why-choose-us">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <!-- Why Choose Content Start -->
+                <div class="why-choose-content">
+                    <!-- Section Title Start -->
+                    <div class="section-title">
+                        <h3 class="wow fadeInUp">چرا ما را انتخاب کنید</h3>
+                        <h2 class="text-anime-style-2" data-cursor="-opaque">
+                            دلیل اعتماد به <span>
+                                گروه برنامه نویسی
+                                ما
+                            </span> چیست؟
+                        </h2>
+                    </div>
+                    <!-- Section Title End -->
+                    <!-- Why Choose Box List Start -->
+                    <div class="why-choose-box-list">
+                        <!-- Why Choose Box Start -->
+                        <div class="why-choose-box wow fadeInUp" data-wow-delay="0.2s">
+                            <div class="icon-box">
+                                <img src="@Url.Content("~/Assets/images/icon-why-choose-1.svg")" alt="">
+                            </div>
+
+                            <div class="why-choose-box-content">
+                                <h3>زیبایی در طراحی</h3>
+                                <p>برنامه های متناسب با نیازها و اهداف منحصر به فرد شما.</p>
+                            </div>
+                        </div>
+                        <!-- Why Choose Box End -->
+                        <!-- Why Choose Box Start -->
+                        <div class="why-choose-box wow fadeInUp" data-wow-delay="0.2s">
+                            <div class="icon-box">
+                                <img src="@Url.Content("~/Assets/images/icon-why-choose-2.svg")" alt="">
+                            </div>
+
+                            <div class="why-choose-box-content">
+                                <h3>تمیز بودن کدها</h3>
+                                <p>خوانایی کدها برای گروه های شخصی یا شرکتی.</p>
+                            </div>
+                        </div>
+                        <!-- Why Choose Box End -->
+                    </div>
+                    <!-- Why Choose Box List End -->
+                    <!-- Why Choose List Start -->
+                    <div class="why-choose-list wow fadeInUp" data-wow-delay="0.4s">
+                        <ul>
+                            <li>برنامه ریزی استراتژیک مالی</li>
+                            <li>مشاوره تخصصی اولیه</li>
+                        </ul>
+                    </div>
+                    <!-- Why Choose List End -->
+                </div>
+                <!-- Why Choose Content End -->
+            </div>
+
+            <div class="col-lg-6">
+                <!-- Why Choose Image Start -->
+                <div class="why-choose-image">
+                    <!-- Why Choose Image 1 Start -->
+                    <div class="why-choose-img-1">
+                        <figure class="image-anime reveal">
+                            <img src="@Url.Content("~/Assets/images/why-choose-img-1.jpg")" alt="">
+                        </figure>
+                    </div>
+                    <!-- Why Choose Image 1 End -->
+                    <!-- Why Choose Image 2 Start -->
+                    <div class="why-choose-img-2">
+                        <figure class="image-anime reveal">
+                            <img src="@Url.Content("~/Assets/images/why-choose-img-2.jpg")" alt="">
+                        </figure>
+                    </div>
+                    <!-- Why Choose Image 2 End -->
+                    <!-- Why Choose Contact Circle Start -->
+                    <div class="why-choose-contact-circle">
+                        <img src="@Url.Content("~/Assets/images/contact-us-img.svg")" alt="">
+                    </div>
+                    <!-- Why Choose Contact Circle Start -->
+                </div>
+                <!-- Why Choose Image End -->
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Why Choose Us Section End -->
+<!-- Our Feature Section Stat -->
+<div class="our-feature">
+    <div class="container">
+        <div class="row section-row align-items-center">
+            <div class="col-lg-6">
+                <!-- Section Title Start -->
+                <div class="section-title dark-section">
+                    <h3 class="wow fadeInUp">ویژگی ما</h3>
+                    <h2 class="text-anime-style-2" data-cursor="-opaque">
+                        ویژگی های کلیدی شرکت برنامه نویسی ما<span>
+                            مشاوره
+                        </span>
+                    </h2>
+                </div>
+                <!-- Section Title End -->
+            </div>
+
+            <div class="col-lg-6">
+                <!-- Section Button Start -->
+                <div class="section-btn wow fadeInUp" data-wow-delay="0.2s">
+                    <a href="contact.html" class="btn-default">هم اکنون تماس بگیرید.</a>
+                </div>
+                <!-- Section Button End -->
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12">
+                <!-- Our Feature List Start -->
+                <div class="our-feature-list">
+                    <!-- Feature Item Start -->
+                    <div class="our-feature-item wow fadeInUp">
+                        <div class="icon-box">
+                            <img src="@Url.Content("~/Assets/images/icon-our-feature-1.svg")" alt="">
+                        </div>
+                        <div class="feature-item-content">
+                            <h3>مشاوره کسب و کار استراتژیک</h3>
+                            <p> قبل از شروع به کسب و کار اینترنتی، ایده های ما مفید خواهند بود.</p>
+                        </div>
+                    </div>
+                    <!-- Feature Item End -->
+                    <!-- Feature Item Start -->
+                    <div class="our-feature-item wow fadeInUp" data-wow-delay="0.2s">
+                        <div class="icon-box">
+                            <img src="@Url.Content("~/Assets/images/icon-our-feature-2.svg")" alt="">
+                        </div>
+                        <div class="feature-item-content">
+                            <h3> مدیریت ثروت</h3>
+                            <p> راه‌حل‌های مالی ما استراتژی‌های متناسب با اهداف منحصر به فرد شما.</p>
+                        </div>
+                    </div>
+                    <!-- Feature Item End -->
+                    <!-- Feature Item Start -->
+                    <div class="our-feature-item wow fadeInUp" data-wow-delay="0.4s">
+                        <div class="icon-box">
+                            <img src="@Url.Content("~/Assets/images/icon-our-feature-3.svg")" alt="">
+                        </div>
+                        <div class="feature-item-content">
+                            <h3>تحلیل بازار</h3>
+                            <p>ارائه‌ی استراتژی برای کسب و کار شما.</p>
+                        </div>
+                    </div>
+                    <!-- Feature Item End -->
+                    <!-- Feature Item Start -->
+                    <!-- <div class="our-feature-item wow fadeInUp" data-wow-delay="0.6s">
+                        <div class="icon-box">
+                            <img src="@Url.Content("~/Assets/images/icon-our-feature-4.svg")" alt="">
+                        </div>
+                        <div class="feature-item-content">
+                            <h3> مدیریت ریسک</h3>
+                            <p> راه‌حل‌های مالی ما استراتژی‌های متناسب و متناسب با اهداف منحصر به فرد شما را ارائه
+                                می‌دهند و مدیریت ریسک.</p>
+                        </div>
+                    </div> -->
+                    <!-- Feature Item End -->
+                    <!-- Feature Item Start -->
+                    <!-- <div class="our-feature-item wow fadeInUp" data-wow-delay="0.8s">
+                        <div class="icon-box">
+                            <img src="@Url.Content("~/Assets/images/icon-our-feature-5.svg")" alt="">
+                        </div>
+                        <div class="feature-item-content">
+                            <h3>راهبردهای کارایی مالیاتی</h3>
+                            <p> راه‌حل‌های مالی ما استراتژی‌های متناسب و متناسب با اهداف منحصر به فرد شما را ارائه
+                                می‌دهند و مدیریت ریسک.</p>
+                        </div>
+                    </div> -->
+                    <!-- Feature Item End -->
+                    <!-- Feature Item Start -->
+                    <!-- <div class="our-feature-item wow fadeInUp" data-wow-delay="1s">
+                        <div class="icon-box">
+                            <img src="@Url.Content("~/Assets/images/icon-our-feature-6.svg")" alt="">
+                        </div>
+                        <div class="feature-item-content">
+                            <h3>مشاوره کسب و کار استراتژیک</h3>
+                            <p> راه‌حل‌های مالی ما استراتژی‌های متناسب و متناسب با اهداف منحصر به فرد شما را ارائه
+                                می‌دهند و مدیریت ریسک.</p>
+                        </div>
+                    </div> -->
+                    <!-- Feature Item End -->
+                </div>
+                <!-- Our Feature List End -->
+            </div>
+
+            <div class="col-lg-12">
+                <!-- Our Featured Footer Start -->
+                <div class="our-feature-footer wow fadeInUp" data-wow-delay="1.2s">
+                    <p>
+                        <span>رایگان</span> بیایید با هم کاری عالی شروع کنیم. <a href="contact.html">
+                            رایگان
+                            دریافت کنید.
+                        </a>
+                    </p>
+                </div>
+                <!-- Our Featured Footer End -->
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Our Feature Section End -->
+<!-- Some Fact Section Start -->
+<!-- Some Fact Section End -->
+<!-- What We Do Section Start -->
+<!-- What We Do Section End -->
+<!-- How It Work Section Start -->
+<!-- How It Work Section End -->
+<!-- Our Pricing Section Start -->
+<!-- Our Pricing Section End -->
+<!-- Our FAQs Section Start-->
+<!-- Our FAQs Section End-->
+<!-- Our Testimonial Section Start -->
+<!-- Our Testimonial Section End -->
+<!-- Our Blog Section Start -->
+<div class="our-blog">
+    <div class="container">
+        <div class="row section-row">
+            <div class="col-lg-6">
+                <!-- Section Title Start -->
+                <div class="section-title">
+                    <h3 class="wow fadeInUp">وبلاگ / پست</h3>
+                    <h2 class="text-anime-style-2" data-cursor="-opaque">
+                        بینش های دیجیتال <span>
+                            </br>
+                            برنامه نویسی
+                        </span>
+                    </h2>
+                </div>
+                <!-- Section Title End -->
+            </div>
+
+            <div class="col-lg-6">
+                <!-- Section Button Start -->
+                <div class="section-btn wow fadeInUp" data-wow-delay="0.2s">
+                    <a href="blog.html" class="btn-default">مشاهده همه پست ها</a>
+                </div>
+                <!-- Section Button End -->
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <!-- Post Item Start -->
+                <div class="post-item wow fadeInUp">
+                    <!-- Post Featured Image Start-->
+                    <div class="post-featured-image">
+                        <a href="blog-single.html" data-cursor-text="نمایش">
+                            <figure class="image-anime">
+                                <img src="@Url.Content("~/Assets/images/post-1.jpg")" alt="">
+                            </figure>
+                        </a>
+                    </div>
+                    <!-- Post Featured Image End -->
+                    <!-- Post Item Body Start -->
+                    <div class="post-item-body">
+                        <!-- Post Item Tag Start -->
+                        <div class="post-item-meta">
+                            <ul>
+                                <li><i class="fa-solid fa-calendar-days"></i> 15 مهر, 1403</li>
+                            </ul>
+                        </div>
+                        <!-- Post Item Tag End -->
+                        <!-- Post Item Content Start -->
+                        <div class="post-item-content">
+                            <h2>
+                                <a href="blog-single.html">
+                                    لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت
+                                    چاپ و با استفاده از ...
+                                </a>
+                            </h2>
+                        </div>
+                        <!-- Post Item Content End -->
+                        <!-- Post Item Readmore Button Start-->
+                        <div class="post-item-btn">
+                            <a href="blog-single.html" class="readmore-btn">بیشتر بخوانید</a>
+                        </div>
+                        <!-- Post Item Readmore Button End-->
+                    </div>
+                    <!-- Post Item Body End -->
+                </div>
+                <!-- Post Item End -->
+            </div>
+
+            <div class="col-md-6">
+                <!-- Post Item Start -->
+                <div class="post-item wow fadeInUp" data-wow-delay="0.2s">
+                    <!-- Post Featured Image Start-->
+                    <div class="post-featured-image">
+                        <a href="blog-single.html" data-cursor-text="نمایش">
+                            <figure class="image-anime">
+                                <img src="@Url.Content("~/Assets/images/post-2.jpg")" alt="">
+                            </figure>
+                        </a>
+                    </div>
+                    <!-- Post Featured Image End -->
+                    <!-- Post Item Body Start -->
+                    <div class="post-item-body">
+                        <!-- Post Item Tag Start -->
+                        <div class="post-item-meta">
+                            <ul>
+                                <li><i class="fa-solid fa-calendar-days"></i> 15 مهر, 1403</li>
+                            </ul>
+                        </div>
+                        <!-- Post Item Tag End -->
+                        <!-- Post Item Content Start -->
+                        <div class="post-item-content">
+                            <h2>
+                                <a href="blog-single.html">
+                                    لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت
+                                    چاپ و با استفاده از ...
+                                </a>
+                            </h2>
+                        </div>
+                        <!-- Post Item Content End -->
+                        <!-- Post Item Readmore Button Start-->
+                        <div class="post-item-btn">
+                            <a href="blog-single.html" class="readmore-btn">بیشتر بخوانید</a>
+                        </div>
+                        <!-- Post Item Readmore Button End-->
+                    </div>
+                    <!-- Post Item Body End -->
+                </div>
+                <!-- Post Item End -->
+            </div>
+
+            <div class="col-md-6">
+                <!-- Post Item Start -->
+                <div class="post-item wow fadeInUp" data-wow-delay="0.4s">
+                    <!-- Post Featured Image Start-->
+                    <div class="post-featured-image">
+                        <a href="blog-single.html" data-cursor-text="نمایش">
+                            <figure class="image-anime">
+                                <img src="@Url.Content("~/Assets/images/post-3.jpg")" alt="">
+                            </figure>
+                        </a>
+                    </div>
+                    <!-- Post Featured Image End -->
+                    <!-- Post Item Body Start -->
+                    <div class="post-item-body">
+                        <!-- Post Item Tag Start -->
+                        <div class="post-item-meta">
+                            <ul>
+                                <li><i class="fa-solid fa-calendar-days"></i> 15 مهر, 1403</li>
+                            </ul>
+                        </div>
+                        <!-- Post Item Tag End -->
+                        <!-- Post Item Content Start -->
+                        <div class="post-item-content">
+                            <h2>
+                                <a href="blog-single.html">
+                                    لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت
+                                    چاپ و با استفاده از ...
+                                </a>
+                            </h2>
+                        </div>
+                        <!-- Post Item Content End -->
+                        <!-- Post Item Readmore Button Start-->
+                        <div class="post-item-btn">
+                            <a href="blog-single.html" class="readmore-btn">بیشتر بخوانید</a>
+                        </div>
+                        <!-- Post Item Readmore Button End-->
+                    </div>
+                    <!-- Post Item Body End -->
+                </div>
+                <!-- Post Item End -->
+            </div>
+
+            <div class="col-md-6">
+                <!-- Post Item Start -->
+                <div class="post-item wow fadeInUp" data-wow-delay="0.6s">
+                    <!-- Post Featured Image Start-->
+                    <div class="post-featured-image">
+                        <a href="blog-single.html" data-cursor-text="نمایش">
+                            <figure class="image-anime">
+                                <img src="@Url.Content("~/Assets/images/post-4.jpg")" alt="">
+                            </figure>
+                        </a>
+                    </div>
+                    <!-- Post Featured Image End -->
+                    <!-- Post Item Body Start -->
+                    <div class="post-item-body">
+                        <!-- Post Item Tag Start -->
+                        <div class="post-item-meta">
+                            <ul>
+                                <li><i class="fa-solid fa-calendar-days"></i> 15 مهر, 1403</li>
+                            </ul>
+                        </div>
+                        <!-- Post Item Tag End -->
+                        <!-- Post Item Content Start -->
+                        <div class="post-item-content">
+                            <h2>
+                                <a href="blog-single.html">
+                                    لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت
+                                    چاپ و با استفاده از ...
+                                </a>
+                            </h2>
+                        </div>
+                        <!-- Post Item Content End -->
+                        <!-- Post Item Readmore Button Start-->
+                        <div class="post-item-btn">
+                            <a href="blog-single.html" class="readmore-btn">بیشتر بخوانید</a>
+                        </div>
+                        <!-- Post Item Readmore Button End-->
+                    </div>
+                    <!-- Post Item Body End -->
+                </div>
+                <!-- Post Item End -->
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Our Blog Section End  -->

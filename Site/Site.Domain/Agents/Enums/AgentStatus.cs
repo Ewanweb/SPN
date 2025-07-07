@@ -10,7 +10,8 @@ namespace Site.Domain.Agents.Enums
     {
         Active = 0,
         InActive = 1,
-        Leader = 2,
+        Admin = 2,
         Owner = 3,
+        Agent = 4,
     }
 }

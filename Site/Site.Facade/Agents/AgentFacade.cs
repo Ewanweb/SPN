@@ -17,6 +17,8 @@ using Site.Query.Agents.GetById;
 using Site.Query.Agents.GetByList;
 using Site.Query.Agents.GetBySlug;
 using Site.Query.Agents.GetByStatus;
+using Site.Query.Agents.GetTeamAgentBySlug;
+using Site.Query.Agents.GetTeamAgents;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace Site.Facade.Agents
@@ -69,9 +71,19 @@ namespace Site.Facade.Agents
             return await _mediator.Send(new GetAgentBySlugQuery(slug));
         }
 
+        public async Task<AgentDto> GetTeamAgentBySlug(string slug)
+        {
+            return await _mediator.Send(new GetTeamAgentBySlugQuery(slug));
+        }
+
         public async Task<List<AgentDto>> GetAgentsByList()
         {
             return await _mediator.Send(new GetAgentsByListQuery());
+        }
+
+        public async Task<List<AgentDto>> GetTeamAgents()
+        {
+            return await _mediator.Send(new GetTeamAgentsQuery());
         }
 
         public async Task<List<AgentDto>> GetAgentsByStatus(AgentStatus status)

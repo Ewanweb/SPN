@@ -29,6 +29,8 @@ namespace Site.Facade.Agents
         Task<AgentDto> GetAgentById(Guid id);
         Task<AgentDto> GetAgentBySlug(string slug);
         Task<List<AgentDto>> GetAgentsByList();
+        Task<List<AgentDto>> GetTeamAgents();
+        Task<AgentDto> GetTeamAgentBySlug(string slug);
         Task<List<AgentDto>> GetAgentsByStatus(AgentStatus status);
     }
 }

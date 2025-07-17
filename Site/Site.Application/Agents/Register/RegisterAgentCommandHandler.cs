@@ -1,4 +1,8 @@
-﻿using MediatR;
+﻿using System.Security.Claims;
+using MediatR;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Site.Application._shared;
 using Site.Domain._shared;
@@ -11,10 +15,12 @@ namespace Site.Application.Agents.Register;
 public class RegisterAgentCommandHandler : IRequestHandler<RegisterAgentCommand, OperationResult>
 {
     private readonly IAgentRepository _repository;
+    private readonly IHttpContextAccessor _httpContext;
 
-    public RegisterAgentCommandHandler(IAgentRepository repository)
+    public RegisterAgentCommandHandler(IAgentRepository repository, IHttpContextAccessor httpContext)
     {
         _repository = repository;
+        _httpContext = httpContext;
     }
     public async Task<OperationResult> Handle(RegisterAgentCommand request, CancellationToken cancellationToken)
     {
@@ -62,6 +68,27 @@ public class RegisterAgentCommandHandler : IRequestHandler<RegisterAgentCommand,
             await _repository.AddAsync(agent);
             await _repository.SaveChangesAsync();
 
+            var claims = new List<Claim>
+            {
+                new Claim(ClaimTypes.NameIdentifier, agent.Id.ToString()),
+                new Claim(ClaimTypes.Name, agent.FullName),
+                new Claim(ClaimTypes.Email, agent.Email),
+                new Claim("Slug", agent.Slug),
+                new Claim("phone_number", agent.PhoneNumber.Value),
+                new Claim("Status", agent.Status.ToString()),
+            };
+
+            var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+            var principal = new ClaimsPrincipal(identity);
+
+            var authProps = new AuthenticationProperties
+            {
+                IsPersistent = true,
+                ExpiresUtc = DateTimeOffset.UtcNow.AddDays(30)
+            };
+
+            await _httpContext.HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal, authProps);
+            
             return OperationResult.Success("ثبت ‌نام با موفقیت انجام شد.");
         }
         catch (Exception e)

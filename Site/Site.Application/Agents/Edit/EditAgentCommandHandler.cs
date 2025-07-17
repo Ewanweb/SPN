@@ -25,17 +25,32 @@ public class EditAgentCommandHandler : IRequestHandler<EditAgentCommand, Operati
         try
         {
             string image;
+            string resume;
 
             if (request.Image is not null)
             {
-                _fileService.DeleteFile(Directories.AgentImages, user.ImageName);
+                if (user.ImageName is not "noImage.png")
+                    _fileService.DeleteFile(Directories.AgentImages, user.ImageName);
+               
                 image = await _fileService.SaveFileAndGenerateName(request.Image, Directories.AgentImages);
             }
             else
                 image = user.ImageName;
 
+            if (request.ResumeFile is not null)
+            {
+                if (user.ResumeFileName is not null)
+                    _fileService.DeleteFile(Directories.AgentFiles, user.ResumeFileName!);
+
+                resume = await _fileService.SaveFileAndGenerateName(request.ResumeFile, Directories.AgentFiles);
+            }
+            else
+            {
+                resume = null;
+            }
+
             user.Edit(request.FullName, request.GithubLink, image,
-                request.Description, request.Email, request.PhoneNumber);
+                request.Description, request.Email, request.PhoneNumber, request.Profienece, request.Experience, request.MyProfienece, resume);
 
             await _repository.SaveChangesAsync();
             return OperationResult.Success("عملیات موفقیت آمیز بود");
@@ -43,7 +58,7 @@ public class EditAgentCommandHandler : IRequestHandler<EditAgentCommand, Operati
         catch (Exception e)
         {
             Console.WriteLine(e);
-            return OperationResult.Error("عملیات شکست خورد");
+            return OperationResult.Error($"عملیات شکست خورد{e}");
         }
 
     }

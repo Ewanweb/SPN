@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
+using Site.Application.Agents.AddFeatures;
 using Site.Domain.Agents;
 using Site.Domain.Projects;
 using Site.Query.Agents.Dtos;
@@ -15,7 +16,10 @@ namespace Site.Query
     {
         public MappingProfile()
         {
-            CreateMap<Agent, AgentDto>().ReverseMap();
+            CreateMap<Agent, AgentDto>()
+                .ForMember(dest => dest.AgentFeatures, opt => opt.MapFrom(src => src.AgentFeatures));
+
+            CreateMap<AgentFeature, AgentFeatureDto>();
             CreateMap<Project, ProjectDto>().ReverseMap();
         }
     }

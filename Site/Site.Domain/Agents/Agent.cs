@@ -19,22 +19,25 @@ namespace Site.Domain.Agents
         public string FullName { get; private set; }
         public string Password { get; private set; }
         public string Slug { get; private set; }
-        public string GithubLink { get; private set; }
+        public string? GithubLink { get; private set; }
         public string ImageName { get; private set; }
-        public string Description { get; private set; }
+        public string? Description { get; private set; }
         public string Email { get; private set; }
+        public string? Profienece { get; private set; }
+        public string? MyProfienece { get; private set; }
+        public string? Experience { get; private set; }
         public AgentPhoneNumber PhoneNumber { get; private set; }
         public string? ResumeFileName { get; private set; }
         public AgentStatus Status { get; private set; }
-        public List<AgentFeature> AgentFeatures { get; private set; } = new();
-
+        private readonly List<AgentFeature> _agentFeatures = new();
+        public IReadOnlyCollection<AgentFeature> AgentFeatures => _agentFeatures;
         private Agent()
         {
         }
 
-        public Agent(string fullName, string githubLink, string imageName, string description, string slug,
+        public Agent(string fullName, string? githubLink, string imageName, string description, string slug,
             string email, AgentPhoneNumber phoneNumber,
-            AgentStatus status, string? resumeFileName)
+            AgentStatus status, string? resumeFileName, string? profienece, string? experience, string? myProfienece)
         {
             FullName = fullName;
             GithubLink = githubLink;
@@ -44,6 +47,9 @@ namespace Site.Domain.Agents
             PhoneNumber = phoneNumber;
             Status = status;
             ResumeFileName = resumeFileName;
+            Profienece = profienece;
+            Experience = experience;
+            MyProfienece = myProfienece;
         }
 
         public static Agent Create(string fullName, string email, string password, AgentPhoneNumber phoneNumber)
@@ -54,6 +60,9 @@ namespace Site.Domain.Agents
 
 
             agent.FullName = fullName;
+            agent.Profienece = "خالی";
+            agent.Experience = "خالی";
+            agent.MyProfienece = "خالی";
             agent.Description = "توضیحاتی نوشته نشده است";
             agent.GithubLink = "لینک گیتهابی نوشته نشده است";
             agent.ImageName = "noImage.png";
@@ -67,38 +76,35 @@ namespace Site.Domain.Agents
             return agent;
         }
 
-        public void Edit(string fullName, string githubLink, string imageName, string description,
-            string email, AgentPhoneNumber phoneNumber)
+        public void Edit(string fullName, string? githubLink, string imageName, string? description,
+            string email, AgentPhoneNumber phoneNumber, string? profienece, string? experience, string? myProfienece, string? resume)
         {
-            Guard(fullName, githubLink, imageName, description, email, phoneNumber);
-
+            Profienece = profienece;
             FullName = fullName;
             GithubLink = githubLink;
             ImageName = imageName;
             Description = description;
             Email = email;
             PhoneNumber = phoneNumber;
+            Experience = experience;
+            MyProfienece = myProfienece;
+            ResumeFileName = resume;
         }
 
         public void ChangeStatus(AgentStatus status) => Status = status;
 
-        public void AddFeature(List<string>? featureKeys)
+        public void AddFeatureGroup(Guid agentId, string title, int percentage)
         {
-            if (featureKeys is null || !featureKeys.Any())
-                throw new ArgumentException("هیچ ویژگی ارسال نشده است", nameof(featureKeys));
+            if (string.IsNullOrWhiteSpace(title) || percentage < 0 || percentage > 100)
+                throw new ArgumentException(" ویژگی نمی‌تواند خالی باشد");
 
-            // جلوگیری از تکرار ویژگی
-            var existingKeys = AgentFeatures.Select(f => f.Key).ToHashSet(StringComparer.OrdinalIgnoreCase);
 
-            var newFeatures = featureKeys
-                .Where(key => !existingKeys.Contains(key))
-                .Select(key => new AgentFeature(key))
-                .ToList();
+            var feature = new AgentFeature(agentId, title, percentage);
+            _agentFeatures.Add(feature);
 
-            AgentFeatures.AddRange(newFeatures);
         }
 
-        public void Guard(string fullName, string githubLink, string imageName, string description,
+        public void Guard(string fullName, string? githubLink, string imageName, string description,
                 string email, AgentPhoneNumber phoneNumber)
             {
                 if (string.IsNullOrWhiteSpace(fullName))

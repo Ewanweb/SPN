@@ -5,6 +5,6 @@ namespace Site.Endpoint.Areas.Admin.ViewModels;
 
 public class ChangeAgentStatusViewModel
 {
-    public string AgentId { get; set; }
+    public string AgentSlug { get; set; }
     public AgentStatus AgentStatus { get; set; }
 }

@@ -28,11 +28,14 @@ namespace Site.Endpoint.Areas.Admin.ViewModels
     {
         public string FullName { get; set; }
         public string Slug { get; set; }
+        public string? Profienece { get; set; }
+        public string? MyProfienece { get; set; }
+        public string? Experience { get; set; }
         public string GithubLink { get; set; }
         public string ImageName { get; set; }
         public string Description { get; set; }
         public string Email { get; set; }
         public AgentPhoneNumber PhoneNumber { get; set; }
-        public string? ResumeFileName { get; set; }
+        public IFormFile? ResumeFileName { get; set; }
     }
 }

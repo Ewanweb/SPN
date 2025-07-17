@@ -41,6 +41,7 @@ public class LoginAgentCommandHandler : IRequestHandler<LoginAgentCommand, Opera
             new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
             new Claim(ClaimTypes.Name, user.FullName),
             new Claim(ClaimTypes.Email, user.Email),
+            new Claim("Slug", user.Slug),
             new Claim("phone_number", user.PhoneNumber.Value),
             new Claim("Status", user.Status.ToString()),
         };

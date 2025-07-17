@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore.Metadata;
 using Site.Application._shared;
 using Site.Application.Agents.Change_Status;
 using Site.Application.Agents.Create;
@@ -85,7 +86,7 @@ namespace Site.Endpoint.Areas.Admin.Controllers
                 Email = agent.Email,
                 FullName = agent.FullName,
                 PhoneNumber = agent.PhoneNumber,
-                ResumeFileName = agent.ResumeFileName,
+                // ResumeFileName = agent.ResumeFileName,
                 Slug = agent.Slug
             };
             ViewData["Admin-Title"] = "ویرایش کاربر";
@@ -99,7 +100,8 @@ namespace Site.Endpoint.Areas.Admin.Controllers
         {
             try
             {
-                EditAgentCommand command = new EditAgentCommand(slug, viewModel.FullName, viewModel.GithubLink, null, viewModel.Description, viewModel.Email, viewModel.PhoneNumber);
+                EditAgentCommand command = new EditAgentCommand(slug, viewModel.FullName, viewModel.GithubLink, null, viewModel.Description,
+                    viewModel.Email, viewModel.PhoneNumber, null, viewModel.Profienece, viewModel.MyProfienece, viewModel.Experience);
 
                 OperationResult agent = await _facade.Edit(command);
 
@@ -144,7 +146,8 @@ namespace Site.Endpoint.Areas.Admin.Controllers
             AgentDto agent = await _facade.GetAgentBySlug(slug);
             var viewModel = new ChangeAgentStatusViewModel()
             {
-                AgentId = agent.Id,
+                
+                AgentSlug = agent.Slug,
                 AgentStatus = agent.Status
             };
             return View(viewModel);

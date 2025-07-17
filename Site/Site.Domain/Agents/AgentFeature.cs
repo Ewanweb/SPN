@@ -8,23 +8,20 @@ using Site.Domain.Agents.ValueObjects;
 
 namespace Site.Domain.Agents
 {
-    public class AgentFeature : ValueObject
+    public class AgentFeature : BaseEntity
     {
-        public string Key { get; private set; }
+        public Guid AgentId { get; private set; }
+        public string Title { get; private set; }
+        public int Percentage { get; private set; }
 
         private AgentFeature() { }
 
-        public AgentFeature(string key)
+        public AgentFeature(Guid agentId, string title, int percentage)
         {
-            if (string.IsNullOrWhiteSpace(key))
-                throw new ArgumentNullException(nameof(key));
-
-            Key = key;
-        }
-
-        protected override IEnumerable<object> GetEqualityComponents()
-        {
-            yield return Key;
+            AgentId = agentId;
+            Title = title;
+            Percentage = percentage;
         }
     }
+    
 }

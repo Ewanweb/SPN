@@ -15,9 +15,14 @@ namespace Site.Application.Agents.Edit
     public record EditAgentCommand(
         string Slug,
         string FullName,
-        string GithubLink,
+        string? GithubLink,
         IFormFile? Image,
-        string Description,
+        string? Description,
         string Email,
-        AgentPhoneNumber PhoneNumber) : IRequest<OperationResult>;
+        AgentPhoneNumber PhoneNumber,
+        IFormFile? ResumeFile,
+        string? Profienece,
+        string? MyProfienece,
+        string? Experience
+        ) : IRequest<OperationResult>;
 }

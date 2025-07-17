@@ -16,8 +16,16 @@ namespace Site.Endpoint.Controllers
 
         public async Task<IActionResult> Index()
         {
-            List<AgentDto> agents = await _facade.GetAgentsByStatus(AgentStatus.Agent);
+            List<AgentDto> agents = await _facade.GetTeamAgents();
+
             return View(agents);
+        }
+        
+        public async Task<IActionResult> Single(string slug)
+        {
+            AgentDto agent = await _facade.GetTeamAgentBySlug(slug);
+            
+            return View(agent);
         }
     }
 }

@@ -7,8 +7,10 @@ using Site.Application._shared;
 using Site.Application.Agents.Login;
 using Site.Application.Agents.Register;
 using Site.Domain.Agents;
+using Site.Endpoint.Areas.Admin.ViewModels;
 using Site.Endpoint.Areas.Profile.ViewModels;
 using Site.Facade.Agents;
+using Site.Query.Agents.Dtos;
 
 namespace Site.Endpoint.Areas.Profile.Controllers
 {
@@ -84,5 +86,7 @@ namespace Site.Endpoint.Areas.Profile.Controllers
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
             return RedirectToAction("Login", "Auth"); // یا صفحه اصلی
         }
+        
+
     }
 }

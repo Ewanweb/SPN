@@ -11,4 +11,6 @@ public interface IAgentRepository : IRepository<Agent>
     Task<Agent?> GetAgentByEmail(string email);
     bool PhoneNumberExist(AgentPhoneNumber phoneNumber);
     Task<List<Agent>?> GetAgentByStatus(AgentStatus status);
+    Task<List<Agent>?> GetTeamAgents();
+    Task<Agent?> GetTeamAgentBySlug(string slug);
 }

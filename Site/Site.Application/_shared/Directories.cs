@@ -9,6 +9,7 @@ namespace Site.Application._shared
     public static class Directories
     {
         public const string AgentImages = "wwwroot/Images/Agents/";
+        public const string AgentFiles = "wwwroot/Files/Agents/";
         public const string ProjectImages = "wwwroot/Images/Projects/";
     }
 }

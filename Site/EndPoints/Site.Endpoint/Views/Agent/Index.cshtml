@@ -37,9 +37,9 @@
 						<div class="team-member-item wow fadeInUp">
 							<!-- Team Image Start -->
 							<div class="team-image">
-								<a href="team-single.html" data-cursor-text="نمایش">
+								<a asp-controller="Agent" asp-action="Single" asp-route-slug="@item.Slug" data-cursor-text="نمایش">
 									<figure class="image-anime">
-									<img src="@Url.Content($"~/images/Agents/{item.ImageName}")" alt="">
+									<img src="@Url.Content($"~/Images/Agents/{item.ImageName}")" alt="">
 									</figure>
 								</a>
 							</div>
@@ -49,8 +49,8 @@
 							<div class="team-body">
 								<!-- Team Content Start -->
 								<div class="team-content">
-									<h3><a href="team-single.html">@item.FullName</a></h3>
-									<p>طراح گرافیکی</p>
+									<h3><a asp-controller="Agent" asp-action="Single" asp-route-slug="@item.Slug">@item.FullName</a></h3>
+								<p>@item.Profienece</p>
 								</div>
 								<!-- Team Content End -->
 
@@ -70,80 +70,7 @@
 					</div>
 
 				}
-
-		        <div class="col-lg-4 col-md-6">
-			        <!-- Team Member Item Start -->
-			        <div class="team-member-item wow fadeInUp" data-wow-delay="0.2s">
-				        <!-- Team Image Start -->
-				        <div class="team-image">
-					        <a href="team-single.html" data-cursor-text="نمایش">
-						        <figure class="image-anime">
-							        <img src="images/team-2.jpg" alt="">
-						        </figure>
-					        </a>
-				        </div>
-				        <!-- Team Image End -->
-
-				        <!-- Team Body Start -->
-				        <div class="team-body">
-					        <!-- Team Content Start -->
-					        <div class="team-content">
-						        <h3><a href="team-single.html">صالح جامعی</a></h3>
-						        <p>frontEnd</p>
-					        </div>
-					        <!-- Team Content End -->
-
-					        <!-- Team Social Icon Start -->
-					        <div class="team-social-icon">
-						        <ul>
-							        <li><a href="#"><i class="fa-brands fa-x-twitter"></i></a></li>
-							        <li><a href="#"><i class="fa-brands fa-facebook-f"></i></a></li>
-							        <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
-						        </ul>
-					        </div>
-					        <!-- Team Social Icon End -->
-				        </div>
-				        <!-- Team Body End -->
-			        </div>
-			        <!-- Team Member Item End -->
-		        </div>
-
-		        <div class="col-lg-4 col-md-6">
-			        <!-- Team Member Item Start -->
-			        <div class="team-member-item wow fadeInUp" data-wow-delay="0.4s">
-				        <!-- Team Image Start -->
-				        <div class="team-image">
-					        <a href="team-single.html" data-cursor-text="نمایش">
-						        <figure class="image-anime">
-							        <img src="images/team-4.jpg" alt="">
-						        </figure>
-					        </a>
-				        </div>
-				        <!-- Team Image End -->
-
-				        <!-- Team Body Start -->
-				        <div class="team-body">
-					        <!-- Team Content Start -->
-					        <div class="team-content">
-						        <h3><a href="team-single.html">ماهان محمودی</a></h3>
-						        <p>backEnd</p>
-					        </div>
-					        <!-- Team Content End -->
-
-					        <!-- Team Social Icon Start -->
-					        <div class="team-social-icon">
-						        <ul>
-							        <li><a href="#"><i class="fa-brands fa-x-twitter"></i></a></li>
-							        <li><a href="#"><i class="fa-brands fa-facebook-f"></i></a></li>
-							        <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
-						        </ul>
-					        </div>
-					        <!-- Team Social Icon End -->
-				        </div>
-				        <!-- Team Body End -->
-			        </div>
-			        <!-- Team Member Item End -->
-		        </div>
+				
 	        </div>
         </div>
     </div>

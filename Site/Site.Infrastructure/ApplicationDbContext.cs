@@ -26,7 +26,7 @@ namespace Site.Infrastructure
         {
             base.OnModelCreating(builder);
 
-            builder.Ignore<BaseDomainEvent>();  // نادیده گرفتن DomainEvent در EF
+            builder.Ignore<BaseDomainEvent>();  // اگر از domain event استفاده می‌کنی
 
             builder.Entity<Agent>(agent =>
             {
@@ -38,16 +38,17 @@ namespace Site.Infrastructure
                         .IsRequired();
                 });
 
-                agent.OwnsMany(a => a.AgentFeatures, feature =>
+                agent.OwnsMany(a => a.AgentFeatures, group =>
                 {
-                    feature.WithOwner().HasForeignKey("AgentId");
+                    group.ToTable("AgentFeatures");
 
-                    feature.Property(f => f.Key)
-                        .HasColumnName("FeatureKey")
-                        .IsRequired()
-                        .HasMaxLength(100);
+                    group.WithOwner().HasForeignKey("AgentId");
 
-                    feature.HasKey("AgentId", nameof(AgentFeature.Key));
+                    group.Property(g => g.Title)
+                        .HasMaxLength(200)
+                        .IsRequired();
+
+                    group.HasKey("Id");
                 });
 
                 agent.Property(a => a.FullName).IsRequired().HasMaxLength(100);
@@ -57,8 +58,9 @@ namespace Site.Infrastructure
                 agent.Property(a => a.Email).HasMaxLength(200);
                 agent.Property(a => a.Slug).HasMaxLength(200);
             });
+        
 
-            builder.Entity<Project>(project =>
+        builder.Entity<Project>(project =>
             {
                 project.Property(p => p.Title).IsRequired().HasMaxLength(200);
                 project.Property(p => p.Slug).IsRequired().HasMaxLength(200);

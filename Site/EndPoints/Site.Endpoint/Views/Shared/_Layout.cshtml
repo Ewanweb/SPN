@@ -65,10 +65,8 @@
                     <div class="collapse navbar-collapse main-menu">
                         <div class="nav-menu-wrapper">
                             <ul class="navbar-nav mr-auto spn-header-color" id="menu">
-                                <li class="nav-item"><a class="nav-link" href="index.html">صفحه اصلی</a></li>
-                                <li class="nav-item"><a class="nav-link" href="about.html">درباره ما</a>
-                                <li class="nav-item"><a class="nav-link" href="services.html">خدمات</a></li>
-                                <li class="nav-item"><a class="nav-link" href="blog.html">وبلاگ</a></li>
+                                <li class="nav-item"><a class="nav-link" asp-controller="Home" asp-action="Index">صفحه اصلی</a></li>
+
                                 <!--class="highlighted-menu" for hid in big menu and show just mobile menu-->
                                 <li class="nav-item">
                                     <a class="nav-link" href="contact.html">
@@ -79,24 +77,28 @@
                                 <li class="nav-item submenu">
                                     <a class="nav-link" href="#">تیم ما</a>
                                     <ul>
-                                        <li class="nav-item"><a class="nav-link" href="team.html">تیم ما</a></li>
+                                        <li class="nav-item"><a class="nav-link" asp-controller="Agent" asp-action="Index">تیم ما</a></li>
                                         <!-- <li class="nav-item"><a class="nav-link" href="testimonial.html">گواهینامه
-                                                ها</a></li> -->
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="image-gallery.html">
-                                                گالری
-                                                تصاویر
-                                            </a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="video-gallery.html">
-                                                گالری
-                                                ویدئو
-                                            </a>
-                                        </li>
-                                        <li class="nav-item"><a class="nav-link" href="faqs.html">سوالات</a></li>
+                                            ها</a></li> -->
                                     </ul>
                                 </li>
+                                @if(User.Identity!.IsAuthenticated)
+                                {
+                                    <li class="nav-item submenu">
+                                        <a class="nav-link" href="#">@User.FindFirst(ClaimTypes.Name).Value</a>
+                                        <ul>
+                                            <li class="nav-item">
+                                                <form class="nav-link" asp-area="Profile" asp-controller="Auth" asp-action="Logout" method="post">
+                                                    <button type="submit">خروج از حساب</button>
+                                                </form>
+                                            </li>
+                                            <!-- <li class="nav-item"><a class="nav-link" href="testimonial.html">گواهینامه
+                                                ها</a></li> -->
+
+                                        </ul>
+                                    </li>
+
+                                }
                             </ul>
                         </div>
                     </div>

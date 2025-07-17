@@ -35,5 +35,13 @@ namespace Site.Infrastructure.Repositories
 
         public async Task<List<Agent>?> GetAgentByStatus(AgentStatus status)
             => await _context.Agents.Where(s => s.Status == status).ToListAsync();
+
+        public async Task<List<Agent>?> GetTeamAgents()
+            => await _context.Agents.Where(s => s.Status == AgentStatus.Agent || s.Status == AgentStatus.Owner)
+                .Include(a => a.AgentFeatures).ToListAsync();
+
+        public async Task<Agent?> GetTeamAgentBySlug(string slug)
+            => await _context.Agents.Where(s => s.Slug == slug)
+                .Include(a => a.AgentFeatures).FirstOrDefaultAsync();
     }
 }

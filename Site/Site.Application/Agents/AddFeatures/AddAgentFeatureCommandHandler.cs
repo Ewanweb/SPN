@@ -14,23 +14,23 @@ public class AddAgentFeatureCommandHandler : IRequestHandler<AddAgentFeatureComm
     }
     public async Task<OperationResult> Handle(AddAgentFeatureCommand request, CancellationToken cancellationToken)
     {
-        var agent = await _repository.GetAgentBySlug(request.Slug);
-
+        var agent = await _repository.GetByIdAsync(request.AgentId);
         if (agent == null)
-            return OperationResult.NotFound("ایجنت مورد نظر یافت نشد");
-
+            return OperationResult.Error("Agent not found");
         try
         {
-            agent.AddFeature(request.Features);
 
-            await _repository.AddAsync(agent);
+
+            agent.AddFeatureGroup(request.AgentId, request.Title, request.Percentage);
             await _repository.SaveChangesAsync();
-            return OperationResult.Success("ویژگی ها با موفقیت اضافه شدند");
+
+            return OperationResult.Success("ویژگی با موفقیت اضافه شد");
         }
         catch (Exception e)
         {
             Console.WriteLine(e);
-            return OperationResult.Error("عملیات شکست خورد");
+            return OperationResult.Error($"عملیات شکست خورد {e}");
+
         }
     }
 }

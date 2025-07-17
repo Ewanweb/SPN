@@ -9,5 +9,15 @@ using Site.Domain.Agents;
 
 namespace Site.Application.Agents.AddFeatures
 {
-    public record AddAgentFeatureCommand(string Slug, List<string> Features) : IRequest<OperationResult>;
+    public record AddAgentFeatureCommand(
+        Guid AgentId,
+        string Title,
+        int Percentage
+        ) : IRequest<OperationResult>;
+
+    public class AgentFeatureDto
+    {
+        public string Title { get; set; }
+        public int Percentage { get; set; }
+    }
 }

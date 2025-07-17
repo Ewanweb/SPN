@@ -47,7 +47,6 @@ namespace Site.Infrastructure.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Description")
-                        .IsRequired()
                         .HasMaxLength(1000)
                         .HasColumnType("nvarchar(1000)");
 
@@ -56,13 +55,15 @@ namespace Site.Infrastructure.Migrations
                         .HasMaxLength(200)
                         .HasColumnType("nvarchar(200)");
 
+                    b.Property<string>("Experience")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("FullName")
                         .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
                     b.Property<string>("GithubLink")
-                        .IsRequired()
                         .HasMaxLength(300)
                         .HasColumnType("nvarchar(300)");
 
@@ -71,8 +72,14 @@ namespace Site.Infrastructure.Migrations
                         .HasMaxLength(200)
                         .HasColumnType("nvarchar(200)");
 
+                    b.Property<string>("MyProfienece")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Password")
                         .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Profienece")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ResumeFileName")
@@ -177,17 +184,32 @@ namespace Site.Infrastructure.Migrations
                 {
                     b.OwnsMany("Site.Domain.Agents.AgentFeature", "AgentFeatures", b1 =>
                         {
+                            b1.Property<Guid>("Id")
+                                .ValueGeneratedOnAdd()
+                                .HasColumnType("uniqueidentifier");
+
                             b1.Property<Guid>("AgentId")
                                 .HasColumnType("uniqueidentifier");
 
-                            b1.Property<string>("Key")
-                                .HasMaxLength(100)
-                                .HasColumnType("nvarchar(100)")
-                                .HasColumnName("FeatureKey");
+                            b1.Property<DateTime>("CreatedDate")
+                                .HasColumnType("datetime2");
 
-                            b1.HasKey("AgentId", "Key");
+                            b1.Property<int>("Percentage")
+                                .HasColumnType("int");
 
-                            b1.ToTable("AgentFeature");
+                            b1.Property<string>("Title")
+                                .IsRequired()
+                                .HasMaxLength(200)
+                                .HasColumnType("nvarchar(200)");
+
+                            b1.Property<DateTime?>("UpdatedDate")
+                                .HasColumnType("datetime2");
+
+                            b1.HasKey("Id");
+
+                            b1.HasIndex("AgentId");
+
+                            b1.ToTable("AgentFeatures", (string)null);
 
                             b1.WithOwner()
                                 .HasForeignKey("AgentId");

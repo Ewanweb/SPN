@@ -256,20 +256,26 @@
                             </li>
                             @if (User.Identity!.IsAuthenticated)
                             {
-	                            <li class="navbar-item dropdown">
-		                            <a class="navbar-link dropdown-arrow" href="#">@User.FindFirst(ClaimTypes.Name)?.Value</a>
-		                            <ul class="dropdown-position-list">
-			                            <!-- show if login -->
-			                            <li><a asp-area="Profile" >پروفایل</a></li>
-			                            <li>
-				                            <form asp-area="Profile" asp-controller="Auth" asp-action="Logout" method="post">
-												<button type="submit" value="خروج از حساب"></button>
-				                            </form>
-										</li>
-			                            <li><a href="change-password.html">تغییر پسوورد</a></li>
-		                            </ul>
-	                            </li>
+                                <li class="navbar-item dropdown">
+                                    <a class="navbar-link dropdown-arrow" href="#">
+                                        @User.FindFirst(ClaimTypes.Name)?.Value
+                                    </a>
+                                    <ul class="dropdown-position-list">
+                                        <li>
+                                            <a asp-area="Profile" asp-controller="Account" asp-action="Index">پروفایل</a>
+                                        </li>
+                                        <li>
+                                            <form asp-area="Profile" asp-controller="Auth" asp-action="Logout" method="post" style="display:inline">
+                                                <button type="submit" class="btn-link">خروج از حساب</button>
+                                            </form>
+                                        </li>
+                                        <li>
+                                            <a asp-area="Profile" asp-controller="Account" asp-action="ChangePassword">تغییر پسوورد</a>
+                                        </li>
+                                    </ul>
+                                </li>
                             }
+
                             else
                             {
 	                            <li class="navbar-item dropdown">

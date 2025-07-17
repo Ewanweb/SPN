@@ -1,8 +1,175 @@
 @model Site.Query.Agents.Dtos.AgentDto
 
 @{
-    ViewBag.Title = "title";
     Layout = "_Layout";
 }
 
-<h2>title</h2>
+   <!-- Page Header Start -->
+    <div class="page-header">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-12">
+                    <!-- Page Header Box Start -->
+                    <div class="page-header-box">
+                        <h1 class="text-anime-style-2" data-cursor="-opaque">@Model.FullName</h1>
+                        <nav class="wow fadeInUp">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">صفحه اصلی</a></li>
+                                <li class="breadcrumb-item"><a asp-controller="Agent" asp-action="Index">تیم</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">@Model.FullName</li>
+                            </ol>
+                        </nav>
+                    </div>
+                    <!-- Page Header Box End -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Page Header End -->
+
+    <!-- Page Team Single Start -->
+    <div class="page-team-single">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <!-- Team Single Sidebar Start -->
+                    <div class="team-single-sidebar">
+                        <!-- Team Single Image Start -->
+                        <div class="team-single-img">
+                            <figure class="image-anime reveal">
+                                <img src="@Url.Content($"~/Images/Agents/{Model.ImageName}")" alt="">
+                            </figure>
+                        </div>
+                        <!-- Team Single Image End -->
+
+                        <!-- Page Contact Form Start -->
+                        <!-- Page Contact Form End -->
+
+                        <!-- Team Member Body Start -->
+                        <div class="team-member-body">
+                            <!-- Team Member Box Start -->
+                            <div class="team-contact-box wow fadeInUp">
+                                <div class="icon-box">
+                                    <img src="@Url.Content("~/Assets/images/icon-mail.svg")" alt="">
+                                </div>
+
+                                <div class="team-contact-content">
+                                    <p>آدرس ایمیل</p>
+                                    <h3>@Model.Email</h3>
+                                </div>
+                            </div>
+                            <!-- Team Member Box End -->
+
+                            <!-- Team Member Box Start -->
+                            <div class="team-contact-box wow fadeInUp" data-wow-delay="0.2s">
+                                <div class="icon-box">
+                                    <img src="@Url.Content("~/Assets/images/icon-phone.svg")" alt="">
+                                </div>
+
+                                <div class="team-contact-content">
+                                    <p>شماره تماس</p>
+                                    <h3>@Model.PhoneNumber.Value</h3>
+                                </div>
+                            </div>
+                            <!-- Team Member Box End -->
+
+                            <!-- Team Member Box Start -->
+                            <div class="team-contact-box wow fadeInUp" data-wow-delay="0.4s">
+                                <div class="icon-box">
+                                    <img src="@Url.Content("~/Assets/images/icon-experience.svg")" alt="">
+                                </div>
+
+                                <div class="team-contact-content">
+                                    <p>تجربه</p>
+                                    <h3>@Model.Experience</h3>
+                                </div>
+                            </div>
+                            <!-- Team Member Box End -->
+
+                            <!-- Team Member Box Start -->
+                            <div class="team-contact-box wow fadeInUp" data-wow-delay="0.6s">
+                                <div class="icon-box">
+                                    <img src="@Url.Content("~/Assets/images/icon-location.svg")" alt="">
+                                </div>
+
+                                <div class="team-contact-content">
+                                    <p>دانلود فایل رزومه</p>
+                                <a href="@Url.Content($"~/Files/Agents/{Model.ResumeFileName}")" download><h3>فایل رزومه</h3></a>
+                            </div>
+                            </div>
+                            <!-- Team Member Box End -->
+                        </div>
+                        <!-- Team Member Body End -->
+                    </div>
+                    <!-- Team Single Sidebar End -->
+                </div>
+
+                <div class="col-lg-6">
+                    <!-- Team Single Content Start -->
+                    <div class="team-single-content">
+                        <!-- Team Member Content Start -->
+                        <div class="team-member-content">
+                            <!-- Team Member Header Start -->
+                            <div class="team-member-header">
+                                <h3 class="wow fadeInUp">@Model.Profienece</h3>
+                                <h2 class="text-anime-style-2" data-cursor="-opaque">درباره من</h2>
+                                <p class="wow fadeInUp" data-wow-delay="0.2s">@Model.Description</p>
+                            </div>
+                            <!-- Team Member Header End -->
+
+                            <!-- as here cut " Team Member Body " -->
+
+                            <!-- Team Member Footer Start -->
+                            <div class="team-member-footer wow fadeInUp" data-wow-delay="0.8s">
+                                <span>ما را دنبال کنید:</span>
+                                <ul>
+                                    <li><a href="@Model.GithubLink"><i class="fa-brands fa-github"></i></a></li>
+                                </ul>
+                            </div>
+                            <!-- Team Member Footer End -->
+                        </div>
+                        <!-- Team Member Content End -->
+
+                        <!-- Team Expertise Start -->
+                        <div class="team-expertise">
+                            <h2 class="text-anime-style-2" data-cursor="-opaque">تخصص من</h2>
+                            <p class="wow fadeInUp">@Model.MyProfienece</p>
+                            <ul class="wow fadeInUp" data-wow-delay="0.2s">
+	                            @foreach (var item in Model.AgentFeatures.Where(f => f.Percentage == 0))
+	                            {
+		                            <li>@item.Title</li>
+	                            }
+                            </ul>
+                        </div>
+                        <!-- Team Expertise End -->
+
+                        <!-- Team Skills Start -->
+                        <div class="team-skills">
+
+							@foreach (var item in Model.AgentFeatures.Where(f => f.Percentage > 0 && f.Percentage < 101))
+							{
+								<!-- Skills Progress Bar Start -->
+								<div class="skills-progress-bar">
+									<!-- Skill Item Start -->
+									<div class="skillbar" data-percent="@item.Percentage%">
+										<div class="skill-data">
+											<div class="skill-title">@item.Title</div>
+											<div class="skill-no">@item.Percentage%</div>
+										</div>
+										<div class="skill-progress">
+											<div class="count-bar"></div>
+										</div>
+									</div>
+									<!-- Skill Item End -->
+								</div>
+								<!-- Skills Progress Bar End -->
+							}
+                        </div>
+                        <!-- Team Skills End -->
+                    </div>
+                    <!-- Team Single Content End -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Page Team Single End -->

@@ -1,25 +1,43 @@
-﻿@using Microsoft.AspNetCore.Mvc.TagHelpers
-@using Site.Endpoint.Areas.Profile.ViewModels
-@model ProfileViewModel
-@using Site.Domain.Agents
+﻿@model Site.Endpoint.Areas.Profile.ViewModels.ProfileViewModel
 @using Site.Domain.Agents.Enums
 
 @{
 	var statusString = User.FindFirst("Status")?.Value;
 	AgentStatus status = AgentStatus.InActive;
 
-	if (!string.IsNullOrEmpty(statusString))
+	if (Enum.TryParse<AgentStatus>(statusString, ignoreCase: true, out var parsedStatus))
 	{
-		Enum.TryParse(statusString, out status);
+		status = parsedStatus;
 	}
+
+	bool Admin;
+
+	if (status == AgentStatus.Admin || status == AgentStatus.Owner || status == AgentStatus.Agent)
+		Admin = true;
+	else
+		Admin = false;
 }
 @{
     Layout = "~/Areas/Profile/Views/Shared/_Layout.cshtml";
 }
 
 <!--=====================================
-                PROFILE PART START
-    =======================================-->
+PROFILE PART START
+=======================================-->
+@if (TempData["Error"] is not null)
+{
+<div class="alert alert-Danger" role="alert">
+    @TempData["Error"]
+</div>
+}
+
+@if (TempData["Success"] is not null)
+{
+<div class="alert alert-success" role="alert">
+    @TempData["Success"]
+</div>
+}
+
 <section class="inner-section profile-part">
     <div class="container">
         <div class="row">
@@ -28,12 +46,16 @@
                     <div class="account-title">
                         <h4>پروفایل شما</h4>
                         <button data-bs-toggle="modal" data-bs-target="#profile-edit">ویرایش پروفایل</button>
+                        @if (Admin is true)
+                        {
+                            <button data-bs-toggle="modal" data-bs-target="#profienece-edit">مدیریت تخصص</button>
+                        }
                     </div>
                     <div class="account-content">
                         <div class="row">
                             <div class="col-lg-2">
                                 <div class="profile-image">
-                                    <a href="#"><img src="@Url.Content("~/Profile/images/user.png")" alt="user"></a>
+                                    <a href="#"><img src="@Url.Content($"~/Images/Agents/{Model.ImageName}")" alt="user"></a>
                                 </div>
                             </div>
                             <div class="col-md-6 col-lg-4">
@@ -57,95 +79,95 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-12">
-                <div class="account-card">
-                    <div class="account-title">
-                        <h4>آدرس سیستم</h4>
-                        <button data-bs-toggle="modal" data-bs-target="#address-add">افزودن آدرس سیستم</button>
-                    </div>
-                    <div class="account-content">
-                        <div class="row">
-                            <div class="col-md-6 col-lg-4 alert fade show">
-                                <div class="profile-card address active">
-                                    <h6>انبارداری</h6>
-                                    <p>3444-2344-1223-1237</p>
-                                    <ul class="user-action">
-                                        <li>
-                                            <button class="edit icofont-edit" title="ویرایش" data-bs-toggle="modal"
-                                                    data-bs-target="#address-edit"></button>
-                                        </li>
-                                        <li>
-                                            <button class="trash icofont-ui-delete" title="حذف"
-                                                    data-bs-dismiss="alert"></button>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-lg-4 alert fade show">
-                                <div class="profile-card address">
-                                    <h6>مدیریت مطب</h6>
-                                    <p>3444-2344-1223-1237</p>
-                                    <ul class="user-action">
-                                        <li>
-                                            <button class="edit icofont-edit" title="ویرایش" data-bs-toggle="modal"
-                                                    data-bs-target="#address-edit"></button>
-                                        </li>
-                                        <li>
-                                            <button class="trash icofont-ui-delete" title="حذف"
-                                                    data-bs-dismiss="alert"></button>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-lg-4 alert fade show">
-                                <div class="profile-card address">
-                                    <h6>آموزشگاه</h6>
-                                    <p>3444-2344-1223-1237</p>
-                                    <ul class="user-action">
-                                        <li>
-                                            <button class="edit icofont-edit" title="ویرایش" data-bs-toggle="modal"
-                                                    data-bs-target="#address-edit"></button>
-                                        </li>
-                                        <li>
-                                            <button class="trash icofont-ui-delete" title="حذف"
-                                                    data-bs-dismiss="alert"></button>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-lg-12">
-                                    <div class="bottom-paginate">
-                                        <p class="page-info">نمایش 3 از 60 نتیجه</p>
-                                        <ul class="pagination">
-                                            <li class="page-item">
-                                                <a class="page-link" href="#">
-                                                    <i class="fas fa-long-arrow-alt-right"></i>
-                                                </a>
-                                            </li>
-                                            <li class="page-item"><a class="page-link active" href="#">1</a></li>
-                                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                            <li class="page-item">...</li>
-                                            <li class="page-item"><a class="page-link" href="#">60</a></li>
-                                            <li class="page-item">
-                                                <a class="page-link" href="#">
-                                                    <i class="fas fa-long-arrow-alt-left"></i>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            @* <div class="col-lg-12"> *@
+            @*     <div class="account-card"> *@
+            @*         <div class="account-title"> *@
+            @*             <h4>آدرس سیستم</h4> *@
+            @*             <button data-bs-toggle="modal" data-bs-target="#address-add">افزودن آدرس سیستم</button> *@
+            @*         </div> *@
+            @*         <div class="account-content"> *@
+            @*             <div class="row"> *@
+            @*                 <div class="col-md-6 col-lg-4 alert fade show"> *@
+            @*                     <div class="profile-card address active"> *@
+            @*                         <h6>انبارداری</h6> *@
+            @*                         <p>3444-2344-1223-1237</p> *@
+            @*                         <ul class="user-action"> *@
+            @*                             <li> *@
+            @*                                 <button class="edit icofont-edit" title="ویرایش" data-bs-toggle="modal" *@
+            @*                                         data-bs-target="#address-edit"></button> *@
+            @*                             </li> *@
+            @*                             <li> *@
+            @*                                 <button class="trash icofont-ui-delete" title="حذف" *@
+            @*                                         data-bs-dismiss="alert"></button> *@
+            @*                             </li> *@
+            @*                         </ul> *@
+            @*                     </div> *@
+            @*                 </div> *@
+            @*                 <div class="col-md-6 col-lg-4 alert fade show"> *@
+            @*                     <div class="profile-card address"> *@
+            @*                         <h6>مدیریت مطب</h6> *@
+            @*                         <p>3444-2344-1223-1237</p> *@
+            @*                         <ul class="user-action"> *@
+            @*                             <li> *@
+            @*                                 <button class="edit icofont-edit" title="ویرایش" data-bs-toggle="modal" *@
+            @*                                         data-bs-target="#address-edit"></button> *@
+            @*                             </li> *@
+            @*                             <li> *@
+            @*                                 <button class="trash icofont-ui-delete" title="حذف" *@
+            @*                                         data-bs-dismiss="alert"></button> *@
+            @*                             </li> *@
+            @*                         </ul> *@
+            @*                     </div> *@
+            @*                 </div> *@
+            @*                 <div class="col-md-6 col-lg-4 alert fade show"> *@
+            @*                     <div class="profile-card address"> *@
+            @*                         <h6>آموزشگاه</h6> *@
+            @*                         <p>3444-2344-1223-1237</p> *@
+            @*                         <ul class="user-action"> *@
+            @*                             <li> *@
+            @*                                 <button class="edit icofont-edit" title="ویرایش" data-bs-toggle="modal" *@
+            @*                                         data-bs-target="#address-edit"></button> *@
+            @*                             </li> *@
+            @*                             <li> *@
+            @*                                 <button class="trash icofont-ui-delete" title="حذف" *@
+            @*                                         data-bs-dismiss="alert"></button> *@
+            @*                             </li> *@
+            @*                         </ul> *@
+            @*                     </div> *@
+            @*                 </div> *@
+            @*                 <div class="row"> *@
+            @*                     <div class="col-lg-12"> *@
+            @*                         <div class="bottom-paginate"> *@
+            @*                             <p class="page-info">نمایش 3 از 60 نتیجه</p> *@
+            @*                             <ul class="pagination"> *@
+            @*                                 <li class="page-item"> *@
+            @*                                     <a class="page-link" href="#"> *@
+            @*                                         <i class="fas fa-long-arrow-alt-right"></i> *@
+            @*                                     </a> *@
+            @*                                 </li> *@
+            @*                                 <li class="page-item"><a class="page-link active" href="#">1</a></li> *@
+            @*                                 <li class="page-item"><a class="page-link" href="#">2</a></li> *@
+            @*                                 <li class="page-item"><a class="page-link" href="#">3</a></li> *@
+            @*                                 <li class="page-item">...</li> *@
+            @*                                 <li class="page-item"><a class="page-link" href="#">60</a></li> *@
+            @*                                 <li class="page-item"> *@
+            @*                                     <a class="page-link" href="#"> *@
+            @*                                         <i class="fas fa-long-arrow-alt-left"></i> *@
+            @*                                     </a> *@
+            @*                                 </li> *@
+            @*                             </ul> *@
+            @*                         </div> *@
+            @*                     </div> *@
+            @*                 </div> *@
+            @*             </div> *@
+            @*         </div> *@
+            @*     </div> *@
+            @* </div> *@
             <div class="col-lg-12">
                 <div class="account-card">
                     <div class="account-title">
                         <h4>شماره تماس</h4>
-                        <button id="testdisabled" data-bs-toggle="modal" data-bs-target="#contact-add">افزودن شماره تماس</button>
+                        @* <button id="testdisabled" data-bs-toggle="modal" data-bs-target="#contact-add">افزودن شماره تماس</button> *@
                     </div>
                     <div class="account-content">
                         <div class="row">
@@ -165,37 +187,37 @@
                                     </ul>
                                 </div>
                             </div>
+                            @* <div class="col-md-6 col-lg-4 alert fade show"> *@
+                            @*     <div class="profile-card contact"> *@
+                            @*         <h6>فرعی</h6> *@
+                            @*         <p>0218888889</p> *@
+                            @*         <ul> *@
+                            @*             <li> *@
+                            @*                 <button class="edit icofont-edit" title="ویرایش" data-bs-toggle="modal" *@
+                            @*                         data-bs-target="#contact-edit"></button> *@
+                            @*             </li> *@
+                            @*             <li> *@
+                            @*                 <button class="trash icofont-ui-delete" title="حذف" *@
+                            @*                         data-bs-dismiss="alert"></button> *@
+                            @*             </li> *@
+                            @*         </ul> *@
+                            @*     </div> *@
+                            @* </div> *@
                             <div class="col-md-6 col-lg-4 alert fade show">
-                                <div class="profile-card contact">
-                                    <h6>فرعی</h6>
-                                    <p>0218888889</p>
-                                    <ul>
-                                        <li>
-                                            <button class="edit icofont-edit" title="ویرایش" data-bs-toggle="modal"
-                                                    data-bs-target="#contact-edit"></button>
-                                        </li>
-                                        <li>
-                                            <button class="trash icofont-ui-delete" title="حذف"
-                                                    data-bs-dismiss="alert"></button>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-lg-4 alert fade show">
-                                <div class="profile-card contact">
-                                    <h6>فرعی</h6>
-                                    <p>0218888889</p>
-                                    <ul>
-                                        <li>
-                                            <button class="edit icofont-edit" title="ویرایش" data-bs-toggle="modal"
-                                                    data-bs-target="#contact-edit"></button>
-                                        </li>
-                                        <li>
-                                            <button class="trash icofont-ui-delete" title="حذف"
-                                                    data-bs-dismiss="alert"></button>
-                                        </li>
-                                    </ul>
-                                </div>
+                                @* <div class="profile-card contact"> *@
+                                @*     <h6>فرعی</h6> *@
+                                @*     <p>0218888889</p> *@
+                                @*     <ul> *@
+                                @*         <li> *@
+                                @*             <button class="edit icofont-edit" title="ویرایش" data-bs-toggle="modal" *@
+                                @*                     data-bs-target="#contact-edit"></button> *@
+                                @*         </li> *@
+                                @*         <li> *@
+                                @*             <button class="trash icofont-ui-delete" title="حذف" *@
+                                @*                     data-bs-dismiss="alert"></button> *@
+                                @*         </li> *@
+                                @*     </ul> *@
+                                @* </div> *@
                             </div>
                         </div>
                     </div>
@@ -277,30 +299,52 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <button class="modal-close" data-bs-dismiss="modal"><i class="icofont-close"></i></button>
-            <form class="modal-form">
+            <form class="modal-form" asp-area="Profile" asp-controller="Home" asp-action="Update" asp-route-slug="@Model.Slug" method="post" enctype="multipart/form-data">
                 <div class="form-title">
                     <h3>ویرایش اطلاعات پروفایل</h3>
                 </div>
                 <div class="form-group">
                     <label class="form-label">عکس پروفایل</label>
-                    <input class="form-control" type="file">
+                    <input asp-for="ImageFile" class="form-control" type="file">
                 </div>
                 <div class="form-group">
                     <label class="form-label">نام</label>
-                    <input class="form-control" type="text" value="@Model.FullName">
+                    <input asp-for="FullName" class="form-control" type="text" value="@Model.FullName">
                 </div>
                 <div class="form-group">
-	                <label class="form-label">ایمیل</label>
-	                <input class="form-control" type="text" value="@Model.Email">
+                    <label class="form-label">ایمیل</label>
+                    <input asp-for="Email" class="form-control" type="text" value="@Model.Email">
                 </div>
-				@status
-				@if (status == AgentStatus.Active)
-				{
-					<div class="form-group">
-						<label class="form-label">ایمیل</label>
-						<input class="form-control" type="text" value="@Model.Email">
-					</div>
-				}
+                <input asp-for="PhoneNumber" type="hidden" value="@Model.PhoneNumber"/>
+                @if (status == AgentStatus.Agent || status == AgentStatus.Admin || status == AgentStatus.Owner)
+                {
+                    <div class="form-group">
+                        <label class="form-label">لینک گیت هاب</label>
+                        <input asp-for="GithubLink" class="form-control" type="text" value="@Model.GithubLink">
+                    </div>
+                    <div class="form-group">
+	                    <label class="form-label">تخصص</label>
+	                    <input asp-for="Profienece" class="form-control" type="text" value="@Model.Profienece">
+                    </div>
+                    <div class="form-group">
+	                    <label class="form-label">میزان تجربه</label>
+                        <input asp-for="Experience" class="form-control" type="text" value="@Model.Experience">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">درباره من</label>
+                        <textarea asp-for="Description"  cols="30" rows="10" class="form-control" type="text" value="@Model.Description"></textarea>
+                    </div>
+
+                    <div class="form-group">
+	                    <label class="form-label">توضیحات تخصص من</label>
+                        <textarea asp-for="MyProfienece" cols="30" rows="10" class="form-control" type="text" value="@Model.MyProfienece"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">فایل رزومه</label>
+                        <input asp-for="ResumeFile" class="form-control" type="file" value="Model.ResumeFileName">
+                    </div>
+                }
 
                 <button class="form-btn" type="submit">ذخیره اطلاعات پروفایل</button>
             </form>
@@ -336,28 +380,52 @@
 
 <!-- address edit form -->
 <div class="modal fade" id="address-edit">
+	<div class="modal-dialog modal-dialog-centered">
+		<div class="modal-content">
+			<button class="modal-close" data-bs-dismiss="modal"><i class="icofont-close"></i></button>
+			<form class="modal-form">
+				<div class="form-title">
+					<h3>ویرایش آدرس</h3>
+				</div>
+				<div class="form-group">
+					<label class="form-label">موضوع</label>
+					<select class="form-select">
+						<option value="home" selected>خانه</option>
+						<option value="office">دفتر</option>
+						<option value="Bussiness">شرکت</option>
+						<option value="academy">آموزشگاه</option>
+						<option value="others">غیره</option>
+					</select>
+				</div>
+				<div class="form-group">
+					<label class="form-label">address</label>
+					<textarea class="form-control" placeholder="ایران - تهران - خیابان ظفر"></textarea>
+				</div>
+				<button class="form-btn" type="submit">ذخیره آدرس</button>
+			</form>
+		</div>
+	</div>
+</div>
+
+<!-- Profienece edit form -->
+<div class="modal fade" id="profienece-edit">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <button class="modal-close" data-bs-dismiss="modal"><i class="icofont-close"></i></button>
-            <form class="modal-form">
+            <form class="modal-form" asp-area="Profile" asp-controller="Home" asp-action="AddFeature" asp-route-slug="@Model.Slug" method="post" enctype="multipart/form-data">
                 <div class="form-title">
-                    <h3>ویرایش آدرس</h3>
+                    <h3>ویرایش اطلاعات پروفایل</h3>
                 </div>
                 <div class="form-group">
-                    <label class="form-label">موضوع</label>
-                    <select class="form-select">
-                        <option value="home" selected>خانه</option>
-                        <option value="office">دفتر</option>
-                        <option value="Bussiness">شرکت</option>
-                        <option value="academy">آموزشگاه</option>
-                        <option value="others">غیره</option>
-                    </select>
+                    <label class="form-label">عنوان ویژگی</label>
+                    <input asp-for="NewFeatures.Title" class="form-control" type="text">
                 </div>
                 <div class="form-group">
-                    <label class="form-label">address</label>
-                    <textarea class="form-control" placeholder="ایران - تهران - خیابان ظفر"></textarea>
+                    <label class="form-label">درصد تسلط</label>
+                    <input asp-for="NewFeatures.Percentage" class="form-control" type="number">
                 </div>
-                <button class="form-btn" type="submit">ذخیره آدرس</button>
+
+                <button class="form-btn" type="submit">افزودن ویژگی</button>
             </form>
         </div>
     </div>

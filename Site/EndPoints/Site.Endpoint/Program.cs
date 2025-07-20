@@ -1,4 +1,6 @@
+﻿using Microsoft.EntityFrameworkCore;
 using Site.Config;
+using Site.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -7,9 +9,14 @@ builder.Services.AddControllersWithViews();
 
 ConfigBootstrapper.Init(builder.Services, builder.Configuration);
 
-
 var app = builder.Build();
 
+
+using (var scope = app.Services.CreateScope())
+{
+    var db = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+    db.Database.Migrate(); // ← اجرای مایگریشن‌ها
+}
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

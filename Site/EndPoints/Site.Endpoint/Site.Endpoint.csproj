@@ -33,8 +33,4 @@
     <Folder Include="Pages\" />
   </ItemGroup>
 
-  <ItemGroup>
-    <_ContentIncludedByDefault Remove="Areas\Profile\Views\Home\Partials\EditProfile.cshtml" />
-  </ItemGroup>
-
 </Project>

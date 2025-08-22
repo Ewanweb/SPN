@@ -1,0 +1,29 @@
+{
+  "name": "گروه برنامه نویسی SPN (اس‌پی‌ان)",
+  "short_name": "software SPN",
+  "start_url": "/",
+  "display": "standalone",
+  "icons": [
+    {
+      "src": "src~/Assets/images/logo.svg",
+      "type": "image/png",
+      "sizes": "16x16"
+    },
+    {
+      "src": "src~/Assets/images/logo.svg",
+      "type": "image/png",
+      "sizes": "24x24"
+    },
+    {
+      "src": "src~/Assets/images/logo.svg",
+      "type": "image/png",
+      "sizes": "64x64"
+    },
+    {
+      "src": "src~/Assets/images/logo.svg",
+      "type": "image/png",
+      "sizes": "256x256"
+    }
+  ]
+
+}
